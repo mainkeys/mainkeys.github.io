@@ -3,11 +3,11 @@
   <title>羿の漫游指南</title>
   
   <subtitle>Love &amp;&amp; Share</subtitle>
-  <link href="https://mainkeys.github.io/atom.xml" rel="self"/>
+  <link href="https://mainkeys.github.io/mainkeys.github.io/atom.xml" rel="self"/>
   
-  <link href="https://mainkeys.github.io/"/>
+  <link href="https://mainkeys.github.io/mainkeys.github.io/"/>
   <updated>2021-09-06T15:49:58.643Z</updated>
-  <id>https://mainkeys.github.io/</id>
+  <id>https://mainkeys.github.io/mainkeys.github.io/</id>
   
   <author>
     <name>mainkeys</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>第一篇博客</title>
-    <link href="https://mainkeys.github.io/2021/09/06/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
-    <id>https://mainkeys.github.io/2021/09/06/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</id>
+    <link href="https://mainkeys.github.io/mainkeys.github.io/2021/09/06/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
+    <id>https://mainkeys.github.io/mainkeys.github.io/2021/09/06/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</id>
     <published>2021-09-06T15:50:00.000Z</published>
     <updated>2021-09-06T15:49:58.643Z</updated>
     
@@ -36,14 +36,14 @@
     
     
     
-    <category term="others" scheme="https://mainkeys.github.io/tags/others/"/>
+    <category term="others" scheme="https://mainkeys.github.io/mainkeys.github.io/tags/others/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="https://mainkeys.github.io/2021/09/06/hello-world/"/>
-    <id>https://mainkeys.github.io/2021/09/06/hello-world/</id>
+    <link href="https://mainkeys.github.io/mainkeys.github.io/2021/09/06/hello-world/"/>
+    <id>https://mainkeys.github.io/mainkeys.github.io/2021/09/06/hello-world/</id>
     <published>2021-09-06T11:11:23.033Z</published>
     <updated>2021-09-06T11:11:23.033Z</updated>
     
