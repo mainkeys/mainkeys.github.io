@@ -6,7 +6,7 @@
   <link href="https://mainkeys.github.io/atom.xml" rel="self"/>
   
   <link href="https://mainkeys.github.io/"/>
-  <updated>2021-09-07T14:25:39.439Z</updated>
+  <updated>2021-09-07T16:39:41.349Z</updated>
   <id>https://mainkeys.github.io/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>每日手撕day1</title>
+    <link href="https://mainkeys.github.io/2021/09/08/day1/"/>
+    <id>https://mainkeys.github.io/2021/09/08/day1/</id>
+    <published>2021-09-07T16:37:23.000Z</published>
+    <updated>2021-09-07T16:39:41.349Z</updated>
+    
+    <content type="html"><![CDATA[<p>经典快速排序</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quick_sort</span><span class="params">(<span class="keyword">int</span> q[], <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//递归的终止情况</span></span><br><span class="line">    <span class="keyword">if</span>(l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="comment">//第一步：分成子问题</span></span><br><span class="line">    <span class="keyword">int</span> i = l - <span class="number">1</span>, j = r + <span class="number">1</span>, x = q[l + r &gt;&gt; <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">while</span>(i &lt; j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">do</span> i++; <span class="keyword">while</span>(q[i] &lt; x);</span><br><span class="line">        <span class="keyword">do</span> j--; <span class="keyword">while</span>(q[j] &gt; x);</span><br><span class="line">        <span class="keyword">if</span>(i &lt; j) <span class="built_in">swap</span>(q[i], q[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//第二步：递归处理子问题</span></span><br><span class="line">    <span class="built_in">quick_sort</span>(q, l, j), <span class="built_in">quick_sort</span>(q, j + <span class="number">1</span>, r);</span><br><span class="line">    <span class="comment">//第三步：子问题合并.快排这一步不需要操作，但归并排序的核心在这一步骤</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>完整代码</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span>;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> q[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quick_sort</span><span class="params">(<span class="keyword">int</span> q[], <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> x = q[l+r &gt;&gt; <span class="number">1</span>], i = l<span class="number">-1</span>, j = r+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; j)&#123;</span><br><span class="line">        <span class="keyword">do</span> i++; <span class="keyword">while</span>(q[i]&lt;x);</span><br><span class="line">        <span class="keyword">do</span> j--; <span class="keyword">while</span>(q[j]&gt;x);</span><br><span class="line">        <span class="keyword">if</span>(i&lt;j) <span class="built_in">swap</span>(q[i],q[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">quick_sort</span>(q, l, j);</span><br><span class="line">    <span class="built_in">quick_sort</span>(q, j+<span class="number">1</span>, r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)  <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;q[i]);</span><br><span class="line">    <span class="built_in">quick_sort</span>(q, <span class="number">0</span>, n<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, q[i]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>注意x的取值与边界问题，背一种模板即可，<br>若x=q[l],则必须为<code>quick_sort(q, l, j),quick_sort(q, j+1, r);</code><br>若x=q[r],则必须为<code>quick_sort(q, l, i-1),quick_sort(q, i, r);</code></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;经典快速排序&lt;/p&gt;
+&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br</summary>
+      
+    
+    
+    
+    <category term="算法" scheme="https://mainkeys.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="每日手撕" scheme="https://mainkeys.github.io/categories/%E7%AE%97%E6%B3%95/%E6%AF%8F%E6%97%A5%E6%89%8B%E6%92%95/"/>
+    
+    
+    <category term="算法" scheme="https://mainkeys.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="AcWing" scheme="https://mainkeys.github.io/tags/AcWing/"/>
+    
+    <category term="快排" scheme="https://mainkeys.github.io/tags/%E5%BF%AB%E6%8E%92/"/>
+    
+    <category term="每日手撕" scheme="https://mainkeys.github.io/tags/%E6%AF%8F%E6%97%A5%E6%89%8B%E6%92%95/"/>
+    
+  </entry>
   
   <entry>
     <title>hexo+github pages搭建个人博客教程</title>
