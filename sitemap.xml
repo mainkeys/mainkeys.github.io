@@ -53,6 +53,13 @@
 
   
   <url>
+    <loc>https://mainkeys.github.io/tags/%E8%AE%B0%E5%BD%95/</loc>
+    <lastmod>2021-09-07</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://mainkeys.github.io/tags/hexo/</loc>
     <lastmod>2021-09-07</lastmod>
     <changefreq>daily</changefreq>
@@ -75,13 +82,6 @@
   
   <url>
     <loc>https://mainkeys.github.io/tags/Node-js/</loc>
-    <lastmod>2021-09-07</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://mainkeys.github.io/tags/%E8%AE%B0%E5%BD%95/</loc>
     <lastmod>2021-09-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
