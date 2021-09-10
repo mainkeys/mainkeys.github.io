@@ -125,7 +125,7 @@
 <h3 id="1-4生成博客"><a href="#1-4生成博客" class="headerlink" title="1.4生成博客"></a>1.4生成博客</h3><hr>
 <p>进入你要将博客相关内容放在此比如F:/blog下，前提要新建这个目录</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir blog	<span class="comment">#创建blog目录</span></span><br><span class="line"><span class="built_in">cd</span> blog	 <span class="comment">#进入blog目录</span></span><br><span class="line">hexo init 	<span class="comment">#生成博客 初始化博客</span></span><br><span class="line">hexo s	<span class="comment">#启动本地博客服务</span></span><br></pre></td></tr></table></figure>
-<p>此时博客已经部署成功到localhost了，在浏览器输入网址localhost:4000就可以看到生成的默认主题的博客<br><img src="https://img-blog.csdnimg.cn/90f478e007fd493799965a0c9234d1e2.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"> </p>
+<p>此时博客已经部署成功到localhost了，在浏览器输入网址localhost:4000就可以看到生成的默认主题的博客<br><img src="https://img-blog.csdnimg.cn/90f478e007fd493799965a0c9234d1e2.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16"> </p>
 <h2 id="2-创建github-pages博客"><a href="#2-创建github-pages博客" class="headerlink" title="2 创建github pages博客"></a>2 创建github pages博客</h2><h3 id="2-1-新建github仓库"><a href="#2-1-新建github仓库" class="headerlink" title="2.1 新建github仓库"></a>2.1 新建github仓库</h3><hr>
 <p>在github中新建仓库名称为<code> 你的用户名.github.io</code></p>
 <h3 id="2-2-修改配置文件-config-yml"><a href="#2-2-修改配置文件-config-yml" class="headerlink" title="2.2 修改配置文件_config.yml"></a>2.2 修改配置文件_config.yml</h3><hr>
@@ -134,12 +134,12 @@
 <p>接下来在cmd或者git bash 输入</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm install --save hexo-deployer-git <span class="comment">#在blog目录下安装git部署插件</span></span><br><span class="line">//然后输入</span><br><span class="line">hexo d <span class="comment">#</span></span><br></pre></td></tr></table></figure>
 <p>可以看到博客已经部署到新建的repository了。<br>我们就可以通过<code>用户名.github.io</code>访问个人博客了。</p>
-<h2 id="3-个人博客相关配置及主题修改"><a href="#3-个人博客相关配置及主题修改" class="headerlink" title="3 个人博客相关配置及主题修改"></a>3 个人博客相关配置及主题修改</h2><p>可以阅读官方文档进行相应的配置。官方文档写的很权威和详细。<br>hexo中文官方文档<code>https://hexo.io/zh-cn/docs/</code><br>github pages中文官方文档<code>https://docs.github.com/cn/pages</code></p>
+<h2 id="3-个人博客相关配置及主题修改"><a href="#3-个人博客相关配置及主题修改" class="headerlink" title="3 个人博客相关配置及主题修改"></a>3 个人博客相关配置及主题修改</h2><p>可以阅读官方文档进行相应的配置。官方文档写的很权威和详细。<br>hexo官方文档<code>https://hexo.io/docs/</code><br>github pages官方文档<code>https://docs.github.com/pages</code></p>
 <p>如果想修改主题<br>可以到<code>https://hexo.io/themes/</code>下载自己喜欢的主题，并阅读主题作者写的官方文档进行配置。<br>我用的是melody主题搭建的博客，欢迎大家访问<a href="https://mainkeys.github.io/">我的个人博客</a><code>mainkeys.github.io</code></p>
 <hr>
 ]]></content>
       <categories>
-        <category>others</category>
+        <category>技术</category>
       </categories>
       <tags>
         <tag>hexo</tag>
