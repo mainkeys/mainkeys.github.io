@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://mainkeys.github.io/2021/09/06/2/</loc>
+    
+    <lastmod>2021-09-10</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://mainkeys.github.io/2021/09/10/git%E6%8A%A5%E9%94%99%E8%B8%A9%E5%9D%91/</loc>
     
     <lastmod>2021-09-10</lastmod>
@@ -37,13 +44,6 @@
   </url>
   
   <url>
-    <loc>https://mainkeys.github.io/2021/09/06/2/</loc>
-    
-    <lastmod>2021-09-07</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://mainkeys.github.io/categories/index.html</loc>
     
     <lastmod>2021-09-06</lastmod>
@@ -72,6 +72,13 @@
     <priority>1.0</priority>
   </url>
 
+  
+  <url>
+    <loc>https://mainkeys.github.io/tags/%E8%AE%B0%E5%BD%95/</loc>
+    <lastmod>2021-09-10</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
   
   <url>
     <loc>https://mainkeys.github.io/tags/hexo/</loc>
@@ -130,13 +137,6 @@
   </url>
   
   <url>
-    <loc>https://mainkeys.github.io/tags/%E8%AE%B0%E5%BD%95/</loc>
-    <lastmod>2021-09-10</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://mainkeys.github.io/tags/%E8%B8%A9%E5%9D%91/</loc>
     <lastmod>2021-09-10</lastmod>
     <changefreq>daily</changefreq>
@@ -160,14 +160,14 @@
   </url>
   
   <url>
-    <loc>https://mainkeys.github.io/categories/%E7%AE%97%E6%B3%95/%E6%AF%8F%E6%97%A5%E6%89%8B%E6%92%95/</loc>
+    <loc>https://mainkeys.github.io/categories/%E8%B8%A9%E5%9D%91/</loc>
     <lastmod>2021-09-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://mainkeys.github.io/categories/%E8%B8%A9%E5%9D%91/</loc>
+    <loc>https://mainkeys.github.io/categories/%E7%AE%97%E6%B3%95/%E6%AF%8F%E6%97%A5%E6%89%8B%E6%92%95/</loc>
     <lastmod>2021-09-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
