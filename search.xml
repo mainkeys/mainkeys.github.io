@@ -1,119 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>第一篇博客</title>
-    <url>/2021/09/06/2/</url>
-    <content><![CDATA[<h2 id="这是一篇无用的post"><a href="#这是一篇无用的post" class="headerlink" title="这是一篇无用的post"></a>这是一篇无用的post</h2><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1464661022&auto=1&height=66"></iframe>
-
-<hr>
-]]></content>
-      <tags>
-        <tag>记录</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>git报错errno 10054</title>
-    <url>/2021/09/10/git%E6%8A%A5%E9%94%99%E8%B8%A9%E5%9D%91/</url>
-    <content><![CDATA[<p>昨天还可以git push代码到远程仓库，今天使用hexo d上传git仓库是时报了这个错：fatal: unable to access ‘<a href="https://github.com/.......&#39;">https://github.com/.......&#39;</a>: OpenSSL SSL_read: Connection was reset, errno 10054<br><img src="https://img-blog.csdnimg.cn/0913af988d1c42539d611a0681cba738.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
-<p>产生原因：一般是这是因为服务器的SSL证书没有经过第三方机构的签署，所以才报错</p>
-<p>参考网上解决办法：解除ssl验证后，再上传就OK了<br><code>git config --global http.sslVerify &quot;false&quot;</code><br><img src="https://img-blog.csdnimg.cn/f389967d3ce94127b09feb5ee55a3e1c.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
-]]></content>
-      <categories>
-        <category>踩坑</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-        <tag>github</tag>
-        <tag>踩坑</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>二分-每日手撕</title>
-    <url>/2021/09/09/day2/</url>
-    <content><![CDATA[<h1 id="二分"><a href="#二分" class="headerlink" title="二分"></a>二分</h1><p>二分法，即二分搜索法，是通过不断缩小解可能存在的范围，从而求得问题最优解的方法。例如，如果一个序列是有序的，那么可以通过二分的方法快速找到所需要查找的元素，相比线性搜索要快不少。此外二分法还能高效的解决一些单调性判定的问题。二分法的时间复杂度为O(logn)。<br>首先来聊一下二分的本质，二分的本质并不是单调性，但是如果有单调性的话，就一定可以二分。二分的本质是<code>边界</code>，如果找到某种性质，使得整个区间一分为二，就可以用二分将边界点找出来。<br>二分分为<code>整数二分</code>和<code>浮点数二分</code>，浮点数二分比较简单。</p>
-<hr>
-<p>整数二分：整数二分分为两种情况，分别对应找两种边界点，第一种找左区间的右边界点，第二种是找右区间的左边界点。<br><img src="https://img-blog.csdnimg.cn/a8b2bbdab1014394ae83529cd6f98129.png"></p>
-<p>模板：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bsearch_1</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(l &lt; r)&#123;</span><br><span class="line">		<span class="keyword">int</span> mid = l + r + <span class="number">1</span> &gt;&gt; <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">check</span>(mid)) l = mid;</span><br><span class="line">		r = mid - <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bsearch_2</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(l &lt; r)&#123;</span><br><span class="line">		<span class="keyword">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">check</span>(mid)) r = mid;</span><br><span class="line">		l = mid + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> l;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-<hr>
-<p> 典型例题：</p>
-<h1 id="数的范围"><a href="#数的范围" class="headerlink" title="数的范围"></a>数的范围</h1><p>给定一个按照升序排列的长度为 n 的整数数组，以及 q 个查询。</p>
-<p>对于每个查询，返回一个元素 k 的起始位置和终止位置（位置从 0 开始计数）。</p>
-<p>如果数组中不存在该元素，则返回 <code>-1 -1</code>。</p>
-<p>输入格式<br>第一行包含整数 n 和 q，表示数组长度和询问个数。</p>
-<p>第二行包含 n 个整数（均在 1∼10000 范围内），表示完整数组。</p>
-<p>接下来 q 行，每行包含一个整数 k，表示一个询问元素。</p>
-<p>输出格式<br>共 q 行，每行包含两个整数，表示所求元素的起始位置和终止位置。</p>
-<p>如果数组中不存在该元素，则返回 <code>-1 -1</code>。</p>
-<p>数据范围<br>1≤n≤100000<br>1≤q≤10000<br>1≤k≤10000</p>
-<h4 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h4><blockquote>
-<p>6 3<br>1 2 2 3 3 4<br>3<br>4<br>5</p>
-</blockquote>
-<h4 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h4><blockquote>
-<p>3 4<br>5 5<br>-1 -1</p>
-</blockquote>
-<p>ac代码：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100010</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"><span class="keyword">int</span> q[N];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;q[i]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(m--)&#123;</span><br><span class="line">        <span class="keyword">int</span> x;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;x);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>, r = n<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(l&lt;r)&#123;</span><br><span class="line">            <span class="keyword">int</span> mid = l+r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(q[mid] &gt;= x) r = mid;</span><br><span class="line">            <span class="keyword">else</span> l = mid+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(q[l] != x) cout&lt;&lt;<span class="string">&quot;-1 -1&quot;</span>&lt;&lt; endl;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            cout&lt;&lt;l&lt;&lt;<span class="string">&#x27; &#x27;</span>;</span><br><span class="line">            <span class="keyword">int</span> l = <span class="number">0</span>, r = n<span class="number">-1</span>;</span><br><span class="line">            <span class="keyword">while</span>(l&lt;r)&#123;</span><br><span class="line">                <span class="keyword">int</span> mid = l+r+<span class="number">1</span> &gt;&gt; <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(q[mid]&lt;=x)l =mid;</span><br><span class="line">                <span class="keyword">else</span> r = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            cout&lt;&lt; l &lt;&lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>浮点数二分：以求一个数的平方根为例</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">double</span> x;</span><br><span class="line">	cin &gt;&gt; x;</span><br><span class="line">	<span class="keyword">double</span> l = <span class="number">0</span>, r = x;</span><br><span class="line">	<span class="keyword">while</span>(r - l &gt; <span class="number">1e-8</span>)&#123;</span><br><span class="line">		<span class="keyword">double</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(mid * mid &gt;= x) r = mid;</span><br><span class="line">		<span class="keyword">else</span> l = mid;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lf\n&quot;</span>, l)</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>以上就是本人对二分的总结。</p>
-]]></content>
-      <categories>
-        <category>算法</category>
-        <category>每日手撕</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>AcWing</tag>
-        <tag>每日手撕</tag>
-        <tag>数据结构</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>归并排序-每日手撕</title>
-    <url>/2021/09/08/day1-2/</url>
-    <content><![CDATA[<h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><p>思想就是把两个有序数组归并为一个有序数组</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge_sort</span><span class="params">(<span class="keyword">int</span> q[], <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l&gt;=r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> mid = l+r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">merge_sort</span>(q, l , mid); <span class="built_in">merge_sort</span>(q, mid+<span class="number">1</span>, r);<span class="comment">//排序</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>, i = l, j = mid+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid &amp;&amp; j &lt;= r)<span class="comment">//归并</span></span><br><span class="line">        <span class="keyword">if</span>(q[i]&lt;q[j]) tmp[k++] = q[i++];</span><br><span class="line">        <span class="keyword">else</span> tmp[k++] = q[j++];</span><br><span class="line">    <span class="comment">//比较完后将其中某组多余的后续传入tmp[]</span></span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid) tmp[k++] = q[i++];</span><br><span class="line">    <span class="keyword">while</span>(j &lt;= r) tmp[k++] = q[j++];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//将tmp[]传入q[]</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = l, j = <span class="number">0</span>; i &lt;= r; i++, j++) q[i] = tmp[j];</span><br><span class="line">   	<span class="comment">//注意 &lt;= 因为传进来的r是n-1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>完整代码：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span>;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> q[N], tmp[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge_sort</span><span class="params">(<span class="keyword">int</span> q[], <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l&gt;=r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> mid = l+r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">merge_sort</span>(q, l , mid); <span class="built_in">merge_sort</span>(q, mid+<span class="number">1</span>, r);</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>, i = l, j = mid+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid &amp;&amp; j &lt;= r)</span><br><span class="line">        <span class="keyword">if</span>(q[i]&lt;q[j]) tmp[k++] = q[i++];</span><br><span class="line">        <span class="keyword">else</span> tmp[k++] = q[j++];</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid) tmp[k++] = q[i++];</span><br><span class="line">    <span class="keyword">while</span>(j &lt;= r) tmp[k++] = q[j++];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = l, j = <span class="number">0</span>; i &lt;= r; i++, j++) q[i] = tmp[j];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;q[i]);</span><br><span class="line">    <span class="built_in">merge_sort</span>(q, <span class="number">0</span>, n<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,q[i]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-]]></content>
-      <categories>
-        <category>算法</category>
-        <category>每日手撕</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>AcWing</tag>
-        <tag>每日手撕</tag>
-        <tag>数据结构</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>快速排序-每日手撕</title>
-    <url>/2021/09/08/day1/</url>
-    <content><![CDATA[<p>经典快速排序</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quick_sort</span><span class="params">(<span class="keyword">int</span> q[], <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//递归的终止情况</span></span><br><span class="line">    <span class="keyword">if</span>(l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="comment">//第一步：分成子问题</span></span><br><span class="line">    <span class="keyword">int</span> i = l - <span class="number">1</span>, j = r + <span class="number">1</span>, x = q[l + r &gt;&gt; <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">while</span>(i &lt; j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">do</span> i++; <span class="keyword">while</span>(q[i] &lt; x);</span><br><span class="line">        <span class="keyword">do</span> j--; <span class="keyword">while</span>(q[j] &gt; x);</span><br><span class="line">        <span class="keyword">if</span>(i &lt; j) <span class="built_in">swap</span>(q[i], q[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//第二步：递归处理子问题</span></span><br><span class="line">    <span class="built_in">quick_sort</span>(q, l, j), <span class="built_in">quick_sort</span>(q, j + <span class="number">1</span>, r);</span><br><span class="line">    <span class="comment">//第三步：子问题合并.快排这一步不需要操作，但归并排序的核心在这一步骤</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>完整代码</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span>;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> q[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quick_sort</span><span class="params">(<span class="keyword">int</span> q[], <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> x = q[l+r &gt;&gt; <span class="number">1</span>], i = l<span class="number">-1</span>, j = r+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; j)&#123;</span><br><span class="line">        <span class="keyword">do</span> i++; <span class="keyword">while</span>(q[i]&lt;x);</span><br><span class="line">        <span class="keyword">do</span> j--; <span class="keyword">while</span>(q[j]&gt;x);</span><br><span class="line">        <span class="keyword">if</span>(i&lt;j) <span class="built_in">swap</span>(q[i],q[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">quick_sort</span>(q, l, j);</span><br><span class="line">    <span class="built_in">quick_sort</span>(q, j+<span class="number">1</span>, r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)  <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;q[i]);</span><br><span class="line">    <span class="built_in">quick_sort</span>(q, <span class="number">0</span>, n<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, q[i]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>注意x的取值与边界问题，背一种模板即可，<br>若x=q[l],则必须为<code>quick_sort(q, l, j),quick_sort(q, j+1, r);</code><br>若x=q[r],则必须为<code>quick_sort(q, l, i-1),quick_sort(q, i, r);</code></p>
-]]></content>
-      <categories>
-        <category>算法</category>
-        <category>每日手撕</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>AcWing</tag>
-        <tag>每日手撕</tag>
-        <tag>数据结构</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>hexo+github pages搭建个人博客教程</title>
     <url>/2021/09/07/1/</url>
     <content><![CDATA[<h1 id="如何搭建个人博客-hexo搭建个人博客教程"><a href="#如何搭建个人博客-hexo搭建个人博客教程" class="headerlink" title="如何搭建个人博客-hexo搭建个人博客教程"></a>如何搭建个人博客-hexo搭建个人博客教程</h1><h2 id="1-安装hexo并生成本地博客目录"><a href="#1-安装hexo并生成本地博客目录" class="headerlink" title="1 安装hexo并生成本地博客目录"></a>1 安装hexo并生成本地博客目录</h2><h3 id="1-1-前置依赖"><a href="#1-1-前置依赖" class="headerlink" title="1.1 前置依赖"></a>1.1 前置依赖</h3><hr>
@@ -162,6 +49,119 @@
         <tag>git</tag>
         <tag>github</tag>
         <tag>Node.js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>归并排序-每日手撕</title>
+    <url>/2021/09/08/day1-2/</url>
+    <content><![CDATA[<h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><p>思想就是把两个有序数组归并为一个有序数组</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge_sort</span><span class="params">(<span class="keyword">int</span> q[], <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l&gt;=r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> mid = l+r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">merge_sort</span>(q, l , mid); <span class="built_in">merge_sort</span>(q, mid+<span class="number">1</span>, r);<span class="comment">//排序</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>, i = l, j = mid+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid &amp;&amp; j &lt;= r)<span class="comment">//归并</span></span><br><span class="line">        <span class="keyword">if</span>(q[i]&lt;q[j]) tmp[k++] = q[i++];</span><br><span class="line">        <span class="keyword">else</span> tmp[k++] = q[j++];</span><br><span class="line">    <span class="comment">//比较完后将其中某组多余的后续传入tmp[]</span></span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid) tmp[k++] = q[i++];</span><br><span class="line">    <span class="keyword">while</span>(j &lt;= r) tmp[k++] = q[j++];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//将tmp[]传入q[]</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = l, j = <span class="number">0</span>; i &lt;= r; i++, j++) q[i] = tmp[j];</span><br><span class="line">   	<span class="comment">//注意 &lt;= 因为传进来的r是n-1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>完整代码：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span>;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> q[N], tmp[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge_sort</span><span class="params">(<span class="keyword">int</span> q[], <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l&gt;=r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> mid = l+r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">merge_sort</span>(q, l , mid); <span class="built_in">merge_sort</span>(q, mid+<span class="number">1</span>, r);</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>, i = l, j = mid+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid &amp;&amp; j &lt;= r)</span><br><span class="line">        <span class="keyword">if</span>(q[i]&lt;q[j]) tmp[k++] = q[i++];</span><br><span class="line">        <span class="keyword">else</span> tmp[k++] = q[j++];</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid) tmp[k++] = q[i++];</span><br><span class="line">    <span class="keyword">while</span>(j &lt;= r) tmp[k++] = q[j++];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = l, j = <span class="number">0</span>; i &lt;= r; i++, j++) q[i] = tmp[j];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;q[i]);</span><br><span class="line">    <span class="built_in">merge_sort</span>(q, <span class="number">0</span>, n<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,q[i]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>每日手撕</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>AcWing</tag>
+        <tag>每日手撕</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>快速排序-每日手撕</title>
+    <url>/2021/09/08/day1/</url>
+    <content><![CDATA[<p>经典快速排序</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quick_sort</span><span class="params">(<span class="keyword">int</span> q[], <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//递归的终止情况</span></span><br><span class="line">    <span class="keyword">if</span>(l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="comment">//第一步：分成子问题</span></span><br><span class="line">    <span class="keyword">int</span> i = l - <span class="number">1</span>, j = r + <span class="number">1</span>, x = q[l + r &gt;&gt; <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">while</span>(i &lt; j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">do</span> i++; <span class="keyword">while</span>(q[i] &lt; x);</span><br><span class="line">        <span class="keyword">do</span> j--; <span class="keyword">while</span>(q[j] &gt; x);</span><br><span class="line">        <span class="keyword">if</span>(i &lt; j) <span class="built_in">swap</span>(q[i], q[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//第二步：递归处理子问题</span></span><br><span class="line">    <span class="built_in">quick_sort</span>(q, l, j), <span class="built_in">quick_sort</span>(q, j + <span class="number">1</span>, r);</span><br><span class="line">    <span class="comment">//第三步：子问题合并.快排这一步不需要操作，但归并排序的核心在这一步骤</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>完整代码</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span>;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> q[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quick_sort</span><span class="params">(<span class="keyword">int</span> q[], <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> x = q[l+r &gt;&gt; <span class="number">1</span>], i = l<span class="number">-1</span>, j = r+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; j)&#123;</span><br><span class="line">        <span class="keyword">do</span> i++; <span class="keyword">while</span>(q[i]&lt;x);</span><br><span class="line">        <span class="keyword">do</span> j--; <span class="keyword">while</span>(q[j]&gt;x);</span><br><span class="line">        <span class="keyword">if</span>(i&lt;j) <span class="built_in">swap</span>(q[i],q[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">quick_sort</span>(q, l, j);</span><br><span class="line">    <span class="built_in">quick_sort</span>(q, j+<span class="number">1</span>, r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)  <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;q[i]);</span><br><span class="line">    <span class="built_in">quick_sort</span>(q, <span class="number">0</span>, n<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, q[i]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>注意x的取值与边界问题，背一种模板即可，<br>若x=q[l],则必须为<code>quick_sort(q, l, j),quick_sort(q, j+1, r);</code><br>若x=q[r],则必须为<code>quick_sort(q, l, i-1),quick_sort(q, i, r);</code></p>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>每日手撕</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>AcWing</tag>
+        <tag>每日手撕</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>第一篇博客</title>
+    <url>/2021/09/06/2/</url>
+    <content><![CDATA[<h2 id="这是一篇无用的post"><a href="#这是一篇无用的post" class="headerlink" title="这是一篇无用的post"></a>这是一篇无用的post</h2><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1464661022&auto=1&height=66"></iframe>
+
+<hr>
+]]></content>
+      <tags>
+        <tag>记录</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>二分-每日手撕</title>
+    <url>/2021/09/09/day2/</url>
+    <content><![CDATA[<h1 id="二分"><a href="#二分" class="headerlink" title="二分"></a>二分</h1><p>二分法，即二分搜索法，是通过不断缩小解可能存在的范围，从而求得问题最优解的方法。例如，如果一个序列是有序的，那么可以通过二分的方法快速找到所需要查找的元素，相比线性搜索要快不少。此外二分法还能高效的解决一些单调性判定的问题。二分法的时间复杂度为O(logn)。<br>首先来聊一下二分的本质，二分的本质并不是单调性，但是如果有单调性的话，就一定可以二分。二分的本质是<code>边界</code>，如果找到某种性质，使得整个区间一分为二，就可以用二分将边界点找出来。<br>二分分为<code>整数二分</code>和<code>浮点数二分</code>，浮点数二分比较简单。</p>
+<hr>
+<p>整数二分：整数二分分为两种情况，分别对应找两种边界点，第一种找左区间的右边界点，第二种是找右区间的左边界点。<br><img src="https://img-blog.csdnimg.cn/a8b2bbdab1014394ae83529cd6f98129.png"></p>
+<p>模板：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bsearch_1</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(l &lt; r)&#123;</span><br><span class="line">		<span class="keyword">int</span> mid = l + r + <span class="number">1</span> &gt;&gt; <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">check</span>(mid)) l = mid;</span><br><span class="line">		r = mid - <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bsearch_2</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(l &lt; r)&#123;</span><br><span class="line">		<span class="keyword">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">check</span>(mid)) r = mid;</span><br><span class="line">		l = mid + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> l;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+<hr>
+<p> 典型例题：</p>
+<h1 id="数的范围"><a href="#数的范围" class="headerlink" title="数的范围"></a>数的范围</h1><p>给定一个按照升序排列的长度为 n 的整数数组，以及 q 个查询。</p>
+<p>对于每个查询，返回一个元素 k 的起始位置和终止位置（位置从 0 开始计数）。</p>
+<p>如果数组中不存在该元素，则返回 <code>-1 -1</code>。</p>
+<p>输入格式<br>第一行包含整数 n 和 q，表示数组长度和询问个数。</p>
+<p>第二行包含 n 个整数（均在 1∼10000 范围内），表示完整数组。</p>
+<p>接下来 q 行，每行包含一个整数 k，表示一个询问元素。</p>
+<p>输出格式<br>共 q 行，每行包含两个整数，表示所求元素的起始位置和终止位置。</p>
+<p>如果数组中不存在该元素，则返回 <code>-1 -1</code>。</p>
+<p>数据范围<br>1≤n≤100000<br>1≤q≤10000<br>1≤k≤10000</p>
+<h4 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h4><blockquote>
+<p>6 3<br>1 2 2 3 3 4<br>3<br>4<br>5</p>
+</blockquote>
+<h4 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h4><blockquote>
+<p>3 4<br>5 5<br>-1 -1</p>
+</blockquote>
+<p>ac代码：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100010</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"><span class="keyword">int</span> q[N];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;q[i]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(m--)&#123;</span><br><span class="line">        <span class="keyword">int</span> x;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;x);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>, r = n<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(l&lt;r)&#123;</span><br><span class="line">            <span class="keyword">int</span> mid = l+r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(q[mid] &gt;= x) r = mid;</span><br><span class="line">            <span class="keyword">else</span> l = mid+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(q[l] != x) cout&lt;&lt;<span class="string">&quot;-1 -1&quot;</span>&lt;&lt; endl;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            cout&lt;&lt;l&lt;&lt;<span class="string">&#x27; &#x27;</span>;</span><br><span class="line">            <span class="keyword">int</span> l = <span class="number">0</span>, r = n<span class="number">-1</span>;</span><br><span class="line">            <span class="keyword">while</span>(l&lt;r)&#123;</span><br><span class="line">                <span class="keyword">int</span> mid = l+r+<span class="number">1</span> &gt;&gt; <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(q[mid]&lt;=x)l =mid;</span><br><span class="line">                <span class="keyword">else</span> r = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            cout&lt;&lt; l &lt;&lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>浮点数二分：以求一个数的平方根为例</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">double</span> x;</span><br><span class="line">	cin &gt;&gt; x;</span><br><span class="line">	<span class="keyword">double</span> l = <span class="number">0</span>, r = x;</span><br><span class="line">	<span class="keyword">while</span>(r - l &gt; <span class="number">1e-8</span>)&#123;</span><br><span class="line">		<span class="keyword">double</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(mid * mid &gt;= x) r = mid;</span><br><span class="line">		<span class="keyword">else</span> l = mid;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lf\n&quot;</span>, l)</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>以上就是本人对二分的总结。</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>每日手撕</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>AcWing</tag>
+        <tag>每日手撕</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git报错errno 10054</title>
+    <url>/2021/09/10/git%E6%8A%A5%E9%94%99%E8%B8%A9%E5%9D%91/</url>
+    <content><![CDATA[<p>昨天还可以git push代码到远程仓库，今天使用hexo d上传git仓库是时报了这个错：fatal: unable to access ‘<a href="https://github.com/.......&#39;">https://github.com/.......&#39;</a>: OpenSSL SSL_read: Connection was reset, errno 10054<br><img src="https://img-blog.csdnimg.cn/0913af988d1c42539d611a0681cba738.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
+<p>产生原因：一般是这是因为服务器的SSL证书没有经过第三方机构的签署，所以才报错</p>
+<p>参考网上解决办法：解除ssl验证后，再上传就OK了<br><code>git config --global http.sslVerify &quot;false&quot;</code><br><img src="https://img-blog.csdnimg.cn/f389967d3ce94127b09feb5ee55a3e1c.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
+]]></content>
+      <categories>
+        <category>踩坑</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+        <tag>github</tag>
+        <tag>踩坑</tag>
       </tags>
   </entry>
 </search>
