@@ -12,99 +12,6 @@
       </tags>
   </entry>
   <entry>
-    <title>hexo+github pages搭建个人博客教程</title>
-    <url>/2021/09/07/1/</url>
-    <content><![CDATA[<h1 id="如何搭建个人博客-hexo搭建个人博客教程"><a href="#如何搭建个人博客-hexo搭建个人博客教程" class="headerlink" title="如何搭建个人博客-hexo搭建个人博客教程"></a>如何搭建个人博客-hexo搭建个人博客教程</h1><h2 id="1-安装hexo并生成本地博客目录"><a href="#1-安装hexo并生成本地博客目录" class="headerlink" title="1 安装hexo并生成本地博客目录"></a>1 安装hexo并生成本地博客目录</h2><h3 id="1-1-前置依赖"><a href="#1-1-前置依赖" class="headerlink" title="1.1 前置依赖"></a>1.1 前置依赖</h3><hr>
-<p>在搭建之前你需要：<br>有一个github账号；<br>安装了Node.js，没有的去Node.js官网安装即可；<br>安装了git，并设置了用户和邮箱，网上教程很多。</p>
-<blockquote>
-<p>因为这里我们用的是github pages部署静态网站，所以简单介绍一下使用github pages服务搭建博客的好处有：</p>
-</blockquote>
-<ul>
-<li>全是静态文件，访问速度快；    免费方便，不用花一分钱就可以搭建一个自由的个人博客；   </li>
-<li>  不需要服务器不需要后台根据Github的限制，对应的每个站有300MB空间；   </li>
-<li> 轻量级的博客系统，没有麻烦的配置，使用标记语言，比如Markdown；    </li>
-<li>可以随意绑定自己的域名；   数据安全，基于github的版本管理，想恢复到哪个历史版本都行；<br>  博客内容可以轻松打包、转移、发布到其它平台。</li>
-</ul>
-<h3 id="1-2-安装cnmp管理器"><a href="#1-2-安装cnmp管理器" class="headerlink" title="1.2 安装cnmp管理器"></a>1.2 安装cnmp管理器</h3><hr>
-<p>使用cmd命令行或者git bash 安装淘宝镜像的cnmp</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g cnpm --registry=http://registry.npm.taobao.org	</span><br></pre></td></tr></table></figure>
-<p>下面是一些相关操作，可用以判断是否安装成功</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node -v	<span class="comment">#查看node版本</span></span><br><span class="line">npm -v	<span class="comment">#查看npm版本</span></span><br><span class="line">cnpm -v	<span class="comment">#查看cnpm版本</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="1-3安装hexo"><a href="#1-3安装hexo" class="headerlink" title="1.3安装hexo"></a>1.3安装hexo</h3><hr>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm install -g hexo-cli    <span class="comment">#安装hexo框架</span></span><br><span class="line">hexo -v	<span class="comment">#查看hexo版本</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="1-4生成博客"><a href="#1-4生成博客" class="headerlink" title="1.4生成博客"></a>1.4生成博客</h3><hr>
-<p>进入你要将博客相关内容放在此比如F:/blog下，前提要新建这个目录</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir blog	<span class="comment">#创建blog目录</span></span><br><span class="line"><span class="built_in">cd</span> blog	 <span class="comment">#进入blog目录</span></span><br><span class="line">hexo init 	<span class="comment">#生成博客 初始化博客</span></span><br><span class="line">hexo s	<span class="comment">#启动本地博客服务</span></span><br></pre></td></tr></table></figure>
-<p>此时博客已经部署成功到localhost了，在浏览器输入网址localhost:4000就可以看到生成的默认主题的博客<br><img src="https://img-blog.csdnimg.cn/90f478e007fd493799965a0c9234d1e2.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16"> </p>
-<h2 id="2-创建github-pages博客"><a href="#2-创建github-pages博客" class="headerlink" title="2 创建github pages博客"></a>2 创建github pages博客</h2><h3 id="2-1-新建github仓库"><a href="#2-1-新建github仓库" class="headerlink" title="2.1 新建github仓库"></a>2.1 新建github仓库</h3><hr>
-<p>在github中新建仓库名称为<code> 你的用户名.github.io</code></p>
-<h3 id="2-2-修改配置文件-config-yml"><a href="#2-2-修改配置文件-config-yml" class="headerlink" title="2.2 修改配置文件_config.yml"></a>2.2 修改配置文件_config.yml</h3><hr>
-<p>cmd或者git bash进入到博客目录下，<code>vim _config.yml</code>或者<code>code _config.yml</code>编辑_config.yml文件。翻到最下面，修改deploy内的type为<code>git</code>，repo为<code>https://github.com/你的用户名/你的用户名.github.io.git</code>，添加branch为<code>master</code>（虽然默认就是master）<img src="https://img-blog.csdnimg.cn/4d7bab1635714d0cad7b8ba12dca8abf.png" alt="在这里插入图片描述"></p>
-<h3 id="2-3-部署博客到github"><a href="#2-3-部署博客到github" class="headerlink" title="2.3 部署博客到github"></a>2.3 部署博客到github</h3><hr>
-<p>接下来在cmd或者git bash 输入</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm install --save hexo-deployer-git <span class="comment">#在blog目录下安装git部署插件</span></span><br><span class="line">//然后输入</span><br><span class="line">hexo d <span class="comment">#</span></span><br></pre></td></tr></table></figure>
-<p>可以看到博客已经部署到新建的repository了。<br>我们就可以通过<code>用户名.github.io</code>访问个人博客了。</p>
-<h2 id="3-个人博客相关配置及主题修改"><a href="#3-个人博客相关配置及主题修改" class="headerlink" title="3 个人博客相关配置及主题修改"></a>3 个人博客相关配置及主题修改</h2><p>可以阅读官方文档进行相应的配置。官方文档写的很权威和详细。<br>hexo官方文档<code>https://hexo.io/docs/</code><br>github pages官方文档<code>https://docs.github.com/pages</code></p>
-<p>如果想修改主题<br>可以到<code>https://hexo.io/themes/</code>下载自己喜欢的主题，并阅读主题作者写的官方文档进行配置。<br>我用的是melody主题搭建的博客，欢迎大家访问<a href="https://mainkeys.github.io/">我的个人博客</a><code>mainkeys.github.io</code></p>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>git</tag>
-        <tag>github</tag>
-        <tag>Node.js</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>归并排序-每日手撕</title>
-    <url>/2021/09/08/day1-2/</url>
-    <content><![CDATA[<h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><p>思想就是把两个有序数组归并为一个有序数组</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge_sort</span><span class="params">(<span class="keyword">int</span> q[], <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l&gt;=r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> mid = l+r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">merge_sort</span>(q, l , mid); <span class="built_in">merge_sort</span>(q, mid+<span class="number">1</span>, r);<span class="comment">//排序</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>, i = l, j = mid+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid &amp;&amp; j &lt;= r)<span class="comment">//归并</span></span><br><span class="line">        <span class="keyword">if</span>(q[i]&lt;q[j]) tmp[k++] = q[i++];</span><br><span class="line">        <span class="keyword">else</span> tmp[k++] = q[j++];</span><br><span class="line">    <span class="comment">//比较完后将其中某组多余的后续传入tmp[]</span></span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid) tmp[k++] = q[i++];</span><br><span class="line">    <span class="keyword">while</span>(j &lt;= r) tmp[k++] = q[j++];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//将tmp[]传入q[]</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = l, j = <span class="number">0</span>; i &lt;= r; i++, j++) q[i] = tmp[j];</span><br><span class="line">   	<span class="comment">//注意 &lt;= 因为传进来的r是n-1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>完整代码：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span>;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> q[N], tmp[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge_sort</span><span class="params">(<span class="keyword">int</span> q[], <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l&gt;=r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> mid = l+r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">merge_sort</span>(q, l , mid); <span class="built_in">merge_sort</span>(q, mid+<span class="number">1</span>, r);</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>, i = l, j = mid+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid &amp;&amp; j &lt;= r)</span><br><span class="line">        <span class="keyword">if</span>(q[i]&lt;q[j]) tmp[k++] = q[i++];</span><br><span class="line">        <span class="keyword">else</span> tmp[k++] = q[j++];</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid) tmp[k++] = q[i++];</span><br><span class="line">    <span class="keyword">while</span>(j &lt;= r) tmp[k++] = q[j++];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = l, j = <span class="number">0</span>; i &lt;= r; i++, j++) q[i] = tmp[j];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;q[i]);</span><br><span class="line">    <span class="built_in">merge_sort</span>(q, <span class="number">0</span>, n<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,q[i]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-]]></content>
-      <categories>
-        <category>算法</category>
-        <category>每日手撕</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>AcWing</tag>
-        <tag>每日手撕</tag>
-        <tag>数据结构</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>快速排序-每日手撕</title>
-    <url>/2021/09/08/day1/</url>
-    <content><![CDATA[<p>经典快速排序</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quick_sort</span><span class="params">(<span class="keyword">int</span> q[], <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//递归的终止情况</span></span><br><span class="line">    <span class="keyword">if</span>(l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="comment">//第一步：分成子问题</span></span><br><span class="line">    <span class="keyword">int</span> i = l - <span class="number">1</span>, j = r + <span class="number">1</span>, x = q[l + r &gt;&gt; <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">while</span>(i &lt; j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">do</span> i++; <span class="keyword">while</span>(q[i] &lt; x);</span><br><span class="line">        <span class="keyword">do</span> j--; <span class="keyword">while</span>(q[j] &gt; x);</span><br><span class="line">        <span class="keyword">if</span>(i &lt; j) <span class="built_in">swap</span>(q[i], q[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//第二步：递归处理子问题</span></span><br><span class="line">    <span class="built_in">quick_sort</span>(q, l, j), <span class="built_in">quick_sort</span>(q, j + <span class="number">1</span>, r);</span><br><span class="line">    <span class="comment">//第三步：子问题合并.快排这一步不需要操作，但归并排序的核心在这一步骤</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>完整代码</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span>;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> q[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quick_sort</span><span class="params">(<span class="keyword">int</span> q[], <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> x = q[l+r &gt;&gt; <span class="number">1</span>], i = l<span class="number">-1</span>, j = r+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; j)&#123;</span><br><span class="line">        <span class="keyword">do</span> i++; <span class="keyword">while</span>(q[i]&lt;x);</span><br><span class="line">        <span class="keyword">do</span> j--; <span class="keyword">while</span>(q[j]&gt;x);</span><br><span class="line">        <span class="keyword">if</span>(i&lt;j) <span class="built_in">swap</span>(q[i],q[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">quick_sort</span>(q, l, j);</span><br><span class="line">    <span class="built_in">quick_sort</span>(q, j+<span class="number">1</span>, r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)  <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;q[i]);</span><br><span class="line">    <span class="built_in">quick_sort</span>(q, <span class="number">0</span>, n<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, q[i]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>注意x的取值与边界问题，背一种模板即可，<br>若x=q[l],则必须为<code>quick_sort(q, l, j),quick_sort(q, j+1, r);</code><br>若x=q[r],则必须为<code>quick_sort(q, l, i-1),quick_sort(q, i, r);</code></p>
-]]></content>
-      <categories>
-        <category>算法</category>
-        <category>每日手撕</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>AcWing</tag>
-        <tag>每日手撕</tag>
-        <tag>数据结构</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>git报错errno 10054</title>
     <url>/2021/09/10/git%E6%8A%A5%E9%94%99%E8%B8%A9%E5%9D%91/</url>
     <content><![CDATA[<p>昨天还可以git push代码到远程仓库，今天使用hexo d上传git仓库是时报了这个错：fatal: unable to access ‘<a href="https://github.com/.......&#39;">https://github.com/.......&#39;</a>: OpenSSL SSL_read: Connection was reset, errno 10054<br><img src="https://img-blog.csdnimg.cn/0913af988d1c42539d611a0681cba738.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
@@ -162,6 +69,99 @@
         <tag>AcWing</tag>
         <tag>每日手撕</tag>
         <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>归并排序-每日手撕</title>
+    <url>/2021/09/08/day1-2/</url>
+    <content><![CDATA[<h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><p>思想就是把两个有序数组归并为一个有序数组</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge_sort</span><span class="params">(<span class="keyword">int</span> q[], <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l&gt;=r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> mid = l+r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">merge_sort</span>(q, l , mid); <span class="built_in">merge_sort</span>(q, mid+<span class="number">1</span>, r);<span class="comment">//排序</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>, i = l, j = mid+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid &amp;&amp; j &lt;= r)<span class="comment">//归并</span></span><br><span class="line">        <span class="keyword">if</span>(q[i]&lt;q[j]) tmp[k++] = q[i++];</span><br><span class="line">        <span class="keyword">else</span> tmp[k++] = q[j++];</span><br><span class="line">    <span class="comment">//比较完后将其中某组多余的后续传入tmp[]</span></span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid) tmp[k++] = q[i++];</span><br><span class="line">    <span class="keyword">while</span>(j &lt;= r) tmp[k++] = q[j++];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//将tmp[]传入q[]</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = l, j = <span class="number">0</span>; i &lt;= r; i++, j++) q[i] = tmp[j];</span><br><span class="line">   	<span class="comment">//注意 &lt;= 因为传进来的r是n-1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>完整代码：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span>;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> q[N], tmp[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge_sort</span><span class="params">(<span class="keyword">int</span> q[], <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l&gt;=r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> mid = l+r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">merge_sort</span>(q, l , mid); <span class="built_in">merge_sort</span>(q, mid+<span class="number">1</span>, r);</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>, i = l, j = mid+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid &amp;&amp; j &lt;= r)</span><br><span class="line">        <span class="keyword">if</span>(q[i]&lt;q[j]) tmp[k++] = q[i++];</span><br><span class="line">        <span class="keyword">else</span> tmp[k++] = q[j++];</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid) tmp[k++] = q[i++];</span><br><span class="line">    <span class="keyword">while</span>(j &lt;= r) tmp[k++] = q[j++];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = l, j = <span class="number">0</span>; i &lt;= r; i++, j++) q[i] = tmp[j];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;q[i]);</span><br><span class="line">    <span class="built_in">merge_sort</span>(q, <span class="number">0</span>, n<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,q[i]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>每日手撕</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>AcWing</tag>
+        <tag>每日手撕</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>快速排序-每日手撕</title>
+    <url>/2021/09/08/day1/</url>
+    <content><![CDATA[<p>经典快速排序</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quick_sort</span><span class="params">(<span class="keyword">int</span> q[], <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//递归的终止情况</span></span><br><span class="line">    <span class="keyword">if</span>(l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="comment">//第一步：分成子问题</span></span><br><span class="line">    <span class="keyword">int</span> i = l - <span class="number">1</span>, j = r + <span class="number">1</span>, x = q[l + r &gt;&gt; <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">while</span>(i &lt; j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">do</span> i++; <span class="keyword">while</span>(q[i] &lt; x);</span><br><span class="line">        <span class="keyword">do</span> j--; <span class="keyword">while</span>(q[j] &gt; x);</span><br><span class="line">        <span class="keyword">if</span>(i &lt; j) <span class="built_in">swap</span>(q[i], q[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//第二步：递归处理子问题</span></span><br><span class="line">    <span class="built_in">quick_sort</span>(q, l, j), <span class="built_in">quick_sort</span>(q, j + <span class="number">1</span>, r);</span><br><span class="line">    <span class="comment">//第三步：子问题合并.快排这一步不需要操作，但归并排序的核心在这一步骤</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>完整代码</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span>;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> q[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quick_sort</span><span class="params">(<span class="keyword">int</span> q[], <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> x = q[l+r &gt;&gt; <span class="number">1</span>], i = l<span class="number">-1</span>, j = r+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; j)&#123;</span><br><span class="line">        <span class="keyword">do</span> i++; <span class="keyword">while</span>(q[i]&lt;x);</span><br><span class="line">        <span class="keyword">do</span> j--; <span class="keyword">while</span>(q[j]&gt;x);</span><br><span class="line">        <span class="keyword">if</span>(i&lt;j) <span class="built_in">swap</span>(q[i],q[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">quick_sort</span>(q, l, j);</span><br><span class="line">    <span class="built_in">quick_sort</span>(q, j+<span class="number">1</span>, r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)  <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;q[i]);</span><br><span class="line">    <span class="built_in">quick_sort</span>(q, <span class="number">0</span>, n<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, q[i]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>注意x的取值与边界问题，背一种模板即可，<br>若x=q[l],则必须为<code>quick_sort(q, l, j),quick_sort(q, j+1, r);</code><br>若x=q[r],则必须为<code>quick_sort(q, l, i-1),quick_sort(q, i, r);</code></p>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>每日手撕</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>AcWing</tag>
+        <tag>每日手撕</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo+github pages搭建个人博客教程</title>
+    <url>/2021/09/07/1/</url>
+    <content><![CDATA[<h1 id="如何搭建个人博客-hexo搭建个人博客教程"><a href="#如何搭建个人博客-hexo搭建个人博客教程" class="headerlink" title="如何搭建个人博客-hexo搭建个人博客教程"></a>如何搭建个人博客-hexo搭建个人博客教程</h1><h2 id="1-安装hexo并生成本地博客目录"><a href="#1-安装hexo并生成本地博客目录" class="headerlink" title="1 安装hexo并生成本地博客目录"></a>1 安装hexo并生成本地博客目录</h2><h3 id="1-1-前置依赖"><a href="#1-1-前置依赖" class="headerlink" title="1.1 前置依赖"></a>1.1 前置依赖</h3><hr>
+<p>在搭建之前你需要：<br>有一个github账号；<br>安装了Node.js，没有的去Node.js官网安装即可；<br>安装了git，并设置了用户和邮箱，网上教程很多。</p>
+<blockquote>
+<p>因为这里我们用的是github pages部署静态网站，所以简单介绍一下使用github pages服务搭建博客的好处有：</p>
+</blockquote>
+<ul>
+<li>全是静态文件，访问速度快；    免费方便，不用花一分钱就可以搭建一个自由的个人博客；   </li>
+<li>  不需要服务器不需要后台根据Github的限制，对应的每个站有300MB空间；   </li>
+<li> 轻量级的博客系统，没有麻烦的配置，使用标记语言，比如Markdown；    </li>
+<li>可以随意绑定自己的域名；   数据安全，基于github的版本管理，想恢复到哪个历史版本都行；<br>  博客内容可以轻松打包、转移、发布到其它平台。</li>
+</ul>
+<h3 id="1-2-安装cnmp管理器"><a href="#1-2-安装cnmp管理器" class="headerlink" title="1.2 安装cnmp管理器"></a>1.2 安装cnmp管理器</h3><hr>
+<p>使用cmd命令行或者git bash 安装淘宝镜像的cnmp</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g cnpm --registry=http://registry.npm.taobao.org	</span><br></pre></td></tr></table></figure>
+<p>下面是一些相关操作，可用以判断是否安装成功</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node -v	<span class="comment">#查看node版本</span></span><br><span class="line">npm -v	<span class="comment">#查看npm版本</span></span><br><span class="line">cnpm -v	<span class="comment">#查看cnpm版本</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-3安装hexo"><a href="#1-3安装hexo" class="headerlink" title="1.3安装hexo"></a>1.3安装hexo</h3><hr>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm install -g hexo-cli    <span class="comment">#安装hexo框架</span></span><br><span class="line">hexo -v	<span class="comment">#查看hexo版本</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-4生成博客"><a href="#1-4生成博客" class="headerlink" title="1.4生成博客"></a>1.4生成博客</h3><hr>
+<p>进入你要将博客相关内容放在此比如F:/blog下，前提要新建这个目录</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir blog	<span class="comment">#创建blog目录</span></span><br><span class="line"><span class="built_in">cd</span> blog	 <span class="comment">#进入blog目录</span></span><br><span class="line">hexo init 	<span class="comment">#生成博客 初始化博客</span></span><br><span class="line">hexo s	<span class="comment">#启动本地博客服务</span></span><br></pre></td></tr></table></figure>
+<p>此时博客已经部署成功到localhost了，在浏览器输入网址localhost:4000就可以看到生成的默认主题的博客<br><img src="https://img-blog.csdnimg.cn/90f478e007fd493799965a0c9234d1e2.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16"> </p>
+<h2 id="2-创建github-pages博客"><a href="#2-创建github-pages博客" class="headerlink" title="2 创建github pages博客"></a>2 创建github pages博客</h2><h3 id="2-1-新建github仓库"><a href="#2-1-新建github仓库" class="headerlink" title="2.1 新建github仓库"></a>2.1 新建github仓库</h3><hr>
+<p>在github中新建仓库名称为<code> 你的用户名.github.io</code></p>
+<h3 id="2-2-修改配置文件-config-yml"><a href="#2-2-修改配置文件-config-yml" class="headerlink" title="2.2 修改配置文件_config.yml"></a>2.2 修改配置文件_config.yml</h3><hr>
+<p>cmd或者git bash进入到博客目录下，<code>vim _config.yml</code>或者<code>code _config.yml</code>编辑_config.yml文件。翻到最下面，修改deploy内的type为<code>git</code>，repo为<code>https://github.com/你的用户名/你的用户名.github.io.git</code>，添加branch为<code>master</code>（虽然默认就是master）<img src="https://img-blog.csdnimg.cn/4d7bab1635714d0cad7b8ba12dca8abf.png" alt="在这里插入图片描述"></p>
+<h3 id="2-3-部署博客到github"><a href="#2-3-部署博客到github" class="headerlink" title="2.3 部署博客到github"></a>2.3 部署博客到github</h3><hr>
+<p>接下来在cmd或者git bash 输入</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm install --save hexo-deployer-git <span class="comment">#在blog目录下安装git部署插件</span></span><br><span class="line">//然后输入</span><br><span class="line">hexo d <span class="comment">#</span></span><br></pre></td></tr></table></figure>
+<p>可以看到博客已经部署到新建的repository了。<br>我们就可以通过<code>用户名.github.io</code>访问个人博客了。</p>
+<h2 id="3-个人博客相关配置及主题修改"><a href="#3-个人博客相关配置及主题修改" class="headerlink" title="3 个人博客相关配置及主题修改"></a>3 个人博客相关配置及主题修改</h2><p>可以阅读官方文档进行相应的配置。官方文档写的很权威和详细。<br>hexo官方文档<code>https://hexo.io/docs/</code><br>github pages官方文档<code>https://docs.github.com/pages</code></p>
+<p>如果想修改主题<br>可以到<code>https://hexo.io/themes/</code>下载自己喜欢的主题，并阅读主题作者写的官方文档进行配置。<br>我用的是melody主题搭建的博客，欢迎大家访问<a href="https://mainkeys.github.io/">我的个人博客</a><code>mainkeys.github.io</code></p>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>git</tag>
+        <tag>github</tag>
+        <tag>Node.js</tag>
       </tags>
   </entry>
 </search>
