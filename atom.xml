@@ -6,7 +6,7 @@
   <link href="https://mainkeys.github.io/atom.xml" rel="self"/>
   
   <link href="https://mainkeys.github.io/"/>
-  <updated>2021-09-10T05:35:01.199Z</updated>
+  <updated>2021-09-10T06:01:07.368Z</updated>
   <id>https://mainkeys.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://mainkeys.github.io/2021/09/10/git%E6%8A%A5%E9%94%99%E8%B8%A9%E5%9D%91/"/>
     <id>https://mainkeys.github.io/2021/09/10/git%E6%8A%A5%E9%94%99%E8%B8%A9%E5%9D%91/</id>
     <published>2021-09-10T04:33:21.000Z</published>
-    <updated>2021-09-10T05:35:01.199Z</updated>
+    <updated>2021-09-10T06:01:07.368Z</updated>
     
     <content type="html"><![CDATA[<p>昨天还可以git push代码到远程仓库，今天使用hexo d上传git仓库是时报了这个错：fatal: unable to access ‘<a href="https://github.com/.......&#39;">https://github.com/.......&#39;</a>: OpenSSL SSL_read: Connection was reset, errno 10054<br><img src="https://img-blog.csdnimg.cn/0913af988d1c42539d611a0681cba738.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16"></p><p>产生原因：一般是这是因为服务器的SSL证书没有经过第三方机构的签署，所以才报错</p><p>参考网上解决办法：解除ssl验证后，再上传就OK了<br><code>git config --global http.sslVerify &quot;false&quot;</code><br><img src="https://img-blog.csdnimg.cn/f389967d3ce94127b09feb5ee55a3e1c.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16"></p>]]></content>
     
@@ -32,6 +32,8 @@
       
     
     
+    
+    <category term="踩坑" scheme="https://mainkeys.github.io/categories/%E8%B8%A9%E5%9D%91/"/>
     
     
     <category term="git" scheme="https://mainkeys.github.io/tags/git/"/>
