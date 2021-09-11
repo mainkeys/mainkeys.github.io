@@ -2,13 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://mainkeys.github.io/2021/09/11/unix/</loc>
-    
-    <lastmod>2021-09-11</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://mainkeys.github.io/2021/09/06/2/</loc>
     
     <lastmod>2021-09-10</lastmod>
@@ -81,28 +74,7 @@
 
   
   <url>
-    <loc>https://mainkeys.github.io/tags/hexo/</loc>
-    <lastmod>2021-09-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://mainkeys.github.io/tags/git/</loc>
-    <lastmod>2021-09-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://mainkeys.github.io/tags/github/</loc>
-    <lastmod>2021-09-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://mainkeys.github.io/tags/Node-js/</loc>
+    <loc>https://mainkeys.github.io/tags/%E8%AE%B0%E5%BD%95/</loc>
     <lastmod>2021-09-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -137,7 +109,28 @@
   </url>
   
   <url>
-    <loc>https://mainkeys.github.io/tags/%E8%AE%B0%E5%BD%95/</loc>
+    <loc>https://mainkeys.github.io/tags/hexo/</loc>
+    <lastmod>2021-09-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://mainkeys.github.io/tags/git/</loc>
+    <lastmod>2021-09-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://mainkeys.github.io/tags/github/</loc>
+    <lastmod>2021-09-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://mainkeys.github.io/tags/Node-js/</loc>
     <lastmod>2021-09-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -150,17 +143,10 @@
     <priority>0.6</priority>
   </url>
   
-  <url>
-    <loc>https://mainkeys.github.io/tags/unix/</loc>
-    <lastmod>2021-09-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
 
   
   <url>
-    <loc>https://mainkeys.github.io/categories/%E6%8A%80%E6%9C%AF/</loc>
+    <loc>https://mainkeys.github.io/categories/others/</loc>
     <lastmod>2021-09-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -174,7 +160,7 @@
   </url>
   
   <url>
-    <loc>https://mainkeys.github.io/categories/others/</loc>
+    <loc>https://mainkeys.github.io/categories/%E6%8A%80%E6%9C%AF/</loc>
     <lastmod>2021-09-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -189,13 +175,6 @@
   
   <url>
     <loc>https://mainkeys.github.io/categories/%E7%AE%97%E6%B3%95/%E6%AF%8F%E6%97%A5%E6%89%8B%E6%92%95/</loc>
-    <lastmod>2021-09-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://mainkeys.github.io/categories/%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2021-09-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
