@@ -6,7 +6,7 @@
   <link href="https://mainkeys.github.io/atom.xml" rel="self"/>
   
   <link href="https://mainkeys.github.io/"/>
-  <updated>2021-09-11T11:40:35.377Z</updated>
+  <updated>2021-09-13T15:30:20.206Z</updated>
   <id>https://mainkeys.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>报错Could not resolve type alias ‘‘</title>
+    <link href="https://mainkeys.github.io/2021/09/13/typealiases/"/>
+    <id>https://mainkeys.github.io/2021/09/13/typealiases/</id>
+    <published>2021-09-13T15:25:28.000Z</published>
+    <updated>2021-09-13T15:30:20.206Z</updated>
+    
+    <content type="html"><![CDATA[<p>看到这个问题，很可能以为是实体类未在mybatis-config.xml中配置别名（alias）导致的，所以加上这段代码</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">typeAliases</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 通过package, 可以直接指定package的名字， mybatis会自动扫描你指定包下面的javabean,</span></span><br><span class="line"><span class="comment">      并且默认设置一个别名，默认的名字为： javabean 的首字母小写的非限定类名来作为它的别名。</span></span><br><span class="line"><span class="comment">      也可在javabean 加上注解@Alias 来自定义别名， 例如： @Alias(user) </span></span><br><span class="line"><span class="comment">      &lt;package name=&quot;com.dy.entity&quot;/&gt;</span></span><br><span class="line"><span class="comment">       --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">typeAlias</span> <span class="attr">type</span>=<span class="string">&quot;com.test.domain.Student&quot;</span> <span class="attr">alias</span>=<span class="string">&quot;student&quot;</span>/&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">typeAliases</span>&gt;</span></span><br></pre></td></tr></table></figure><p><img src="https://img-blog.csdnimg.cn/c6cee04e3404473d920807ddd58f3c5b.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16"><br>可以看到代码生效了。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;看到这个问题，很可能以为是实体类未在mybatis-config.xml中配置别名（alias）导致的，所以加上这段代码&lt;/p&gt;
+&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span c</summary>
+      
+    
+    
+    
+    <category term="踩坑" scheme="https://mainkeys.github.io/categories/%E8%B8%A9%E5%9D%91/"/>
+    
+    
+    <category term="MyBatis" scheme="https://mainkeys.github.io/tags/MyBatis/"/>
+    
+  </entry>
   
   <entry>
     <title>unix学习</title>
