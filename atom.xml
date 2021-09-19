@@ -6,7 +6,7 @@
   <link href="https://mainkeys.github.io/atom.xml" rel="self"/>
   
   <link href="https://mainkeys.github.io/"/>
-  <updated>2021-09-19T06:48:56.412Z</updated>
+  <updated>2021-09-19T08:55:26.239Z</updated>
   <id>https://mainkeys.github.io/</id>
   
   <author>
@@ -17,11 +17,67 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>CMD命令行查询电脑硬件信息</title>
+    <link href="https://mainkeys.github.io/2021/09/19/cmd%E6%9F%A5%E7%9C%8B%E7%A1%AC%E4%BB%B6%E4%BF%A1%E6%81%AF/"/>
+    <id>https://mainkeys.github.io/2021/09/19/cmd%E6%9F%A5%E7%9C%8B%E7%A1%AC%E4%BB%B6%E4%BF%A1%E6%81%AF/</id>
+    <published>2021-09-19T08:48:09.000Z</published>
+    <updated>2021-09-19T08:55:26.239Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li><p>查看电脑系统属性：<code>dxdiag</code></p></li><li><p>查看系统信息：<code>systeminfo</code></p></li><li><p>查询BIOS详细信息：<code>wmic bios</code></p></li><li><p>查看CPU详细信息：<code>wmic cpu</code></p></li><li><p>查看CPU型号：<code>wmic cpu list brief</code></p></li><li><p>查看内存详细信息：<code>wmic memorychip</code></p></li><li><p>查看内存条数：<code>wmic memorychip list brief</code></p></li><li><p>查看缓存内存：<code>wmic memcache list brief</code></p></li><li><p>查看磁盘详细信息：<code>wmic diskdrive</code></p></li><li><p>查看盘符格式大小以及剩余空间：<code>wmic logicaldisk</code></p></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;查看电脑系统属性：&lt;code&gt;dxdiag&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;查看系统信息：&lt;code&gt;systeminfo&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;查询BIOS详细信息：&lt;code&gt;wmic bios&lt;/code&gt;&lt;</summary>
+      
+    
+    
+    
+    <category term="CMD" scheme="https://mainkeys.github.io/categories/CMD/"/>
+    
+    
+    <category term="CMD" scheme="https://mainkeys.github.io/tags/CMD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python报错Process finished with exit code -1073740791 (0xC0000409)</title>
+    <link href="https://mainkeys.github.io/2021/09/19/1073740791%E6%8A%A5%E9%94%99/"/>
+    <id>https://mainkeys.github.io/2021/09/19/1073740791%E6%8A%A5%E9%94%99/</id>
+    <published>2021-09-19T08:37:25.000Z</published>
+    <updated>2021-09-19T08:38:42.121Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://img-blog.csdnimg.cn/7afa706927a14b8a91c9bc1267d6bc42.png"></p><h3 id="情况一-也是网上较多的情况）：（显卡）内存不足"><a href="#情况一-也是网上较多的情况）：（显卡）内存不足" class="headerlink" title="情况一 也是网上较多的情况）：（显卡）内存不足"></a>情况一 也是网上较多的情况）：（显卡）内存不足</h3><p>这个时候，我们可以在pycharm里调一下内存：<br>按shift+ctrl+A ，搜索<img src="https://img-blog.csdnimg.cn/765f4aa2f8694d088f4a1d5a15b74b16.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16"><br><img src="https://img-blog.csdnimg.cn/7faed47cd220429dbf3ce432eba86994.png?xprocess=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16"><br>其中：<br>Xms128m中，Xms是指程序启动时所需要的内存，128m就是大小<br>Xmx1011m中，Xmx是指程序运行时所需要的内存，1011m就是大小<br>将其改大。当然你的硬件要吃得消这个设置</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://img-blog.csdnimg.cn/7afa706927a14b8a91c9bc1267d6bc42.png&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;情况一-也是网上较多的情况）：（显卡）内存不足&quot;&gt;&lt;a href=&quot;#情况一-也是网上较多的情况</summary>
+      
+    
+    
+    
+    <category term="深度学习" scheme="https://mainkeys.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="python" scheme="https://mainkeys.github.io/tags/python/"/>
+    
+    <category term="深度学习" scheme="https://mainkeys.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Anaconda报错，需更换镜像源</title>
     <link href="https://mainkeys.github.io/2021/09/19/condaupdate/"/>
     <id>https://mainkeys.github.io/2021/09/19/condaupdate/</id>
     <published>2021-09-19T06:34:52.000Z</published>
-    <updated>2021-09-19T06:48:56.412Z</updated>
+    <updated>2021-09-19T08:38:31.315Z</updated>
     
     <content type="html"><![CDATA[<p>遇到Anaconda报错<br><img src="https://img-blog.csdnimg.cn/db7ffaf3c1c94f1c8a70d0f57a2b51db.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="="><br>迟迟没想到是清华镜像源的问题，输入</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda config --show </span><br></pre></td></tr></table></figure><p>查看channels，看到之前加入的清华镜像源<br><img src="https://img-blog.csdnimg.cn/6729b3cdab564e548d5217d7eef5a03c.png?=-=process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="="></p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda config --remove channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/</span><br><span class="line"></span><br><span class="line">conda config --remove channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br></pre></td></tr></table></figure><p>删除镜像源后，添加中科大的镜像源</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/free/</span><br><span class="line"></span><br><span class="line">conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/main/</span><br></pre></td></tr></table></figure><p><img src="https://img-blog.csdnimg.cn/df117d7408c94aeba22cffc0f9f9ec02.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16"></p><p>之后再进行conda更新</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda update conda</span><br></pre></td></tr></table></figure><p><img src="https://img-blog.csdnimg.cn/f3e0d71d122e4bbcb5370d9369d21398.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16"><br><img src="https://img-blog.csdnimg.cn/f303228888594b3a9bbb2a9575d5c215.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16"><br>之前所有遇到的问题包括pip命令全部解决了。<br><img src="https://img-blog.csdnimg.cn/a5dbab03e8404a37866a2d92207bc576.png"></p><hr><h2 id="总结：（清华镜像慢，还容易出问题）"><a href="#总结：（清华镜像慢，还容易出问题）" class="headerlink" title="总结：（清华镜像慢，还容易出问题）"></a>总结：（清华镜像慢，还容易出问题）</h2>]]></content>
     
@@ -36,9 +92,9 @@
     <category term="深度学习" scheme="https://mainkeys.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
     
-    <category term="Anaconda" scheme="https://mainkeys.github.io/tags/Anaconda/"/>
-    
     <category term="深度学习" scheme="https://mainkeys.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="Anaconda" scheme="https://mainkeys.github.io/tags/Anaconda/"/>
     
   </entry>
   
@@ -308,10 +364,10 @@
   
   <entry>
     <title>第一篇博客</title>
-    <link href="https://mainkeys.github.io/2021/09/06/2/"/>
-    <id>https://mainkeys.github.io/2021/09/06/2/</id>
+    <link href="https://mainkeys.github.io/2021/09/06/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
+    <id>https://mainkeys.github.io/2021/09/06/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</id>
     <published>2021-09-06T15:50:00.000Z</published>
-    <updated>2021-09-11T11:55:08.780Z</updated>
+    <updated>2021-09-19T08:53:48.746Z</updated>
     
     <content type="html"><![CDATA[<h2 id="这是一篇无用的post"><a href="#这是一篇无用的post" class="headerlink" title="这是一篇无用的post"></a>这是一篇无用的post</h2><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1464661022&auto=1&height=66"></iframe><hr>]]></content>
     
