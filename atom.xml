@@ -6,7 +6,7 @@
   <link href="https://mainkeys.github.io/atom.xml" rel="self"/>
   
   <link href="https://mainkeys.github.io/"/>
-  <updated>2022-03-29T14:34:18.117Z</updated>
+  <updated>2022-03-29T14:37:25.736Z</updated>
   <id>https://mainkeys.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>numpydimensiontransform</title>
+    <title>numpy三维数组维度变换/提取</title>
     <link href="https://mainkeys.github.io/2022/03/29/numpydimensiontransform/"/>
     <id>https://mainkeys.github.io/2022/03/29/numpydimensiontransform/</id>
     <published>2022-03-29T14:31:43.000Z</published>
-    <updated>2022-03-29T14:34:18.117Z</updated>
+    <updated>2022-03-29T14:37:25.736Z</updated>
     
     <content type="html"><![CDATA[<h3 id="有时对多维numpy数组需要进行维度的转换-提取，遇到需要从（A-B-C）三维数组中提取（A-B）、（A-C）或者（B-C）或者（A-）这几个维度数据时，总是忘记该如何切片，记录一下"><a href="#有时对多维numpy数组需要进行维度的转换-提取，遇到需要从（A-B-C）三维数组中提取（A-B）、（A-C）或者（B-C）或者（A-）这几个维度数据时，总是忘记该如何切片，记录一下" class="headerlink" title="有时对多维numpy数组需要进行维度的转换/提取，遇到需要从（A,B,C）三维数组中提取（A,B）、（A,C）或者（B,C）或者（A,）这几个维度数据时，总是忘记该如何切片，记录一下"></a>有时对多维numpy数组需要进行维度的转换/提取，遇到需要从（A,B,C）三维数组中提取（A,B）、（A,C）或者（B,C）或者（A,）这几个维度数据时，总是忘记该如何切片，记录一下</h3><h4 id="1-（A-B-C）——-gt-A-B"><a href="#1-（A-B-C）——-gt-A-B" class="headerlink" title="1. （A,B,C）——&gt; (A,B)"></a>1. （A,B,C）——&gt; (A,B)</h4><p><code>X_New = X[ :，:，0]</code><br><img src="https://img-blog.csdnimg.cn/ae56b4cd0b584ca49e4a06e85b9a37b4.png"><br><img src="https://img-blog.csdnimg.cn/b00e48bd7b984c839bf058b0372a876e.png"><br><img src="https://img-blog.csdnimg.cn/c39d960bc4964bc78cc29113f6a010fc.png"><br><img src="https://img-blog.csdnimg.cn/33bafaca76554d7cb23209b901460665.png"></p><h4 id="2-（A-B-C）——-gt-A-C"><a href="#2-（A-B-C）——-gt-A-C" class="headerlink" title="2. （A,B,C）——&gt; (A,C)"></a>2. （A,B,C）——&gt; (A,C)</h4><p><code>X_New = X[ :，0，:]</code></p><h4 id="3-（A-B-C）——-gt-B-C"><a href="#3-（A-B-C）——-gt-B-C" class="headerlink" title="3. （A,B,C）——&gt; (B,C)"></a>3. （A,B,C）——&gt; (B,C)</h4><p><code>X_New = X[ 0，:，:]</code></p><h4 id="4-（A-B-C）——-gt-A"><a href="#4-（A-B-C）——-gt-A" class="headerlink" title="4. （A,B,C）——&gt; (A,)"></a>4. （A,B,C）——&gt; (A,)</h4><p><code>X_New = X[ :，0，0]</code></p>]]></content>
     
