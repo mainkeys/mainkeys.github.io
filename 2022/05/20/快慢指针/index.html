@@ -1,0 +1,77 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="快慢指针"><meta name="keywords" content="数据结构"><meta name="author" content="mainkeys"><meta name="copyright" content="mainkeys"><title>快慢指针 | 羿の漫游指南</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.9.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.9.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://v1.hitokoto.cn/?encode=js&amp;charset=utf-8&amp;select=.footer_custom_text" defer></script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  hexoVersion: '5.4.0'
+} </script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="羿の漫游指南" type="application/atom+xml">
+</head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88%E5%88%A4%E6%96%AD%E9%93%BE%E8%A1%A8%E6%98%AF%E5%90%A6%E6%9C%89%E7%8E%AF"><span class="toc-number">1.</span> <span class="toc-text">快慢指针判断链表是否有环</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88%E7%9A%84%E6%80%9D%E6%83%B3%EF%BC%9A"><span class="toc-number">1.0.1.</span> <span class="toc-text">一、快慢指针的思想：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%96%91%E9%97%AE"><span class="toc-number">1.0.2.</span> <span class="toc-text">二、疑问</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E9%97%AE%E9%A2%98%E8%A7%A3%E7%AD%94"><span class="toc-number">1.0.3.</span> <span class="toc-text">三、问题解答</span></a></li></ol></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://i.loli.net/2021/09/06/ZHL2mdtG9U1jCE5.jpg"></div><div class="author-info__name text-center">mainkeys</div><div class="author-info__description text-center">love &amp;&amp; share 分享记录</div><div class="follow-button"><a target="_blank" rel="noopener" href="https://github.com/mainkeys">Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">19</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">20</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">11</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://i.loli.net/2021/09/06/5LjoGU1e3VYTkMB.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">羿の漫游指南</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">主页</a><a class="site-page" href="/archives">时间线</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">快慢指针</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2022-05-20</time><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">1.2k</span><span class="post-meta__separator">|</span><span>阅读时长: 3 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h3 id="快慢指针判断链表是否有环"><a href="#快慢指针判断链表是否有环" class="headerlink" title="快慢指针判断链表是否有环"></a>快慢指针判断链表是否有环</h3><h5 id="一、快慢指针的思想："><a href="#一、快慢指针的思想：" class="headerlink" title="一、快慢指针的思想："></a>一、快慢指针的思想：</h5><ul>
+<li>定义快慢指针fast和slow，起始位于链表头部，规定fast每次后移2步，slow后移1步</li>
+<li>若fast遇到null节点，则链表一定无环，结束</li>
+<li>若链表有环，fast和slow一定会相遇</li>
+<li>当fast和slow相遇时，创建相遇指针ptr。现在重新开始，相遇指针ptr和链表头步指针slow分别开始每次向后移1步，最终slow和ptr会在环入口处相遇。<h5 id="二、疑问"><a href="#二、疑问" class="headerlink" title="二、疑问"></a>二、疑问</h5></li>
+<li>为什么fast和slow一定会相遇？</li>
+<li>fast和slow相遇时，slow指针是否绕环超过一圈？</li>
+<li>slow和ptr相遇时节点为啥是环入口？</li>
+<li>fast指针为什么每次移动2步，3、4、5 、…n步可不可以？<h5 id="三、问题解答"><a href="#三、问题解答" class="headerlink" title="三、问题解答"></a>三、问题解答</h5><code>注意前三个问题是以快指针每次移动2步为前提。</code></li>
+</ul>
+<ol>
+<li><p>那么为什么fast和slow一定会相遇呢，用直观的感受来说就像操场上两个人在跑步，一个是常年跑马拉松的高手，一个是大重量肥宅，假设他们一直跑，大重量阿宅一定会被马拉松高手“套圈”，这样他们就相遇了。</p>
+<blockquote>
+<p>但这里的问题略有不同，链表中每次移动一格，可能会存在快指针跳跃式穿过慢指针的情况，有以下几种情况（快指针在慢指针之后追赶）:</p>
+<ul>
+<li>相距1格，下次移动一定相遇</li>
+<li>相距两格，下次移动后相距1格</li>
+<li>其他时刻，每次环内移动，距离会缩短1，直至相距2格</li>
+</ul>
+<p><strong>通过分析得出fast指针和slow指针一定会相遇，但当fast指针的步数&gt;2时可能就会存在正好fast越过slow的情况</strong></p>
+</blockquote>
+</li>
+<li><p>fast指针和slow指针因为慢指针是一步一步走，所以它可以遍历链表中的每一个点，我们在环里找一个合适的点，便于证明。<br>设y为s的整数倍，且y&gt;x；这里就是在环里找一个点，假设慢指针现在位于这个点；那么快指针走过的长度肯定为ky。那么两者路径之差为(k-1)y；因为y是s的整数倍，所以肯定能遇见。相遇时，slow指针是否绕环超过一圈</p>
+<blockquote>
+<ul>
+<li>当整个链表就是一个环的状态下，当slow移动到环尾，fast刚好“追上”slow。</li>
+<li>当链表中除了环还有多余的“冲刺”进入环的部分时，fast这时会先进入环，当slow达到环入口时，可能正好碰见绕了n圈的环，此种情况slow绕环0圈。也可能与fast “错开“，此时可以看做fast已经抢跑了一段距离，那么要追上slow就轻松得多，不可能让slow跑完一整圈的。</li>
+</ul>
+<p><strong>由此能得出当fast和slow相遇时slow不可能绕环超过一圈</strong></p>
+</blockquote>
+</li>
+<li><p> 下面来说明slow和ptr相遇时节点为啥是环入口<br>图中蓝色为快指针，红色为慢指针，设头结点到环入口点的距离为<code>a</code>。当慢指针到达环入口点时，快指针到达①处，由此快慢指针在②处相遇，设环入口点到相遇处的距离为Δ，环长为r，相遇时fast绕过了n圈则有<code>2 (a+Δ) = a + n*r + Δ</code>得出<code>a = n*r - Δ</code>，所以，<strong>重点来了</strong>，头结点到环的入口点的距离等于n倍环长减去环的入口点到相遇点的距离。因此我们可以设一个指针，一个指向头结点head，一个指向相遇点ptr，两个指针同步移动，相遇点即为入口点。</p>
+</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/89811936b09345faa5ade83a357d1104.png"><br>代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">LNode* <span class="title">FindLoopStart</span><span class="params">(LNode *head)</span></span>&#123;</span><br><span class="line">	LNode *fast = head, *slow = head; <span class="comment">// 设置快慢指针</span></span><br><span class="line">	<span class="keyword">while</span>(fast != <span class="literal">NULL</span> &amp;&amp; fast-&gt;next != <span class="literal">NULL</span>)&#123;</span><br><span class="line">		slow = slow-&gt;next;         <span class="comment">//每次走一步</span></span><br><span class="line">		fast = fast-&gt;next-&gt;next;   <span class="comment">//每次走两步</span></span><br><span class="line">		<span class="keyword">if</span>(slow == fast) <span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(slow==<span class="literal">NULL</span>||fast-&gt;next==<span class="literal">NULL</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">	LNode *p1 = head, *p2 = slow;</span><br><span class="line">	<span class="keyword">while</span>(p1!=p2)&#123;</span><br><span class="line">		p1 = p1-&gt;next;</span><br><span class="line">		p2 = p2-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> p1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>快指针步数为k行不行<br>慢指针步长为1，快指针步长为k，环的入口到链表起点的距离为a，环的长度为r。因为慢指针是一步一步走，所以它可以遍历链表中的每一个点，我们在环里找一个合适的点，便于证明。<br>设y为r的整数倍n*r，且y&gt;a；这里就是在环里找一个点，假设慢指针现在位于这个点；那么快指针走过的长度肯定为ky。那么两者路径之差为(k-1)y；因为y是s的整数倍，所以肯定能遇见。</li>
+</ol>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">mainkeys</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://mainkeys.github.io/2022/05/20/快慢指针/">https://mainkeys.github.io/2022/05/20/快慢指针/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://mainkeys.github.io">羿の漫游指南</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></div><div class="addthis_inline_share_toolbox pull-right"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-613630cba1f9f8d6" async></script><nav id="pagination"><div class="next-post pull-right"><a href="/2022/05/16/leetcode1305/"><span>leetcode1305</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="vcomment"></div><script src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var notify = 'false' == 'true';
+var verify = 'false' == 'true';
+var record_ip = 'false' == 'true';
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  recordIP:record_ip,
+  appId:'g9sIj5iAYD8IWBLi80QISJyh-gzGzoHsz',
+  appKey:'Fu7xk6ia47kWt3rDrm79iHgP',
+  placeholder:'Just go go',
+  avatar:'mm',
+  guest_info:guest_info,
+  pageSize:'10',
+  lang: 'zh-cn'
+})</script></div></div><footer class="footer-bg" style="background-image: url(https://i.loli.net/2021/09/06/5LjoGU1e3VYTkMB.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2021 - 2022 By mainkeys</div><div class="framework-info"><span>驱动 - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="footer_custom_text">hitokoto</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.0"></script><script src="/js/fancybox.js?version=1.9.0"></script><script src="/js/sidebar.js?version=1.9.0"></script><script src="/js/copy.js?version=1.9.0"></script><script src="/js/fireworks.js?version=1.9.0"></script><script src="/js/transition.js?version=1.9.0"></script><script src="/js/scroll.js?version=1.9.0"></script><script src="/js/head.js?version=1.9.0"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
