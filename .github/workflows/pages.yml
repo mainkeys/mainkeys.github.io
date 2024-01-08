@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: master
-          repo: jerryc127/hexo-theme-butterfly
+          repository: jerryc127/hexo-theme-butterfly
           submodules: true
       - name: import Node.js 20.x
         uses: actions/setup-node@v4
