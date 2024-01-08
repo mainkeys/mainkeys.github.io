@@ -22,7 +22,6 @@ jobs:
           ref: master
           repository: jerryc127/hexo-theme-butterfly
           submodules: true
-          path: /theme
       - name: import Node.js 18.x
         uses: actions/setup-node@v4
         with:
