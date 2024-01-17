@@ -16,13 +16,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Checkout theme repo
-        uses: actions/checkout@v4
-        with:
-          ref: master
-          repository: jerryc127/hexo-theme-butterfly
-          submodules: true
-          github-server-url: https://github.com/
       - name: import Node.js 18.x
         uses: actions/setup-node@v4
         with:
