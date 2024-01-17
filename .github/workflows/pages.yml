@@ -47,8 +47,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
-        with:
-          branch: main
-          folder: doc
-          token: ${{ secrets.GITHUB_TOKEN }}
+        uses: actions/deploy-pages@v3
