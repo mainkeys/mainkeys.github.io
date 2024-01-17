@@ -1,0 +1,217 @@
+<!DOCTYPE html><html lang="zh-Hans" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>数据库无法使用SSL加密与SQL_server建立连接 | 羿の漫游指南</title><meta name="author" content="mainkeys"><meta name="copyright" content="mainkeys"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Model: Default (GPT-3.5)  com.microsoft.sqlserver.jdbc.SQLServerException: 驱动程序无法通过使用安全套接字层(SSL)加密与 SQL Server 建立安全连接。错误:“PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderEx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库无法使用SSL加密与SQL_server建立连接">
+<meta property="og:url" content="https://mainkeys.github.io/2023/05/02/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8SSL%E5%8A%A0%E5%AF%86%E4%B8%8ESQL-server%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5/index.html">
+<meta property="og:site_name" content="羿の漫游指南">
+<meta property="og:description" content="Model: Default (GPT-3.5)  com.microsoft.sqlserver.jdbc.SQLServerException: 驱动程序无法通过使用安全套接字层(SSL)加密与 SQL Server 建立安全连接。错误:“PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderEx">
+<meta property="og:locale">
+<meta property="og:image" content="https://i.loli.net/2021/09/06/ZHL2mdtG9U1jCE5.jpg">
+<meta property="article:published_time" content="2023-05-02T15:01:04.000Z">
+<meta property="article:modified_time" content="2024-01-17T04:48:46.300Z">
+<meta property="article:author" content="mainkeys">
+<meta property="article:tag" content="chatGPT">
+<meta property="article:tag" content="SQL server">
+<meta property="article:tag" content="SSL">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/09/06/ZHL2mdtG9U1jCE5.jpg"><link rel="shortcut icon" href="https://cdn2.iconfinder.com/data/icons/emoji-line/32/emoji_21-1024.png"><link rel="canonical" href="https://mainkeys.github.io/2023/05/02/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8SSL%E5%8A%A0%E5%AF%86%E4%B8%8ESQL-server%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script async="async" src="https://www.googletagmanager.com/gtag/js?id=[object Object]"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '[object Object]');
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":-1,"unescape":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '数据库无法使用SSL加密与SQL_server建立连接',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024年01月17日 12:48:46'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.0.0"><link rel="alternate" href="/atom.xml" title="羿の漫游指南" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/09/06/ZHL2mdtG9U1jCE5.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">34</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://images.unsplash.com/photo-1703593191806-962b4f2802e4?q=80&amp;w=2890&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"><nav id="nav"><span id="blog-info"><a href="/" title="羿の漫游指南"><span class="site-name">羿の漫游指南</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">数据库无法使用SSL加密与SQL_server建立连接</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-05-02T15:01:04.000Z" title="Created 2023年05月02日 23:01:04">2023年05月02日</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-01-17T04:48:46.300Z" title="Updated 2024年01月17日 12:48:46">2024年01月17日</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="数据库无法使用SSL加密与SQL_server建立连接"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>Model: Default (GPT-3.5)</p>
+<blockquote>
+<p>com.microsoft.sqlserver.jdbc.SQLServerException: 驱动程序无法通过使用安全套接字层(SSL)加密与 SQL Server 建立安全连接。错误:“PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target”。 ClientConnectionId:f885fd47-0376-4231-a88f-bc248715569c at com.microsoft.sqlserver.jdbc.SQLServerConnection.terminate(SQLServerConnection.java:3937) at com.microsoft.sqlserver.jdbc.TDSChannel.enableSSL(IOBuffer.java:1950) at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:3456) at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:3077) at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectInternal(SQLServerConnection.java:2919) at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:1787) at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:1229) at java.sql.DriverManager.getConnection(DriverManager.java:664) at java.sql.DriverManager.getConnection(DriverManager.java:247) at com.chen.dao.BaseDao.getConnection(BaseDao.java:35) at com.chen.dao.Info.InfoDaoImpl.getAll(InfoDaoImpl.java:22) at com.chen.service.Info.InfoServiceImpl.getAll(InfoServiceImpl.java:12) at com.chen.servlet.Info.InfoServlet.doGet(InfoServlet.java:30) at javax.servlet.http.HttpServlet.service(HttpServlet.java:529) at javax.servlet.http.HttpServlet.service(HttpServlet.java:623) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) at com.chen.filter.CharacterEncodingFilter.doFilter(CharacterEncodingFilter.java:18) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481) at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130) at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:673) at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389) at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926) at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791) at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) at java.lang.Thread.run(Thread.java:750) Caused by: javax.net.ssl.SSLHandshakeException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target at sun.security.ssl.Alert.createSSLException(Alert.java:131) at sun.security.ssl.TransportContext.fatal(TransportContext.java:324) at sun.security.ssl.TransportContext.fatal(TransportContext.java:267) at sun.security.ssl.TransportContext.fatal(TransportContext.java:262) at sun.security.ssl.CertificateMessage$T12CertificateConsumer.checkServerCerts(CertificateMessage.java:654) at sun.security.ssl.CertificateMessage$T12CertificateConsumer.onCertificate(CertificateMessage.java:473) at sun.security.ssl.CertificateMessage$T12CertificateConsumer.consume(CertificateMessage.java:369) at sun.security.ssl.SSLHandshake.consume(SSLHandshake.java:377) at sun.security.ssl.HandshakeContext.dispatch(HandshakeContext.java:444) at sun.security.ssl.HandshakeContext.dispatch(HandshakeContext.java:422) at sun.security.ssl.TransportContext.dispatch(TransportContext.java:182) at sun.security.ssl.SSLTransport.decode(SSLTransport.java:152) at sun.security.ssl.SSLSocketImpl.decode(SSLSocketImpl.java:1397) at sun.security.ssl.SSLSocketImpl.readHandshakeRecord(SSLSocketImpl.java:1305) at sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:440) at com.microsoft.sqlserver.jdbc.TDSChannel.enableSSL(IOBuffer.java:1839) … 38 more Caused by: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target at sun.security.validator.PKIXValidator.doBuild(PKIXValidator.java:456) at sun.security.validator.PKIXValidator.engineValidate(PKIXValidator.java:323) at sun.security.validator.Validator.validate(Validator.java:271) at sun.security.ssl.X509TrustManagerImpl.validate(X509TrustManagerImpl.java:315) at sun.security.ssl.X509TrustManagerImpl.checkTrusted(X509TrustManagerImpl.java:234) at sun.security.ssl.X509TrustManagerImpl.checkServerTrusted(X509TrustManagerImpl.java:110) at com.microsoft.sqlserver.jdbc.HostNameOverrideX509TrustManager.checkServerTrusted(SQLServerTrustManager.java:86) at sun.security.ssl.AbstractTrustManagerWrapper.checkServerTrusted(SSLContextImpl.java:1258) at sun.security.ssl.CertificateMessage$T12CertificateConsumer.checkServerCerts(CertificateMessage.java:638) … 49 more Caused by: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target at sun.security.provider.certpath.SunCertPathBuilder.build(SunCertPathBuilder.java:141) at sun.security.provider.certpath.SunCertPathBuilder.engineBuild(SunCertPathBuilder.java:126) at java.security.cert.CertPathBuilder.build(CertPathBuilder.java:280) at sun.security.validator.PKIXValidator.doBuild(PKIXValidator.java:451) … 57 more com.microsoft.sqlserver.jdbc.SQLServerException: 驱动程序无法通过使用安全套接字层(SSL)加密与 SQL Server 建立安全连接。错误:“PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target”。 ClientConnectionId:ee5bed32-43c1-4697-8af0-bd346a85d26a at com.microsoft.sqlserver.jdbc.SQLServerConnection.terminate(SQLServerConnection.java:3937) at com.microsoft.sqlserver.jdbc.TDSChannel.enableSSL(IOBuffer.java:1950) at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:3456) at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:3077) at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectInternal(SQLServerConnection.java:2919) at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:1787) at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:1229) at java.sql.DriverManager.getConnection(DriverManager.java:664) at java.sql.DriverManager.getConnection(DriverManager.java:247) at com.chen.dao.BaseDao.getConnection(BaseDao.java:35) at com.chen.dao.Info.InfoDaoImpl.getAll(InfoDaoImpl.java:22) at com.chen.service.Info.InfoServiceImpl.getAll(InfoServiceImpl.java:12) at com.chen.servlet.Info.InfoServlet.doGet(InfoServlet.java:30) at javax.servlet.http.HttpServlet.service(HttpServlet.java:529) at javax.servlet.http.HttpServlet.service(HttpServlet.java:623) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) at com.chen.filter.CharacterEncodingFilter.doFilter(CharacterEncodingFilter.java:18) at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481) at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130) at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:673) at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389) at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926) at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791) at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) at java.lang.Thread.run(Thread.java:750) Caused by: javax.net.ssl.SSLHandshakeException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target at sun.security.ssl.Alert.createSSLException(Alert.java:131) at sun.security.ssl.TransportContext.fatal(TransportContext.java:324) at sun.security.ssl.TransportContext.fatal(TransportContext.java:267) at sun.security.ssl.TransportContext.fatal(TransportContext.java:262) at sun.security.ssl.CertificateMessage$T12CertificateConsumer.checkServerCerts(CertificateMessage.java:654) at sun.security.ssl.CertificateMessage$T12CertificateConsumer.onCertificate(CertificateMessage.java:473) at sun.security.ssl.CertificateMessage$T12CertificateConsumer.consume(CertificateMessage.java:369) at sun.security.ssl.SSLHandshake.consume(SSLHandshake.java:377) at sun.security.ssl.HandshakeContext.dispatch(HandshakeContext.java:444) at sun.security.ssl.HandshakeContext.dispatch(HandshakeContext.java:422) at sun.security.ssl.TransportContext.dispatch(TransportContext.java:182) at sun.security.ssl.SSLTransport.decode(SSLTransport.java:152) at sun.security.ssl.SSLSocketImpl.decode(SSLSocketImpl.java:1397) at sun.security.ssl.SSLSocketImpl.readHandshakeRecord(SSLSocketImpl.java:1305) at sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:440) at com.microsoft.sqlserver.jdbc.TDSChannel.enableSSL(IOBuffer.java:1839) … 38 more Caused by: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target at sun.security.validator.PKIXValidator.doBuild(PKIXValidator.java:456) at sun.security.validator.PKIXValidator.engineValidate(PKIXValidator.java:323) at sun.security.validator.Validator.validate(Validator.java:271) at sun.security.ssl.X509TrustManagerImpl.validate(X509TrustManagerImpl.java:315) at sun.security.ssl.X509TrustManagerImpl.checkTrusted(X509TrustManagerImpl.java:234) at sun.security.ssl.X509TrustManagerImpl.checkServerTrusted(X509TrustManagerImpl.java:110) at com.microsoft.sqlserver.jdbc.HostNameOverrideX509TrustManager.checkServerTrusted(SQLServerTrustManager.java:86) at sun.security.ssl.AbstractTrustManagerWrapper.checkServerTrusted(SSLContextImpl.java:1258) at sun.security.ssl.CertificateMessage$T12CertificateConsumer.checkServerCerts(CertificateMessage.java:638) … 49 more Caused by: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target at sun.security.provider.certpath.SunCertPathBuilder.build(SunCertPathBuilder.java:141) at sun.security.provider.certpath.SunCertPathBuilder.engineBuild(SunCertPathBuilder.java:126) at java.security.cert.CertPathBuilder.build(CertPathBuilder.java:280) at sun.security.validator.PKIXValidator.doBuild(PKIXValidator.java:451) … 57 more怎么解决</p>
+<p>1 &#x2F; 1</p>
+</blockquote>
+<p>ChatGPTChatGPT</p>
+<p>该错误提示是由于数据库连接驱动程序无法使用安全套接字层（SSL）加密与 SQL Server 建立安全连接所导致的。在 Java 应用程序中，可以尝试以下解决方案：</p>
+<ol>
+<li><p>检查 SQL Server 是否已启用 SSL 连接，如果没有，请在 SQL Server 上启用 SSL 连接。可以通过以下命令来启用 SQL Server SSL 连接：</p>
+<p>sql</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">EXEC</span> sp_configure <span class="string">&#x27;network protocol&#x27;</span>, <span class="number">1</span></span><br><span class="line">GO</span><br><span class="line">RECONFIGURE <span class="keyword">WITH</span> OVERRIDE</span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>检查 Java 运行时环境是否有足够的信任证书来验证 SQL Server 的 SSL 证书。如果 Java 运行时环境不信任 SSL 证书，则会发生此错误。可以通过以下方式解决：</p>
+<p>a. 在 Java 运行时环境中导入 SQL Server SSL 证书。可以使用以下命令将 SQL Server SSL 证书导出为 “.cer” 格式：</p>
+<p>arduino</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl s_client -connect yourserver:port -showcerts</span><br></pre></td></tr></table></figure>
+
+<p>然后将导出的 “.cer” 文件导入到 Java 运行时环境中。</p>
+<p>b. 如果您使用的是较新的 Java 版本，您可以使用以下系统属性来解决此问题：</p>
+<p>diff</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-Djavax.net.ssl.trustStore=&lt;path to truststore&gt;</span></span><br><span class="line"><span class="deletion">-Djavax.net.ssl.trustStorePassword=&lt;truststore password&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这将在运行时设置信任库以验证 SSL 证书。</p>
+</li>
+<li><p>如果您使用的是较旧的 Java 版本，则可能需要手动更新 Java 运行时环境的信任库。您可以使用以下命令来下载 SQL Server SSL 证书，并将其导入到 Java 运行时环境的信任库中：</p>
+<p>css</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keytool -importcert -file &lt;path <span class="selector-tag">to</span> certificate file&gt; -keystore &lt;path <span class="selector-tag">to</span> keystore&gt;</span><br></pre></td></tr></table></figure>
+
+<p>您需要替换 <path to certificate file> 和 <path to keystore> 为实际的路径。</p>
+</li>
+</ol>
+<p>希望这些解决方案能够帮助您解决该问题。</p>
+<p>1 &#x2F; 1</p>
+<blockquote>
+<p>如何取消ssl认证</p>
+<p>1 &#x2F; 1</p>
+</blockquote>
+<p>ChatGPTChatGPT</p>
+<p>取消SSL认证可能会存在安全风险，请谨慎操作。如果您仍然想要取消SSL认证，以下是一种可能的方法：</p>
+<p>在Java代码中，取消SSL认证可以通过创建一个不验证证书的TrustManager来实现。具体步骤如下：</p>
+<ol>
+<li>创建一个不验证证书的TrustManager：</li>
+</ol>
+<p>typescript</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">TrustManager</span>[] trustAllCerts = <span class="keyword">new</span> <span class="title class_">TrustManager</span>[] &#123; <span class="keyword">new</span> <span class="title function_">X509TrustManager</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">public</span> java.<span class="property">security</span>.<span class="property">cert</span>.<span class="property">X509Certificate</span>[] <span class="title function_">getAcceptedIssuers</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">void</span> <span class="title function_">checkClientTrusted</span>(<span class="params">X509Certificate[] certs, <span class="built_in">String</span> authType</span>) &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">void</span> <span class="title function_">checkServerTrusted</span>(<span class="params">X509Certificate[] certs, <span class="built_in">String</span> authType</span>) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;&#125;;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>在建立连接时，使用该TrustManager：</li>
+</ol>
+<p>java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">SSLContext</span> <span class="variable">sslContext</span> <span class="operator">=</span> SSLContext.getInstance(<span class="string">&quot;SSL&quot;</span>);</span><br><span class="line">sslContext.init(<span class="literal">null</span>, trustAllCerts, <span class="keyword">new</span> <span class="title class_">java</span>.security.SecureRandom());</span><br><span class="line"></span><br><span class="line"><span class="type">String</span> <span class="variable">connectionUrl</span> <span class="operator">=</span> <span class="string">&quot;jdbc:sqlserver://localhost:1433;databaseName=YourDB;integratedSecurity=true;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.yourdomain.com;sslProtocol=TLSv1.2&quot;</span>;</span><br><span class="line"><span class="type">Connection</span> <span class="variable">conn</span> <span class="operator">=</span> DriverManager.getConnection(connectionUrl, <span class="string">&quot;YourUser&quot;</span>, <span class="string">&quot;YourPassword&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>注意，这种方法将取消对所有证书的验证，包括恶意证书。如果您需要取消SSL认证，请确保您信任连接的服务器。另外，取消SSL认证可能会违反您的组织或公司的安全策略，请在使用此方法之前咨询安全专业人员。</p>
+<p>1 &#x2F; 1</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://mainkeys.github.io">mainkeys</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://mainkeys.github.io/2023/05/02/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8SSL%E5%8A%A0%E5%AF%86%E4%B8%8ESQL-server%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5/">https://mainkeys.github.io/2023/05/02/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8SSL%E5%8A%A0%E5%AF%86%E4%B8%8ESQL-server%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/chatGPT/">chatGPT</a><a class="post-meta__tags" href="/tags/SQL-server/">SQL server</a><a class="post-meta__tags" href="/tags/SSL/">SSL</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/09/06/ZHL2mdtG9U1jCE5.jpg" data-sites="qq,wechat,qzone,weibo,twitter,facebook,douban,google"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/05/03/graduation-project/" title="chatGPT——python数据处理"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous</div><div class="prev_info">chatGPT——python数据处理</div></div></a></div><div class="next-post pull-right"><a href="/2023/05/02/server%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5/" title="server建立连接"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next</div><div class="next_info">server建立连接</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2023/05/14/Spark/" title="Spark"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023年05月14日</div><div class="title">Spark</div></div></a></div><div><a href="/2023/05/03/graduation-project/" title="chatGPT——python数据处理"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023年05月03日</div><div class="title">chatGPT——python数据处理</div></div></a></div><div><a href="/2023/04/25/%E9%87%8D%E5%AE%9A%E5%90%91%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6/" title="重定向输出文件"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023年04月25日</div><div class="title">重定向输出文件</div></div></a></div><div><a href="/2023/04/25/%E6%89%A9%E5%B1%95%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4/" title="扩展虚拟机磁盘空间"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023年04月25日</div><div class="title">扩展虚拟机磁盘空间</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/09/06/ZHL2mdtG9U1jCE5.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">mainkeys</div><div class="author-info__description">love && share 分享记录</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">34</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/mainkeys"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/mainkeys" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/16/js-api/" title="js_api">js_api</a><time datetime="2023-08-16T11:29:01.000Z" title="Created 2023年08月16日 19:29:01">2023年08月16日</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/26/Regular_Expression/" title="regular_Expression">regular_Expression</a><time datetime="2023-05-26T03:13:54.000Z" title="Created 2023年05月26日 11:13:54">2023年05月26日</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/14/Spark/" title="Spark">Spark</a><time datetime="2023-05-14T08:49:33.000Z" title="Created 2023年05月14日 16:49:33">2023年05月14日</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/03/graduation-project/" title="chatGPT——python数据处理">chatGPT——python数据处理</a><time datetime="2023-05-03T10:52:56.000Z" title="Created 2023年05月03日 18:52:56">2023年05月03日</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/02/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8SSL%E5%8A%A0%E5%AF%86%E4%B8%8ESQL-server%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5/" title="数据库无法使用SSL加密与SQL_server建立连接">数据库无法使用SSL加密与SQL_server建立连接</a><time datetime="2023-05-02T15:01:04.000Z" title="Created 2023年05月02日 23:01:04">2023年05月02日</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By mainkeys</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div></body></html>

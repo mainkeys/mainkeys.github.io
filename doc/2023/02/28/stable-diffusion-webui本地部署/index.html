@@ -1,0 +1,199 @@
+<!DOCTYPE html><html lang="zh-Hans" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>stable-diffusion-webui | 羿の漫游指南</title><meta name="author" content="mainkeys"><meta name="copyright" content="mainkeys"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本文章适用于:  有一定学习能力和钻研能力，遇到问题能合理使用搜索引擎尝试解决问题的人  想在windows系统中尝试使用AI作画工具stable-diffusion-webui进行绘画的人  有一定的计算机基础（会魔法上网、知道 python和Git）和英文阅读能力的人  显卡为Nvidia（或采用CUDA架构），且性能 ≥ GTX1060  对官方文档https:&#x2F;&#x2F;github.com&#x2F;AU">
+<meta property="og:type" content="article">
+<meta property="og:title" content="stable-diffusion-webui">
+<meta property="og:url" content="https://mainkeys.github.io/2023/02/28/stable-diffusion-webui%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/index.html">
+<meta property="og:site_name" content="羿の漫游指南">
+<meta property="og:description" content="本文章适用于:  有一定学习能力和钻研能力，遇到问题能合理使用搜索引擎尝试解决问题的人  想在windows系统中尝试使用AI作画工具stable-diffusion-webui进行绘画的人  有一定的计算机基础（会魔法上网、知道 python和Git）和英文阅读能力的人  显卡为Nvidia（或采用CUDA架构），且性能 ≥ GTX1060  对官方文档https:&#x2F;&#x2F;github.com&#x2F;AU">
+<meta property="og:locale">
+<meta property="og:image" content="https://i.loli.net/2021/09/06/ZHL2mdtG9U1jCE5.jpg">
+<meta property="article:published_time" content="2023-02-28T09:51:17.000Z">
+<meta property="article:modified_time" content="2024-01-17T04:48:46.300Z">
+<meta property="article:author" content="mainkeys">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="stable-diffusion-webui">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/09/06/ZHL2mdtG9U1jCE5.jpg"><link rel="shortcut icon" href="https://cdn2.iconfinder.com/data/icons/emoji-line/32/emoji_21-1024.png"><link rel="canonical" href="https://mainkeys.github.io/2023/02/28/stable-diffusion-webui%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script async="async" src="https://www.googletagmanager.com/gtag/js?id=[object Object]"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '[object Object]');
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":-1,"unescape":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'stable-diffusion-webui',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024年01月17日 12:48:46'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.0.0"><link rel="alternate" href="/atom.xml" title="羿の漫游指南" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/09/06/ZHL2mdtG9U1jCE5.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">34</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://images.unsplash.com/photo-1703593191806-962b4f2802e4?q=80&amp;w=2890&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"><nav id="nav"><span id="blog-info"><a href="/" title="羿の漫游指南"><span class="site-name">羿の漫游指南</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">stable-diffusion-webui</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-02-28T09:51:17.000Z" title="Created 2023年02月28日 17:51:17">2023年02月28日</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-01-17T04:48:46.300Z" title="Updated 2024年01月17日 12:48:46">2024年01月17日</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="stable-diffusion-webui"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><strong>本文章适用于:</strong></p>
+<ol>
+<li><p>有一定学习能力和钻研能力，遇到问题能合理使用搜索引擎尝试解决问题的人</p>
+</li>
+<li><p>想在windows系统中尝试使用AI作画工具stable-diffusion-webui进行绘画的人</p>
+</li>
+<li><p>有一定的计算机基础（会<del>魔法上网</del>、<del>知道</del> python和Git）和英文阅读能力的人</p>
+</li>
+<li><p>显卡为Nvidia（或采用CUDA架构），且性能 ≥ GTX1060</p>
+</li>
+<li><p>对官方文档<code>https://github.com/AUTOMATIC1111/stable-diffusion-webui</code>有一定阅读困难的人</p>
+<blockquote>
+<ul>
+<li>本文不提供任何全局代理的教程</li>
+<li>显卡越好作出的画，质量上限越高，最好是能显存在8GB以上</li>
+<li>不一定能列举所有报错情况和所有安装和使用的坑，只</li>
+</ul>
+</blockquote>
+<p>序言：导师有个GPU服务器双3090，常年GPU使用率在个位数，想让它干点活，自己也想拥有一点背景和插画素材，就想着在服务器上装个ai画图，但是由于服务器需要连接学校的远程登陆系统（V**）才能进行远程登录，造成了一定的障碍，就先在本地的环境装一个试试给我的矿卡训练训练，没准就能突破到下一个阶段（30系）了。</p>
+</li>
+</ol>
+<p><strong>系统和环境：</strong><br>操作系统：Windows 11 专业版 22H2<br>CPU：AMD Ryzen 7 5800X3D 8-Core Processor  3.40 GHz<br>显卡：2070Super 矿区老兵<br>内存：16G<br>如果安装运行错误（瓶颈一般只出现在显卡和网络上）</p>
+<hr>
+<h3 id="正式开始安装"><a href="#正式开始安装" class="headerlink" title="正式开始安装"></a>正式开始安装</h3><p>1、首先在python官网下载对应操作系统3.10.* 版本的python，在<strong>安装的过程中勾选上将python加入到PATH</strong>，其他都是默认配置，可以自定义安装在其他磁盘<br>2、在Git官网安装对应操作系统的最新版Git，很多代码都会调用到git指令进行下载，所以必须安装，可以选择安装在其他磁盘所有选项为默认就行。</p>
+<p>3、下载 Stable-Diffusion-webui <a target="_blank" rel="noopener" href="https://github.com/AUTOMATIC1111/stable-diffusion-webui">【链接地址】</a>  Github开源项目并解压</p>
+<ul>
+<li>（可选）<a target="_blank" rel="noopener" href="https://github.com/VinsonLaro/stable-diffusion-webui-chinese">中文语言包</a><br><img src="https://img-blog.csdnimg.cn/bcbc3fc3b3e846a9a06134ae6df8e6e2.png"></li>
+</ul>
+<p>4、 进入目录找到<code>webui-user.bat</code>右键打开编辑，设置python路径，将刚安好的python路径写上去<br><img src="https://img-blog.csdnimg.cn/00c5bb1614ae42908ee791ba48341089.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/3be2961a9cd1451c8b9164d266863cd4.png" alt="在这里插入图片描述"><br>5、首先，如果实在国内是无法正常安装程序的，需要通过一些手段（可以魔法＋全局，但我这里尝试失败了）才能进行下载，这里提供一些方法以供参考<br>我们可以看到<code>webui-user.bat</code>里面调用的是<code>webui.bat</code> 我们打开<code>webui.bat</code>可以看到其实最后用python打开了<code>launch.py</code>这个程序，然后通过<code>pip</code>和<code>git</code>指令安装了一堆所需文件<br>，所以解决方法就是针对其进行一些设置比如说采用国内镜像手段可以解决大部分问题</p>
+<p>6、我们打开<code>launch.py</code>进行修改，可以通过记事本也可以通过各类IDE，ctrl+f查找出所有<code>github.com</code>并替换为国内镜像<code>kgithub.com</code>如果此镜像挂了，可以替换为其他镜像，同样也可以供github代理进行加速，具体参考<a target="_blank" rel="noopener" href="https://ghproxy.com/">githubproxy官网</a>（实际上在地址前面加上一个<code>https://ghproxy.com/</code>）就可以了</p>
+<p><img src="https://img-blog.csdnimg.cn/1c6a9f522c734d13bd4390e33f61b698.png"><br>7、设置完双击运行<code>webui-user.bat</code>等待下载，一般会在gfpgan、Clip、open_clip的下载卡一会，在下载官方自带的模型包卡一会（文件很大，要下很久），最后是这个样子的，此时命令行窗口在运行的时候不能关闭。<br><img src="https://img-blog.csdnimg.cn/bc8d1a7a53384151aa522acf71eb6f00.png" alt="在这里插入图片描述"><br>8、这时候打开浏览器照着提示输入网址<code>http://127.0.0.1:7860</code>就可以进入stable-diffusion-webui界面了</p>
+<p><img src="https://img-blog.csdnimg.cn/5ab62cf92e6041ac85dfec517931d4d9.png" alt="在这里插入图片描述"></p>
+<p>9 、AUTOMATIC1111官方是提供了一个基础模型包（现在是v1-5版本）的，可以直接用训练好的模型进行绘画，我们先输入几个正负面提示词尝试一下，这里说明一下，默认设置是每次画完图都会自动保存在stable-diffusion-webui根目录里的outputs里面，可以把它设置为不保存，如果之前装了中文语音包也可以再设置里拉到最下面的locallization改成中文包。</p>
+<p><img src="https://img-blog.csdnimg.cn/079d1fc419174fdc807d707b912859dd.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/6a835a7da6234bb4b5b7ef08e49c5b3b.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/ceedf59def6c4942a22fdffac618f4c8.png" alt="在这里插入图片描述"></p>
+<h2 id="到此，你已经可以顺利打开stable-diffusion-webui并运行了，更多详细使用方式和进阶玩法（-如何下载替换选择其他模型包，如何采用loRA模型训练，如何vea进行面部修复，泽阳通过设置权重混用多个模型进行训练，参数该如何设置，如何获取插件以及配置插件）下次再写。"><a href="#到此，你已经可以顺利打开stable-diffusion-webui并运行了，更多详细使用方式和进阶玩法（-如何下载替换选择其他模型包，如何采用loRA模型训练，如何vea进行面部修复，泽阳通过设置权重混用多个模型进行训练，参数该如何设置，如何获取插件以及配置插件）下次再写。" class="headerlink" title="到此，你已经可以顺利打开stable-diffusion-webui并运行了，更多详细使用方式和进阶玩法（ 如何下载替换选择其他模型包，如何采用loRA模型训练，如何vea进行面部修复，泽阳通过设置权重混用多个模型进行训练，参数该如何设置，如何获取插件以及配置插件）下次再写。"></a>到此，你已经可以顺利打开stable-diffusion-webui并运行了，更多详细使用方式和进阶玩法（ 如何下载替换选择其他模型包，如何采用loRA模型训练，如何vea进行面部修复，泽阳通过设置权重混用多个模型进行训练，参数该如何设置，如何获取插件以及配置插件）下次再写。</h2><h3 id="每一次进行GPU的渲染生成的绘图都是独一无二的，版权全归自己所有，终于实现素材自由（铯土自由-）了。"><a href="#每一次进行GPU的渲染生成的绘图都是独一无二的，版权全归自己所有，终于实现素材自由（铯土自由-）了。" class="headerlink" title="每一次进行GPU的渲染生成的绘图都是独一无二的，版权全归自己所有，终于实现素材自由（铯土自由 ）了。"></a>每一次进行GPU的渲染生成的绘图都是独一无二的，版权全归自己所有，终于实现素材自由（<del>铯土自由</del> ）了。</h3><p>欢迎大家讨论配置过程中遇到的问题。</p>
+<p>参考链接：<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv20716170">https://www.bilibili.com/read/cv20716170</a><br><a target="_blank" rel="noopener" href="https://www.freedidi.com/8474.html">https://www.freedidi.com/8474.html</a><br><a target="_blank" rel="noopener" href="https://github.com/AUTOMATIC1111/stable-diffusion-webui">https://github.com/AUTOMATIC1111/stable-diffusion-webui</a><br><a target="_blank" rel="noopener" href="https://stable-diffusion-art.com/">https://stable-diffusion-art.com/</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://mainkeys.github.io">mainkeys</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://mainkeys.github.io/2023/02/28/stable-diffusion-webui%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/">https://mainkeys.github.io/2023/02/28/stable-diffusion-webui%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/AI/">AI</a><a class="post-meta__tags" href="/tags/stable-diffusion-webui/">stable-diffusion-webui</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/09/06/ZHL2mdtG9U1jCE5.jpg" data-sites="qq,wechat,qzone,weibo,twitter,facebook,douban,google"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/03/26/ES5/" title="ES5标准"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous</div><div class="prev_info">ES5标准</div></div></a></div><div class="next-post pull-right"><a href="/2023/02/03/valheim-server/" title="腾讯云轻量级服务器Valheim英灵神殿服务器搭建"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next</div><div class="next_info">腾讯云轻量级服务器Valheim英灵神殿服务器搭建</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/09/06/ZHL2mdtG9U1jCE5.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">mainkeys</div><div class="author-info__description">love && share 分享记录</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">34</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/mainkeys"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/mainkeys" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E5%BC%8F%E5%BC%80%E5%A7%8B%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">正式开始安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%B0%E6%AD%A4%EF%BC%8C%E4%BD%A0%E5%B7%B2%E7%BB%8F%E5%8F%AF%E4%BB%A5%E9%A1%BA%E5%88%A9%E6%89%93%E5%BC%80stable-diffusion-webui%E5%B9%B6%E8%BF%90%E8%A1%8C%E4%BA%86%EF%BC%8C%E6%9B%B4%E5%A4%9A%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F%E5%92%8C%E8%BF%9B%E9%98%B6%E7%8E%A9%E6%B3%95%EF%BC%88-%E5%A6%82%E4%BD%95%E4%B8%8B%E8%BD%BD%E6%9B%BF%E6%8D%A2%E9%80%89%E6%8B%A9%E5%85%B6%E4%BB%96%E6%A8%A1%E5%9E%8B%E5%8C%85%EF%BC%8C%E5%A6%82%E4%BD%95%E9%87%87%E7%94%A8loRA%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%EF%BC%8C%E5%A6%82%E4%BD%95vea%E8%BF%9B%E8%A1%8C%E9%9D%A2%E9%83%A8%E4%BF%AE%E5%A4%8D%EF%BC%8C%E6%B3%BD%E9%98%B3%E9%80%9A%E8%BF%87%E8%AE%BE%E7%BD%AE%E6%9D%83%E9%87%8D%E6%B7%B7%E7%94%A8%E5%A4%9A%E4%B8%AA%E6%A8%A1%E5%9E%8B%E8%BF%9B%E8%A1%8C%E8%AE%AD%E7%BB%83%EF%BC%8C%E5%8F%82%E6%95%B0%E8%AF%A5%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%EF%BC%8C%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96%E6%8F%92%E4%BB%B6%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AE%E6%8F%92%E4%BB%B6%EF%BC%89%E4%B8%8B%E6%AC%A1%E5%86%8D%E5%86%99%E3%80%82"><span class="toc-number"></span> <span class="toc-text">到此，你已经可以顺利打开stable-diffusion-webui并运行了，更多详细使用方式和进阶玩法（ 如何下载替换选择其他模型包，如何采用loRA模型训练，如何vea进行面部修复，泽阳通过设置权重混用多个模型进行训练，参数该如何设置，如何获取插件以及配置插件）下次再写。</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AF%8F%E4%B8%80%E6%AC%A1%E8%BF%9B%E8%A1%8CGPU%E7%9A%84%E6%B8%B2%E6%9F%93%E7%94%9F%E6%88%90%E7%9A%84%E7%BB%98%E5%9B%BE%E9%83%BD%E6%98%AF%E7%8B%AC%E4%B8%80%E6%97%A0%E4%BA%8C%E7%9A%84%EF%BC%8C%E7%89%88%E6%9D%83%E5%85%A8%E5%BD%92%E8%87%AA%E5%B7%B1%E6%89%80%E6%9C%89%EF%BC%8C%E7%BB%88%E4%BA%8E%E5%AE%9E%E7%8E%B0%E7%B4%A0%E6%9D%90%E8%87%AA%E7%94%B1%EF%BC%88%E9%93%AF%E5%9C%9F%E8%87%AA%E7%94%B1-%EF%BC%89%E4%BA%86%E3%80%82"><span class="toc-number">1.</span> <span class="toc-text">每一次进行GPU的渲染生成的绘图都是独一无二的，版权全归自己所有，终于实现素材自由（铯土自由 ）了。</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/16/js-api/" title="js_api">js_api</a><time datetime="2023-08-16T11:29:01.000Z" title="Created 2023年08月16日 19:29:01">2023年08月16日</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/26/Regular_Expression/" title="regular_Expression">regular_Expression</a><time datetime="2023-05-26T03:13:54.000Z" title="Created 2023年05月26日 11:13:54">2023年05月26日</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/14/Spark/" title="Spark">Spark</a><time datetime="2023-05-14T08:49:33.000Z" title="Created 2023年05月14日 16:49:33">2023年05月14日</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/03/graduation-project/" title="chatGPT——python数据处理">chatGPT——python数据处理</a><time datetime="2023-05-03T10:52:56.000Z" title="Created 2023年05月03日 18:52:56">2023年05月03日</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/02/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8SSL%E5%8A%A0%E5%AF%86%E4%B8%8ESQL-server%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5/" title="数据库无法使用SSL加密与SQL_server建立连接">数据库无法使用SSL加密与SQL_server建立连接</a><time datetime="2023-05-02T15:01:04.000Z" title="Created 2023年05月02日 23:01:04">2023年05月02日</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By mainkeys</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div></body></html>

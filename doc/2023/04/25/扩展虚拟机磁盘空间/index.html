@@ -1,0 +1,687 @@
+<!DOCTYPE html><html lang="zh-Hans" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>扩展虚拟机磁盘空间 | 羿の漫游指南</title><meta name="author" content="mainkeys"><meta name="copyright" content="mainkeys"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Model: GPT-4  我在vmware workstation中创建了一个虚拟机，给了30G磁盘，现在上传一个8G本地文件到&#x2F;usr&#x2F;local&#x2F;hadoop下显示磁盘不够了，我现在扩展了这个虚拟机的磁盘大小，发现还是显示磁盘不够，我是否需要进行磁盘分区呢，需要我怎做 1 &#x2F; 1  是的，您需要扩展分区和文件系统以利用新的磁盘空间。这里是一个简单的步骤">
+<meta property="og:type" content="article">
+<meta property="og:title" content="扩展虚拟机磁盘空间">
+<meta property="og:url" content="https://mainkeys.github.io/2023/04/25/%E6%89%A9%E5%B1%95%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4/index.html">
+<meta property="og:site_name" content="羿の漫游指南">
+<meta property="og:description" content="Model: GPT-4  我在vmware workstation中创建了一个虚拟机，给了30G磁盘，现在上传一个8G本地文件到&#x2F;usr&#x2F;local&#x2F;hadoop下显示磁盘不够了，我现在扩展了这个虚拟机的磁盘大小，发现还是显示磁盘不够，我是否需要进行磁盘分区呢，需要我怎做 1 &#x2F; 1  是的，您需要扩展分区和文件系统以利用新的磁盘空间。这里是一个简单的步骤">
+<meta property="og:locale">
+<meta property="og:image" content="https://i.loli.net/2021/09/06/ZHL2mdtG9U1jCE5.jpg">
+<meta property="article:published_time" content="2023-04-25T08:38:09.000Z">
+<meta property="article:modified_time" content="2024-01-17T04:48:46.300Z">
+<meta property="article:author" content="mainkeys">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="chatGPT">
+<meta property="article:tag" content="磁盘分区">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/09/06/ZHL2mdtG9U1jCE5.jpg"><link rel="shortcut icon" href="https://cdn2.iconfinder.com/data/icons/emoji-line/32/emoji_21-1024.png"><link rel="canonical" href="https://mainkeys.github.io/2023/04/25/%E6%89%A9%E5%B1%95%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script async="async" src="https://www.googletagmanager.com/gtag/js?id=[object Object]"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '[object Object]');
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":-1,"unescape":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '扩展虚拟机磁盘空间',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024年01月17日 12:48:46'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.0.0"><link rel="alternate" href="/atom.xml" title="羿の漫游指南" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/09/06/ZHL2mdtG9U1jCE5.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">34</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://images.unsplash.com/photo-1703593191806-962b4f2802e4?q=80&amp;w=2890&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"><nav id="nav"><span id="blog-info"><a href="/" title="羿の漫游指南"><span class="site-name">羿の漫游指南</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">扩展虚拟机磁盘空间</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-04-25T08:38:09.000Z" title="Created 2023年04月25日 16:38:09">2023年04月25日</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-01-17T04:48:46.300Z" title="Updated 2024年01月17日 12:48:46">2024年01月17日</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="扩展虚拟机磁盘空间"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>Model: GPT-4</p>
+<blockquote>
+<p>我在vmware workstation中创建了一个虚拟机，给了30G磁盘，现在上传一个8G本地文件到&#x2F;usr&#x2F;local&#x2F;hadoop下显示磁盘不够了，我现在扩展了这个虚拟机的磁盘大小，发现还是显示磁盘不够，我是否需要进行磁盘分区呢，需要我怎做</p>
+<p>1 &#x2F; 1</p>
+</blockquote>
+<p>是的，您需要扩展分区和文件系统以利用新的磁盘空间。这里是一个简单的步骤，帮助您在已经扩展虚拟磁盘后调整分区和文件系统：</p>
+<ol>
+<li><p>首先，打开虚拟机并确保它已经启动。</p>
+</li>
+<li><p>在虚拟机中，使用以下命令查看当前磁盘分区情况：</p>
+<p><code>sudo fdisk -l</code></p>
+<p>找到您想要扩展的分区（可能是 <code>/dev/sdaX</code>，其中 X 是分区编号）。</p>
+</li>
+<li><p>安装并使用 <code>parted</code> 调整分区大小：</p>
+<p>arduino</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install parted</span><br><span class="line">sudo parted /dev/sda</span><br></pre></td></tr></table></figure>
+
+<p>在 <code>parted</code> 提示符下，使用以下命令查看分区：</p>
+<p>arduino</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print</span><br></pre></td></tr></table></figure>
+
+<p>记下您要扩展的分区编号。</p>
+</li>
+<li><p>调整分区大小。假设您要扩展分区 1，请执行以下操作：</p>
+<p><code>resizepart 1</code></p>
+<p>当提示输入新大小时，输入您希望分区的最终大小，例如 <code>40GB</code>。然后输入 <code>quit</code> 退出 <code>parted</code>。</p>
+</li>
+<li><p>调整文件系统以填充新的分区空间。如果您使用的是 <code>ext4</code> 文件系统，请执行以下命令：</p>
+<p>bash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo resize2fs /dev/sdaX</span><br></pre></td></tr></table></figure>
+
+<p>将 <code>X</code> 替换为您的分区编号。</p>
+</li>
+<li><p>检查文件系统空间：</p>
+<p>bash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">df</span> -h</span><br></pre></td></tr></table></figure>
+
+<p>您应该看到 <code>/usr/local/hadoop</code> 下的磁盘空间已经扩展。</p>
+</li>
+</ol>
+<p>请注意，这些命令可能会因您的操作系统和文件系统而异。这些步骤适用于基于 Debian 的操作系统，如 Ubuntu。</p>
+<p>1 &#x2F; 1</p>
+<blockquote>
+<p>X这个分区编号怎么查看，是自己定义的吗</p>
+<p>1 &#x2F; 1</p>
+</blockquote>
+<p><code>X</code> 这个分区编号不是自己定义的。您可以通过执行 <code>sudo fdisk -l</code> 命令来查看分区编号。这个命令会列出系统中所有磁盘设备及其分区。找到您想要扩展的磁盘设备，它可能类似于 <code>/dev/sdaX</code> 的格式，其中 <code>X</code> 是分区编号。</p>
+<p>例如，您可能会看到类似以下的输出：</p>
+<p>python</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Disk /dev/sda: <span class="number">100</span> GiB, <span class="number">107374182400</span> <span class="built_in">bytes</span>, <span class="number">209715200</span> sectors</span><br><span class="line">Units: sectors of <span class="number">1</span> * <span class="number">512</span> = <span class="number">512</span> <span class="built_in">bytes</span></span><br><span class="line">Sector size (logical/physical): <span class="number">512</span> <span class="built_in">bytes</span> / <span class="number">512</span> <span class="built_in">bytes</span></span><br><span class="line">I/O size (minimum/optimal): <span class="number">512</span> <span class="built_in">bytes</span> / <span class="number">512</span> <span class="built_in">bytes</span></span><br><span class="line">Disklabel <span class="built_in">type</span>: gpt</span><br><span class="line">Disk identifier: 1D8E8A60-53D9-4F77-9A8B-4B610C2D2C20</span><br><span class="line"></span><br><span class="line">Device       Start       End   Sectors  Size <span class="type">Type</span></span><br><span class="line">/dev/sda1     <span class="number">2048</span>  <span class="number">39063551</span>  <span class="number">39061504</span> <span class="number">18.6</span>G Linux filesystem</span><br><span class="line">/dev/sda2  <span class="number">39063552</span>  <span class="number">97677311</span>  <span class="number">58613760</span>   28G Linux filesystem</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，<code>/dev/sda1</code> 和 <code>/dev/sda2</code> 是分区，分区编号分别是 <code>1</code> 和 <code>2</code>。</p>
+<p>通过 <code>df -h</code> 命令，您可以找到 <code>/usr/local/hadoop</code> 目录挂载在哪个分区上。如果您想要扩展这个分区，就需要对应的分区编号。</p>
+<p>1 &#x2F; 1</p>
+<blockquote>
+<p>vmwareworkstation纯命令行linux一下输出一大堆就看不到上面的消息了，怎么解决</p>
+<p>1 &#x2F; 1</p>
+</blockquote>
+<p>当命令行输出太多内容时，您可以使用管道（<code>|</code>）将输出传递给 <code>less</code> 或 <code>more</code> 命令，这样您就可以逐页查看输出。</p>
+<p>例如，要查看分区情况，可以执行以下命令：</p>
+<p><code>sudo fdisk -l | less</code></p>
+<p>或者</p>
+<p><code>sudo fdisk -l | more</code></p>
+<p>在 <code>less</code> 或 <code>more</code> 的界面中，您可以使用上下箭头键、Page Up 和 Page Down 键来浏览输出。按 <code>q</code> 键退出 <code>less</code> 或 <code>more</code>。</p>
+<p>另外，您可以将命令的输出重定向到一个文件中，然后使用文本编辑器查看该文件。例如：</p>
+<p><code>sudo fdisk -l &gt; partition_info.txt</code></p>
+<p>这将创建一个名为 <code>partition_info.txt</code> 的文件，其中包含 <code>fdisk -l</code> 的输出。您可以使用任何文本编辑器（如 <code>nano</code>、<code>vi</code> 或 <code>vim</code>）打开此文件并查看其内容。例如：</p>
+<p><code>nano partition_info.txt</code></p>
+<p>1 &#x2F; 1</p>
+<blockquote>
+<p>the filesystem is already 3668992（4K） blocks long. Nothing to do！</p>
+<p>1 &#x2F; 1</p>
+</blockquote>
+<p>这个错误信息表明您尝试调整的分区大小已经与您期望的大小相同，因此无需进行任何操作。这意味着分区已经达到了您期望的大小，不需要进一步扩展。</p>
+<p>要确认分区已经达到期望大小，您可以运行以下命令来查看磁盘使用情况：</p>
+<p>bash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">df</span> -h</span><br></pre></td></tr></table></figure>
+
+<p>在输出中，找到 <code>/usr/local/hadoop</code> 目录所在的分区，并检查其大小是否符合您的期望。</p>
+<p>如果您仍然遇到磁盘空间不足的问题，请检查是否有其他因素限制了磁盘空间。例如，检查系统是否有磁盘配额限制，或者检查是否有文件和目录占用了大量空间，导致实际可用空间不足。在这种情况下，您可能需要清理或移动一些文件以释放空间。</p>
+<p>1 &#x2F; 1</p>
+<blockquote>
+<p>现在他所在的磁盘为&#x2F;dev&#x2F;mapper&#x2F;ubuntu–vg-ubuntu–lv ，显示大小为14G，Available为2.4G，怎么给他多分点区</p>
+<p>1 &#x2F; 1</p>
+</blockquote>
+<p>根据您提供的信息，似乎您的系统使用了 LVM（逻辑卷管理器）。要扩展 <code>/dev/mapper/ubuntu--vg-ubuntu--lv</code> 逻辑卷，请按照以下步骤操作：</p>
+<ol>
+<li><p>首先，检查可用的物理卷空间。使用以下命令：</p>
+<p><code>sudo pvdisplay</code></p>
+<p>注意 <code>Free PE / Size</code> 一行，它表示可用的物理扩展空间。</p>
+</li>
+<li><p>如果您有足够的物理卷空间，可以继续扩展逻辑卷。使用以下命令扩展逻辑卷：</p>
+<p>bash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo lvextend -L +XG /dev/mapper/ubuntu--vg-ubuntu--lv</span><br></pre></td></tr></table></figure>
+
+<p>将 <code>X</code> 替换为您想要添加到逻辑卷的空间大小（以 GB 为单位）。例如，如果您想要扩展 10GB，请使用 <code>sudo lvextend -L +10G /dev/mapper/ubuntu--vg-ubuntu--lv</code>。</p>
+</li>
+<li><p>接下来，调整文件系统以使用新的空间。如果您使用的是 <code>ext4</code> 文件系统，请执行以下命令：</p>
+<p>bash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>确认更改是否成功，再次运行 <code>df -h</code> 命令。您应该看到 <code>/dev/mapper/ubuntu--vg-ubuntu--lv</code> 逻辑卷的可用空间已经增加。</p>
+</li>
+</ol>
+<p>如果在物理卷中没有足够的空间，您需要先扩展物理卷。这可能涉及到扩展 VM 磁盘、创建新分区并将其添加到现有卷组，或者向卷组中添加新磁盘。具体操作取决于您的系统配置和可用资源。</p>
+<p>1 &#x2F; 1</p>
+<blockquote>
+<p>Free PE写的3584</p>
+<p>1 &#x2F; 1</p>
+</blockquote>
+<p>根据您提供的信息，您的物理卷中有 3584 个空闲物理扩展（PE）。默认情况下，每个物理扩展的大小为 4 MiB。这意味着您有足够的空间来扩展逻辑卷。</p>
+<p>首先，计算可用空间的总大小（以 GB 为单位）：</p>
+<p>yaml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3584 </span><span class="string">PE</span> <span class="string">*</span> <span class="number">4</span> <span class="string">MiB/PE</span> <span class="string">=</span> <span class="number">14336</span> <span class="string">MiB</span></span><br></pre></td></tr></table></figure>
+
+<p>将 MiB 转换为 GB：</p>
+<p>yaml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">14336</span> <span class="string">MiB</span> <span class="string">/</span> <span class="number">1024</span> <span class="string">=</span> <span class="number">14</span> <span class="string">GB</span></span><br></pre></td></tr></table></figure>
+
+<p>现在您可以使用以下命令扩展逻辑卷。将 <code>X</code> 替换为您想要添加到逻辑卷的空间大小（以 GB 为单位），不要超过 14 GB：</p>
+<p>bash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo lvextend -L +XG /dev/mapper/ubuntu--vg-ubuntu--lv</span><br></pre></td></tr></table></figure>
+
+<p>例如，如果您想要扩展 10GB，请使用 <code>sudo lvextend -L +10G /dev/mapper/ubuntu--vg-ubuntu--lv</code>。</p>
+<p>然后，调整文件系统以使用新的空间。如果您使用的是 <code>ext4</code> 文件系统，请执行以下命令：</p>
+<p>bash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv</span><br></pre></td></tr></table></figure>
+
+<p>最后，运行 <code>df -h</code> 命令以确认逻辑卷的可用空间已经增加。</p>
+<p>1 &#x2F; 1</p>
+<blockquote>
+<p>是这样的，我下载了vmwareworkstation，创建了一个虚拟机，分配了30G,现在需要从本地上传一个大文件数据,空间不够了，我给他扩展以后,但是&#x2F;usr&#x2F;Local&#x2F;hadoop挂载到的磁盘空间还是没有改变，我该如何操作</p>
+<p>1 &#x2F; 1</p>
+</blockquote>
+<p>了解您的情况，您需要扩展虚拟机中的磁盘空间，然后扩展文件系统。以下是一步步指导：</p>
+<ol>
+<li><p>首先，确保虚拟机已关闭。</p>
+</li>
+<li><p>在 VMware Workstation 中，选择您的虚拟机，然后点击 “Edit virtual machine settings”。</p>
+</li>
+<li><p>选择 “Hard Disk”，然后点击 “Expand”。输入您希望将磁盘扩展到的新大小，然后点击 “Expand”。</p>
+</li>
+<li><p>现在启动虚拟机。</p>
+</li>
+</ol>
+<p>接下来，您需要在虚拟机内部调整分区和文件系统。因为您的系统使用了 LVM，所以需要执行以下步骤：</p>
+<ol>
+<li><p>首先，使用以下命令查看当前磁盘分区情况：</p>
+<p><code>sudo fdisk -l</code></p>
+<p>找到您扩展的磁盘设备，它可能类似于 <code>/dev/sda</code>。</p>
+</li>
+<li><p>使用 <code>parted</code> 工具创建一个新的分区：</p>
+<p>bash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Model: GPT-4</span><br><span class="line"></span><br><span class="line">&gt; 我在vmware workstation中创建了一个虚拟机，给了30G磁盘，现在上传一个8G本地文件到/usr/local/hadoop下显示磁盘不够了，我现在扩展了这个虚拟机的磁盘大小，发现还是显示磁盘不够，我是否需要进行磁盘分区呢，需要我怎做</span><br><span class="line">&gt; </span><br><span class="line">&gt; 1 / 1</span><br><span class="line"></span><br><span class="line">是的，您需要扩展分区和文件系统以利用新的磁盘空间。这里是一个简单的步骤，帮助您在已经扩展虚拟磁盘后调整分区和文件系统：</span><br><span class="line"></span><br><span class="line">1.  首先，打开虚拟机并确保它已经启动。</span><br><span class="line">    </span><br><span class="line">2.  在虚拟机中，使用以下命令查看当前磁盘分区情况：</span><br><span class="line">    </span><br><span class="line">    `sudo fdisk -l`</span><br><span class="line">    </span><br><span class="line">    找到您想要扩展的分区（可能是 `/dev/sdaX`，其中 X 是分区编号）。</span><br><span class="line">    </span><br><span class="line">3.  安装并使用 `parted` 调整分区大小：</span><br><span class="line">    </span><br><span class="line">    arduino</span><br><span class="line">    </span><br><span class="line">    ```arduino</span><br><span class="line">    sudo apt-get install parted</span><br><span class="line">    sudo parted /dev/sda</span><br></pre></td></tr></table></figure>
+
+<p>在 <code>parted</code> 提示符下，使用以下命令查看分区：</p>
+<p>arduino</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print</span><br></pre></td></tr></table></figure>
+
+<p>记下您要扩展的分区编号。</p>
+</li>
+<li><p>调整分区大小。假设您要扩展分区 1，请执行以下操作：</p>
+<p><code>resizepart 1</code></p>
+<p>当提示输入新大小时，输入您希望分区的最终大小，例如 <code>40GB</code>。然后输入 <code>quit</code> 退出 <code>parted</code>。</p>
+</li>
+<li><p>调整文件系统以填充新的分区空间。如果您使用的是 <code>ext4</code> 文件系统，请执行以下命令：</p>
+<p>bash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo resize2fs /dev/sdaX</span><br></pre></td></tr></table></figure>
+
+<p>将 <code>X</code> 替换为您的分区编号。</p>
+</li>
+<li><p>检查文件系统空间：</p>
+<p>bash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">df</span> -h</span><br></pre></td></tr></table></figure>
+
+<p>您应该看到 <code>/usr/local/hadoop</code> 下的磁盘空间已经扩展。</p>
+</li>
+</ol>
+<p>请注意，这些命令可能会因您的操作系统和文件系统而异。这些步骤适用于基于 Debian 的操作系统，如 Ubuntu。</p>
+<p>1 &#x2F; 1</p>
+<blockquote>
+<p>X这个分区编号怎么查看，是自己定义的吗</p>
+<p>1 &#x2F; 1</p>
+</blockquote>
+<p><code>X</code> 这个分区编号不是自己定义的。您可以通过执行 <code>sudo fdisk -l</code> 命令来查看分区编号。这个命令会列出系统中所有磁盘设备及其分区。找到您想要扩展的磁盘设备，它可能类似于 <code>/dev/sdaX</code> 的格式，其中 <code>X</code> 是分区编号。</p>
+<p>例如，您可能会看到类似以下的输出：</p>
+<p>python</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Disk /dev/sda: <span class="number">100</span> GiB, <span class="number">107374182400</span> <span class="built_in">bytes</span>, <span class="number">209715200</span> sectors</span><br><span class="line">Units: sectors of <span class="number">1</span> * <span class="number">512</span> = <span class="number">512</span> <span class="built_in">bytes</span></span><br><span class="line">Sector size (logical/physical): <span class="number">512</span> <span class="built_in">bytes</span> / <span class="number">512</span> <span class="built_in">bytes</span></span><br><span class="line">I/O size (minimum/optimal): <span class="number">512</span> <span class="built_in">bytes</span> / <span class="number">512</span> <span class="built_in">bytes</span></span><br><span class="line">Disklabel <span class="built_in">type</span>: gpt</span><br><span class="line">Disk identifier: 1D8E8A60-53D9-4F77-9A8B-4B610C2D2C20</span><br><span class="line"></span><br><span class="line">Device       Start       End   Sectors  Size <span class="type">Type</span></span><br><span class="line">/dev/sda1     <span class="number">2048</span>  <span class="number">39063551</span>  <span class="number">39061504</span> <span class="number">18.6</span>G Linux filesystem</span><br><span class="line">/dev/sda2  <span class="number">39063552</span>  <span class="number">97677311</span>  <span class="number">58613760</span>   28G Linux filesystem</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，<code>/dev/sda1</code> 和 <code>/dev/sda2</code> 是分区，分区编号分别是 <code>1</code> 和 <code>2</code>。</p>
+<p>通过 <code>df -h</code> 命令，您可以找到 <code>/usr/local/hadoop</code> 目录挂载在哪个分区上。如果您想要扩展这个分区，就需要对应的分区编号。</p>
+<p>1 &#x2F; 1</p>
+<blockquote>
+<p>vmwareworkstation纯命令行linux一下输出一大堆就看不到上面的消息了，怎么解决</p>
+<p>1 &#x2F; 1</p>
+</blockquote>
+<p>当命令行输出太多内容时，您可以使用管道（<code>|</code>）将输出传递给 <code>less</code> 或 <code>more</code> 命令，这样您就可以逐页查看输出。</p>
+<p>例如，要查看分区情况，可以执行以下命令：</p>
+<p><code>sudo fdisk -l | less</code></p>
+<p>或者</p>
+<p><code>sudo fdisk -l | more</code></p>
+<p>在 <code>less</code> 或 <code>more</code> 的界面中，您可以使用上下箭头键、Page Up 和 Page Down 键来浏览输出。按 <code>q</code> 键退出 <code>less</code> 或 <code>more</code>。</p>
+<p>另外，您可以将命令的输出重定向到一个文件中，然后使用文本编辑器查看该文件。例如：</p>
+<p><code>sudo fdisk -l &gt; partition_info.txt</code></p>
+<p>这将创建一个名为 <code>partition_info.txt</code> 的文件，其中包含 <code>fdisk -l</code> 的输出。您可以使用任何文本编辑器（如 <code>nano</code>、<code>vi</code> 或 <code>vim</code>）打开此文件并查看其内容。例如：</p>
+<p><code>nano partition_info.txt</code></p>
+<p>1 &#x2F; 1</p>
+<blockquote>
+<p>the filesystem is already 3668992（4K） blocks long. Nothing to do！</p>
+<p>1 &#x2F; 1</p>
+</blockquote>
+<p>这个错误信息表明您尝试调整的分区大小已经与您期望的大小相同，因此无需进行任何操作。这意味着分区已经达到了您期望的大小，不需要进一步扩展。</p>
+<p>要确认分区已经达到期望大小，您可以运行以下命令来查看磁盘使用情况：</p>
+<p>bash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">df</span> -h</span><br></pre></td></tr></table></figure>
+
+<p>在输出中，找到 <code>/usr/local/hadoop</code> 目录所在的分区，并检查其大小是否符合您的期望。</p>
+<p>如果您仍然遇到磁盘空间不足的问题，请检查是否有其他因素限制了磁盘空间。例如，检查系统是否有磁盘配额限制，或者检查是否有文件和目录占用了大量空间，导致实际可用空间不足。在这种情况下，您可能需要清理或移动一些文件以释放空间。</p>
+<p>1 &#x2F; 1</p>
+<blockquote>
+<p>现在他所在的磁盘为&#x2F;dev&#x2F;mapper&#x2F;ubuntu–vg-ubuntu–lv ，显示大小为14G，Available为2.4G，怎么给他多分点区</p>
+<p>1 &#x2F; 1</p>
+</blockquote>
+<p>根据您提供的信息，似乎您的系统使用了 LVM（逻辑卷管理器）。要扩展 <code>/dev/mapper/ubuntu--vg-ubuntu--lv</code> 逻辑卷，请按照以下步骤操作：</p>
+<ol>
+<li><p>首先，检查可用的物理卷空间。使用以下命令：</p>
+<p><code>sudo pvdisplay</code></p>
+<p>注意 <code>Free PE / Size</code> 一行，它表示可用的物理扩展空间。</p>
+</li>
+<li><p>如果您有足够的物理卷空间，可以继续扩展逻辑卷。使用以下命令扩展逻辑卷：</p>
+<p>bash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo lvextend -L +XG /dev/mapper/ubuntu--vg-ubuntu--lv</span><br></pre></td></tr></table></figure>
+
+<p>将 <code>X</code> 替换为您想要添加到逻辑卷的空间大小（以 GB 为单位）。例如，如果您想要扩展 10GB，请使用 <code>sudo lvextend -L +10G /dev/mapper/ubuntu--vg-ubuntu--lv</code>。</p>
+</li>
+<li><p>接下来，调整文件系统以使用新的空间。如果您使用的是 <code>ext4</code> 文件系统，请执行以下命令：</p>
+<p>bash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>确认更改是否成功，再次运行 <code>df -h</code> 命令。您应该看到 <code>/dev/mapper/ubuntu--vg-ubuntu--lv</code> 逻辑卷的可用空间已经增加。</p>
+</li>
+</ol>
+<p>如果在物理卷中没有足够的空间，您需要先扩展物理卷。这可能涉及到扩展 VM 磁盘、创建新分区并将其添加到现有卷组，或者向卷组中添加新磁盘。具体操作取决于您的系统配置和可用资源。</p>
+<p>1 &#x2F; 1</p>
+<blockquote>
+<p>Free PE写的3584</p>
+<p>1 &#x2F; 1</p>
+</blockquote>
+<p>根据您提供的信息，您的物理卷中有 3584 个空闲物理扩展（PE）。默认情况下，每个物理扩展的大小为 4 MiB。这意味着您有足够的空间来扩展逻辑卷。</p>
+<p>首先，计算可用空间的总大小（以 GB 为单位）：</p>
+<p>yaml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3584 </span><span class="string">PE</span> <span class="string">*</span> <span class="number">4</span> <span class="string">MiB/PE</span> <span class="string">=</span> <span class="number">14336</span> <span class="string">MiB</span></span><br></pre></td></tr></table></figure>
+
+<p>将 MiB 转换为 GB：</p>
+<p>yaml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">14336</span> <span class="string">MiB</span> <span class="string">/</span> <span class="number">1024</span> <span class="string">=</span> <span class="number">14</span> <span class="string">GB</span></span><br></pre></td></tr></table></figure>
+
+<p>现在您可以使用以下命令扩展逻辑卷。将 <code>X</code> 替换为您想要添加到逻辑卷的空间大小（以 GB 为单位），不要超过 14 GB：</p>
+<p>bash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo lvextend -L +XG /dev/mapper/ubuntu--vg-ubuntu--lv</span><br></pre></td></tr></table></figure>
+
+<p>例如，如果您想要扩展 10GB，请使用 <code>sudo lvextend -L +10G /dev/mapper/ubuntu--vg-ubuntu--lv</code>。</p>
+<p>然后，调整文件系统以使用新的空间。如果您使用的是 <code>ext4</code> 文件系统，请执行以下命令：</p>
+<p>bash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv</span><br></pre></td></tr></table></figure>
+
+<p>最后，运行 <code>df -h</code> 命令以确认逻辑卷的可用空间已经增加。</p>
+<p>1 &#x2F; 1</p>
+<blockquote>
+<p>是这样的，我下载了vmwareworkstation，创建了一个虚拟机，分配了30G,现在需要从本地上传一个大文件数据,空间不够了，我给他扩展以后,但是&#x2F;usr&#x2F;Local&#x2F;hadoop挂载到的磁盘空间还是没有改变，我该如何操作</p>
+<p>1 &#x2F; 1</p>
+</blockquote>
+<p>了解您的情况，您需要扩展虚拟机中的磁盘空间，然后扩展文件系统。以下是一步步指导：</p>
+<ol>
+<li><p>首先，确保虚拟机已关闭。</p>
+</li>
+<li><p>在 VMware Workstation 中，选择您的虚拟机，然后点击 “Edit virtual machine settings”。</p>
+</li>
+<li><p>选择 “Hard Disk”，然后点击 “Expand”。输入您希望将磁盘扩展到的新大小，然后点击 “Expand”。</p>
+</li>
+<li><p>现在启动虚拟机。</p>
+</li>
+</ol>
+<p>接下来，您需要在虚拟机内部调整分区和文件系统。因为您的系统使用了 LVM，所以需要执行以下步骤：</p>
+<ol>
+<li><p>首先，使用以下命令查看当前磁盘分区情况：</p>
+<p><code>sudo fdisk -l</code></p>
+<p>找到您扩展的磁盘设备，它可能类似于 <code>/dev/sda</code>。</p>
+</li>
+<li><p>使用 <code>parted</code> 工具创建一个新的分区：</p>
+<p>bash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo parted /dev/sda</span><br></pre></td></tr></table></figure>
+
+<p>在 <code>parted</code> 提示符下，使用以下命令查看分区：</p>
+<p>arduino</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print</span><br></pre></td></tr></table></figure>
+
+<p>注意最后一个分区的结束位置。</p>
+</li>
+<li><p>创建一个新分区，从最后一个分区结束的位置开始，到磁盘末尾：</p>
+<p>php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkpart primary &lt;last_partition_end&gt; <span class="number">100</span>%</span><br></pre></td></tr></table></figure>
+
+<p>然后输入 <code>quit</code> 退出 <code>parted</code>。</p>
+</li>
+<li><p>使用以下命令查看新创建的分区：</p>
+<p><code>sudo fdisk -l</code></p>
+<p>新分区可能类似于 <code>/dev/sdaX</code>，其中 <code>X</code> 是分区编号。</p>
+</li>
+<li><p>创建一个新的物理卷：</p>
+<p>bash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pvcreate /dev/sdaX</span><br></pre></td></tr></table></figure>
+
+<p>将 <code>X</code> 替换为新分区的编号。</p>
+</li>
+<li><p>使用以下命令将新的物理卷扩展到现有的卷组（在您的情况下是 <code>ubuntu-vg</code>）：</p>
+<p>bash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vgextend ubuntu-vg /dev/sdaX</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>现在，您可以按照之前的回答中的步骤扩展逻辑卷（<code>/dev/mapper/ubuntu--vg-ubuntu--lv</code>）并调整文件系统。</p>
+</li>
+<li><p>确认更改是否成功，再次运行 <code>df -h</code> 命令。您应该看到 <code>/usr/local/hadoop</code> 的可用空间已经增加。</p>
+</li>
+</ol>
+<p>请注意，这些命令可能会因您的操作系统和文件系统而异。这些步骤适用于基于 Debian 的操作系统，如 Ubuntu。</p>
+<p>1 &#x2F; 1</p>
+<blockquote>
+<p>等下，逻辑卷，物理卷、分区、卷组这一堆概念我不懂，sda啥的都是啥，能不能从头到尾给我讲一遍，结合着实际操作详细说一下，麻烦了</p>
+<p>1 &#x2F; 1</p>
+</blockquote>
+<p>当然可以。首先让我们了解一下 LVM（逻辑卷管理器）相关的概念：</p>
+<ol>
+<li><p><strong>物理卷（Physical Volume，PV）</strong>：物理卷是指磁盘上的一个分区或整个磁盘。在使用 LVM 时，物理卷是构建其他 LVM 结构的基本构建块。</p>
+</li>
+<li><p><strong>卷组（Volume Group，VG）</strong>：卷组是一种组织物理卷的方法。一个卷组可以包含一个或多个物理卷。卷组允许您把多个磁盘或分区合并到一个逻辑磁盘池中。</p>
+</li>
+<li><p><strong>逻辑卷（Logical Volume，LV）</strong>：逻辑卷是从卷组中分配的存储空间。逻辑卷可以被视为一个独立的分区，您可以在其上创建文件系统。逻辑卷的优点是它们可以动态调整大小，并且可以跨越多个物理磁盘。</p>
+</li>
+<li><p><code>/dev/sda</code> 是 Linux 系统中磁盘设备的表示方法。其中，<code>sd</code> 代表 SCSI 磁盘设备，<code>a</code> 表示第一个磁盘。<code>/dev/sda1</code>、<code>/dev/sda2</code> 等表示该磁盘上的分区。</p>
+</li>
+</ol>
+<p>现在我们从头开始操作：</p>
+<ol>
+<li><p>首先，确保虚拟机已关闭。</p>
+</li>
+<li><p>在 VMware Workstation 中，选择您的虚拟机，然后点击 “Edit virtual machine settings”。</p>
+</li>
+<li><p>选择 “Hard Disk”，然后点击 “Expand”。输入您希望将磁盘扩展到的新大小，然后点击 “Expand”。</p>
+</li>
+<li><p>现在启动虚拟机。</p>
+</li>
+</ol>
+<p>接下来，您需要在虚拟机内部调整分区和文件系统。因为您的系统使用了 LVM，所以需要执行以下步骤：</p>
+<ol>
+<li><p>首先，使用以下命令查看当前磁盘分区情况：</p>
+<p><code>sudo fdisk -l</code></p>
+<p>找到您扩展的磁盘设备，它可能类似于 <code>/dev/sda</code>。</p>
+</li>
+<li><p>使用 <code>parted</code> 工具创建一个新的分区：</p>
+<p>bash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo parted /dev/sda</span><br></pre></td></tr></table></figure>
+
+<p>在 <code>parted</code> 提示符下，使用以下命令查看分区：</p>
+<p>arduino</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print</span><br></pre></td></tr></table></figure>
+
+<p>注意最后一个分区的结束位置。</p>
+</li>
+<li><p>创建一个新分区，从最后一个分区结束的位置开始，到磁盘末尾：</p>
+<p>php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkpart primary &lt;last_partition_end&gt; <span class="number">100</span>%</span><br></pre></td></tr></table></figure>
+
+<p>然后输入 <code>quit</code> 退出 <code>parted</code>。</p>
+</li>
+<li><p>使用以下命令查看新创建的分区：</p>
+<p><code>sudo fdisk -l</code></p>
+<p>新分区可能类似于 <code>/dev/sdaX</code>，其中 <code>X</code> 是分</p>
+</li>
+</ol>
+<p>1 &#x2F; 1</p>
+<blockquote>
+<p>继续</p>
+<p>1 &#x2F; 1</p>
+</blockquote>
+<p>区编号。</p>
+<ol start="5">
+<li><p>创建一个新的物理卷：</p>
+<p>bash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pvcreate /dev/sdaX</span><br></pre></td></tr></table></figure>
+
+<p>将 <code>X</code> 替换为新分区的编号。</p>
+</li>
+<li><p>使用以下命令将新的物理卷扩展到现有的卷组（在您的情况下是 <code>ubuntu-vg</code>）：</p>
+<p>bash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vgextend ubuntu-vg /dev/sdaX</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>现在，您可以按照之前的回答中的步骤扩展逻辑卷（<code>/dev/mapper/ubuntu--vg-ubuntu--lv</code>）并调整文件系统。</p>
+<p>bash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo lvextend -L +XG /dev/mapper/ubuntu--vg-ubuntu--lv</span><br><span class="line">sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv</span><br></pre></td></tr></table></figure>
+
+<p>将 <code>X</code> 替换为您想要添加到逻辑卷的空间大小（以 GB 为单位）。</p>
+</li>
+<li><p>确认更改是否成功，再次运行 <code>df -h</code> 命令。您应该看到 <code>/usr/local/hadoop</code> 的可用空间已经增加。</p>
+</li>
+</ol>
+<p>请注意，这些命令可能会因您的操作系统和文件系统而异。这些步骤适用于基于 Debian 的操作系统，如 Ubuntu。现在您已经扩展了虚拟机的磁盘空间，并在 LVM 中调整了分区和文件系统。您应该有足够的空间来上传所需的大文件数据。</p>
+<p>1 &#x2F; 1    &#96;&#96;&#96;</p>
+<pre><code>在 `parted` 提示符下，使用以下命令查看分区：
+
+arduino
+
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print</span><br></pre></td></tr></table></figure>
+
+注意最后一个分区的结束位置。
+</code></pre>
+<ol start="3">
+<li><p>创建一个新分区，从最后一个分区结束的位置开始，到磁盘末尾：</p>
+<p>php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkpart primary &lt;last_partition_end&gt; <span class="number">100</span>%</span><br></pre></td></tr></table></figure>
+
+<p>然后输入 <code>quit</code> 退出 <code>parted</code>。</p>
+</li>
+<li><p>使用以下命令查看新创建的分区：</p>
+<p><code>sudo fdisk -l</code></p>
+<p>新分区可能类似于 <code>/dev/sdaX</code>，其中 <code>X</code> 是分区编号。</p>
+</li>
+<li><p>创建一个新的物理卷：</p>
+<p>bash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pvcreate /dev/sdaX</span><br></pre></td></tr></table></figure>
+
+<p>将 <code>X</code> 替换为新分区的编号。</p>
+</li>
+<li><p>使用以下命令将新的物理卷扩展到现有的卷组（在您的情况下是 <code>ubuntu-vg</code>）：</p>
+<p>bash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vgextend ubuntu-vg /dev/sdaX</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>现在，您可以按照之前的回答中的步骤扩展逻辑卷（<code>/dev/mapper/ubuntu--vg-ubuntu--lv</code>）并调整文件系统。</p>
+</li>
+<li><p>确认更改是否成功，再次运行 <code>df -h</code> 命令。您应该看到 <code>/usr/local/hadoop</code> 的可用空间已经增加。</p>
+</li>
+</ol>
+<p>请注意，这些命令可能会因您的操作系统和文件系统而异。这些步骤适用于基于 Debian 的操作系统，如 Ubuntu。</p>
+<p>1 &#x2F; 1</p>
+<blockquote>
+<p>等下，逻辑卷，物理卷、分区、卷组这一堆概念我不懂，sda啥的都是啥，能不能从头到尾给我讲一遍，结合着实际操作详细说一下，麻烦了</p>
+<p>1 &#x2F; 1</p>
+</blockquote>
+<p>当然可以。首先让我们了解一下 LVM（逻辑卷管理器）相关的概念：</p>
+<ol>
+<li><p><strong>物理卷（Physical Volume，PV）</strong>：物理卷是指磁盘上的一个分区或整个磁盘。在使用 LVM 时，物理卷是构建其他 LVM 结构的基本构建块。</p>
+</li>
+<li><p><strong>卷组（Volume Group，VG）</strong>：卷组是一种组织物理卷的方法。一个卷组可以包含一个或多个物理卷。卷组允许您把多个磁盘或分区合并到一个逻辑磁盘池中。</p>
+</li>
+<li><p><strong>逻辑卷（Logical Volume，LV）</strong>：逻辑卷是从卷组中分配的存储空间。逻辑卷可以被视为一个独立的分区，您可以在其上创建文件系统。逻辑卷的优点是它们可以动态调整大小，并且可以跨越多个物理磁盘。</p>
+</li>
+<li><p><code>/dev/sda</code> 是 Linux 系统中磁盘设备的表示方法。其中，<code>sd</code> 代表 SCSI 磁盘设备，<code>a</code> 表示第一个磁盘。<code>/dev/sda1</code>、<code>/dev/sda2</code> 等表示该磁盘上的分区。</p>
+</li>
+</ol>
+<p>现在我们从头开始操作：</p>
+<ol>
+<li><p>首先，确保虚拟机已关闭。</p>
+</li>
+<li><p>在 VMware Workstation 中，选择您的虚拟机，然后点击 “Edit virtual machine settings”。</p>
+</li>
+<li><p>选择 “Hard Disk”，然后点击 “Expand”。输入您希望将磁盘扩展到的新大小，然后点击 “Expand”。</p>
+</li>
+<li><p>现在启动虚拟机。</p>
+</li>
+</ol>
+<p>接下来，您需要在虚拟机内部调整分区和文件系统。因为您的系统使用了 LVM，所以需要执行以下步骤：</p>
+<ol>
+<li><p>首先，使用以下命令查看当前磁盘分区情况：</p>
+<p><code>sudo fdisk -l</code></p>
+<p>找到您扩展的磁盘设备，它可能类似于 <code>/dev/sda</code>。</p>
+</li>
+<li><p>使用 <code>parted</code> 工具创建一个新的分区：</p>
+<p>bash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo parted /dev/sda</span><br></pre></td></tr></table></figure>
+
+<p>在 <code>parted</code> 提示符下，使用以下命令查看分区：</p>
+<p>arduino</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print</span><br></pre></td></tr></table></figure>
+
+<p>注意最后一个分区的结束位置。</p>
+</li>
+<li><p>创建一个新分区，从最后一个分区结束的位置开始，到磁盘末尾：</p>
+<p>php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkpart primary &lt;last_partition_end&gt; <span class="number">100</span>%</span><br></pre></td></tr></table></figure>
+
+<p>然后输入 <code>quit</code> 退出 <code>parted</code>。</p>
+</li>
+<li><p>使用以下命令查看新创建的分区：</p>
+<p><code>sudo fdisk -l</code></p>
+<p>新分区可能类似于 <code>/dev/sdaX</code>，其中 <code>X</code> 是分</p>
+</li>
+</ol>
+<p>1 &#x2F; 1</p>
+<blockquote>
+<p>继续</p>
+<p>1 &#x2F; 1</p>
+</blockquote>
+<p>区编号。</p>
+<ol start="5">
+<li><p>创建一个新的物理卷：</p>
+<p>bash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pvcreate /dev/sdaX</span><br></pre></td></tr></table></figure>
+
+<p>将 <code>X</code> 替换为新分区的编号。</p>
+</li>
+<li><p>使用以下命令将新的物理卷扩展到现有的卷组（在您的情况下是 <code>ubuntu-vg</code>）：</p>
+<p>bash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vgextend ubuntu-vg /dev/sdaX</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>现在，您可以按照之前的回答中的步骤扩展逻辑卷（<code>/dev/mapper/ubuntu--vg-ubuntu--lv</code>）并调整文件系统。</p>
+<p>bash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo lvextend -L +XG /dev/mapper/ubuntu--vg-ubuntu--lv</span><br><span class="line">sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv</span><br></pre></td></tr></table></figure>
+
+<p>将 <code>X</code> 替换为您想要添加到逻辑卷的空间大小（以 GB 为单位）。</p>
+</li>
+<li><p>确认更改是否成功，再次运行 <code>df -h</code> 命令。您应该看到 <code>/usr/local/hadoop</code> 的可用空间已经增加。</p>
+</li>
+</ol>
+<p>请注意，这些命令可能会因您的操作系统和文件系统而异。这些步骤适用于基于 Debian 的操作系统，如 Ubuntu。现在您已经扩展了虚拟机的磁盘空间，并在 LVM 中调整了分区和文件系统。您应该有足够的空间来上传所需的大文件数据。</p>
+<p>1 &#x2F; 1</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://mainkeys.github.io">mainkeys</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://mainkeys.github.io/2023/04/25/%E6%89%A9%E5%B1%95%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4/">https://mainkeys.github.io/2023/04/25/%E6%89%A9%E5%B1%95%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a><a class="post-meta__tags" href="/tags/chatGPT/">chatGPT</a><a class="post-meta__tags" href="/tags/%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA/">磁盘分区</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/09/06/ZHL2mdtG9U1jCE5.jpg" data-sites="qq,wechat,qzone,weibo,twitter,facebook,douban,google"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/04/25/%E9%87%8D%E5%AE%9A%E5%90%91%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6/" title="重定向输出文件"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous</div><div class="prev_info">重定向输出文件</div></div></a></div><div class="next-post pull-right"><a href="/2023/04/13/Linux%E5%85%89%E6%A0%87%E6%B6%88%E5%A4%B1/" title="Linux光标消失"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next</div><div class="next_info">Linux光标消失</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2023/04/25/%E9%87%8D%E5%AE%9A%E5%90%91%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6/" title="重定向输出文件"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023年04月25日</div><div class="title">重定向输出文件</div></div></a></div><div><a href="/2023/05/26/Regular_Expression/" title="regular_Expression"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023年05月26日</div><div class="title">regular_Expression</div></div></a></div><div><a href="/2023/04/13/Linux%E5%85%89%E6%A0%87%E6%B6%88%E5%A4%B1/" title="Linux光标消失"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023年04月13日</div><div class="title">Linux光标消失</div></div></a></div><div><a href="/2023/02/03/valheim-server/" title="腾讯云轻量级服务器Valheim英灵神殿服务器搭建"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023年02月03日</div><div class="title">腾讯云轻量级服务器Valheim英灵神殿服务器搭建</div></div></a></div><div><a href="/2023/05/14/Spark/" title="Spark"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023年05月14日</div><div class="title">Spark</div></div></a></div><div><a href="/2023/05/03/graduation-project/" title="chatGPT——python数据处理"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023年05月03日</div><div class="title">chatGPT——python数据处理</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/09/06/ZHL2mdtG9U1jCE5.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">mainkeys</div><div class="author-info__description">love && share 分享记录</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">34</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/mainkeys"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/mainkeys" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/16/js-api/" title="js_api">js_api</a><time datetime="2023-08-16T11:29:01.000Z" title="Created 2023年08月16日 19:29:01">2023年08月16日</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/26/Regular_Expression/" title="regular_Expression">regular_Expression</a><time datetime="2023-05-26T03:13:54.000Z" title="Created 2023年05月26日 11:13:54">2023年05月26日</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/14/Spark/" title="Spark">Spark</a><time datetime="2023-05-14T08:49:33.000Z" title="Created 2023年05月14日 16:49:33">2023年05月14日</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/03/graduation-project/" title="chatGPT——python数据处理">chatGPT——python数据处理</a><time datetime="2023-05-03T10:52:56.000Z" title="Created 2023年05月03日 18:52:56">2023年05月03日</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/02/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8SSL%E5%8A%A0%E5%AF%86%E4%B8%8ESQL-server%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5/" title="数据库无法使用SSL加密与SQL_server建立连接">数据库无法使用SSL加密与SQL_server建立连接</a><time datetime="2023-05-02T15:01:04.000Z" title="Created 2023年05月02日 23:01:04">2023年05月02日</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By mainkeys</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div></body></html>
