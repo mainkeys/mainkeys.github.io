@@ -32,7 +32,7 @@ jobs:
       - name: Build
         run: npm run build
       - name: Upload Pages artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           path: ./doc
   deploy:
@@ -40,7 +40,6 @@ jobs:
     permissions:
       pages: write
       id-token: write
-      actions: read
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -49,3 +48,7 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
+        with:
+          branch: main
+          folder: doc
+          token: ${{ secrets.GITHUB_TOKEN }}
