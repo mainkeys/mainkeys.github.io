@@ -1,6 +1,6 @@
 ---
 layout: posts
-title: edge_shortcuts
+title: edge浏览器快捷键
 date: 2023-01-20 16:32:16
 tags: [edge]
 ---

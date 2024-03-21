@@ -39,18 +39,18 @@ CPU：AMD Ryzen 7 5800X3D 8-Core Processor  3.40 GHz
 3、下载 Stable-Diffusion-webui [【链接地址】](https://github.com/AUTOMATIC1111/stable-diffusion-webui)  Github开源项目并解压
 
 * （可选）[中文语言包](https://github.com/VinsonLaro/stable-diffusion-webui-chinese)
-  ![](https://img-blog.csdnimg.cn/bcbc3fc3b3e846a9a06134ae6df8e6e2.png)
+  ![](.\1.png)
 
 4、 进入目录找到`webui-user.bat`右键打开编辑，设置python路径，将刚安好的python路径写上去
-![在这里插入图片描述](https://img-blog.csdnimg.cn/00c5bb1614ae42908ee791ba48341089.png)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/3be2961a9cd1451c8b9164d266863cd4.png)
+![](.\2.png)
+![](.\3.png)
 5、首先，如果实在国内是无法正常安装程序的，需要通过一些手段（可以魔法＋全局，但我这里尝试失败了）才能进行下载，这里提供一些方法以供参考
 我们可以看到`webui-user.bat`里面调用的是`webui.bat` 我们打开`webui.bat`可以看到其实最后用python打开了`launch.py`这个程序，然后通过`pip`和`git`指令安装了一堆所需文件
 ，所以解决方法就是针对其进行一些设置比如说采用国内镜像手段可以解决大部分问题
 
 6、我们打开`launch.py`进行修改，可以通过记事本也可以通过各类IDE，ctrl+f查找出所有`github.com`并替换为国内镜像`kgithub.com`如果此镜像挂了，可以替换为其他镜像，同样也可以供github代理进行加速，具体参考[githubproxy官网](https://ghproxy.com/)（实际上在地址前面加上一个`https://ghproxy.com/`）就可以了
 
-![](https://img-blog.csdnimg.cn/1c6a9f522c734d13bd4390e33f61b698.png)
+![](.\4/png)
 7、设置完双击运行`webui-user.bat`等待下载，一般会在gfpgan、Clip、open_clip的下载卡一会，在下载官方自带的模型包卡一会（文件很大，要下很久），最后是这个样子的，此时命令行窗口在运行的时候不能关闭。
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/bc8d1a7a53384151aa522acf71eb6f00.png)
 8、这时候打开浏览器照着提示输入网址`http://127.0.0.1:7860`就可以进入stable-diffusion-webui界面了

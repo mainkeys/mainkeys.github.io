@@ -9,10 +9,10 @@ categories: python
 
 ####  1. （A,B,C）——> (A,B)
 `X_New = X[ :，:，0]`
-![](https://img-blog.csdnimg.cn/ae56b4cd0b584ca49e4a06e85b9a37b4.png)
-![](https://img-blog.csdnimg.cn/b00e48bd7b984c839bf058b0372a876e.png)
-![](https://img-blog.csdnimg.cn/c39d960bc4964bc78cc29113f6a010fc.png)
-![](https://img-blog.csdnimg.cn/33bafaca76554d7cb23209b901460665.png)
+![](.\1.png)
+![](.\2.png)
+![](.\3.png)
+![](.\4.png)
 
 
 

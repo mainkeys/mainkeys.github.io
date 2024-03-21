@@ -1,5 +1,5 @@
 ---
-title: chatGPT——python数据处理
+title: chatGPT——python数据处理对话实例
 date: 2023-05-03 18:52:56
 tags: ['chatGPT']
 ---
@@ -8,7 +8,7 @@ Model: GPT-4
 
 1 / 1
 
-> df.plot如何设置画布大小，然后如何将横坐标的数据显示完整而不是5年一个刻度
+> df.plot如何设置画布大小，如何将横坐标的数据显示完整而不是5年一个刻度
 > 
 > 1 / 1
 
@@ -46,7 +46,7 @@ plt.show()
 
 1 / 1
 
-> pd.plot()的所有参数
+> pd.plot()的所有参数，请你列举一下
 > 
 > 1 / 1
 
@@ -119,7 +119,7 @@ DataFrame.plot(
 
 1 / 1
 
-> 我在jupyternootbook里画的画出来的图像质量不清晰啊，然后画布大小也没有改变
+> 我在jupyternootbook里画的画出来的图像质量不清晰，并且画布大小也没有改变
 > 
 > 1 / 1
 
@@ -152,7 +152,7 @@ plt.show()
 
 1 / 1
 
-> 我是用这段代码画图import matplotlib.pyplot as plt import pandas as pd import numpy as np import matplotlib as mpl from matplotlib import colors # 设置图像格式为矢量图像 %config InlineBackend.figure\_format = 'svg' df = pd.read\_csv('./data/Power\_Capacity\_Generation/Asia.csv',skiprows=2) #print(df) tech = df.loc\[:, "Technology"\] df = df.T\[2:\] xticks=range(2000, 2023) df.columns = tech ax=df.plot(figsize=(12, 6)) plt.show() df，现在画出来的图横坐标刻度为5就是显示的是2000 2005 2010 2015 2020，我想让他横坐标为1
+> 我是用这段代码画图import matplotlib.pyplot as plt import pandas as pd import numpy as np import matplotlib as mpl from matplotlib import colors # 设置图像格式为矢量图像 %config InlineBackend.figure\_format = 'svg' df = pd.read\_csv('./data/Power\_Capacity\_Generation/Asia.csv',skiprows=2) #print(df) tech = df.loc\[:, "Technology"\] df = df.T\[2:\] xticks=range(2000, 2023) df.columns = tech ax=df.plot(figsize=(12, 6)) plt.show() df，现在画出来的图横坐标刻度为5就是显示的是2000 2005 2010 2015 2020，我想让他横坐标刻度间隔为1，怎么设置
 > 
 > 1 / 1
 
@@ -618,7 +618,7 @@ plt.show()
 
 1 / 1
 
-> 好像在画每个分图的时候有点不对，比如横纵坐标消失啥的，你帮我从这个基础上重新改改，要画出几个area的对比效果import matplotlib.pyplot as plt import pandas as pd import numpy as np import matplotlib as mpl from matplotlib import colors # 设置图像格式为矢量图像 %config InlineBackend.figure\_format = 'svg' area = \['world','N\_America','Europe','Australia','Africa','Asia','China'\] df = pd.read\_csv('./data/Power\_Capacity\_Generation/Asia.csv', skiprows=2) #print(df) tech = df.loc\[:, "Technology"\] df = df.T\[2:\] df.columns = tech # 将索引设置为年份 df.index = df.index.astype(int) #删除不需要的数据 df = df.drop(columns=\['Total renewable energy','Hydropower', 'Pumped storage', 'Onshore wind energy','Offshore wind energy', 'Solar photovoltaic', 'Concentrated solar power', 'Solid biofuels', 'Bagasse', 'Renewable municipal waste', 'Other solid biofuels', 'Liquid biofuels', 'Biogas'\]) # 创建一个空的画布 fig, ax = plt.subplots(figsize=(12, 6)) # 分别绘制每条折线 for col in df.columns: if col == 'Wind': df\[col\].plot(ax=ax, linewidth=3,linestyle='--', marker='o', markersize=4, label=col) # 为 Wind energy 折线设置较粗的线宽 else: df\[col\].plot(ax=ax, label=col) # 设置横坐标刻度 xticks = range(2000, 2023) ax.set\_xticks(xticks) # 设置横坐标标签并顺时针旋转30度 ax.set\_xticklabels(xticks, rotation=-30) # 添加网格线 ax.grid(color='grey', linestyle='--') # 显示图例 ax.legend() plt.show()
+> 好像在画每个分图的时候有点不对，比如横纵坐标消失之类的问题哦，你帮我从这以下代码的基础上重新改改，要画出几个area的对比效果import matplotlib.pyplot as plt import pandas as pd import numpy as np import matplotlib as mpl from matplotlib import colors # 设置图像格式为矢量图像 %config InlineBackend.figure\_format = 'svg' area = \['world','N\_America','Europe','Australia','Africa','Asia','China'\] df = pd.read\_csv('./data/Power\_Capacity\_Generation/Asia.csv', skiprows=2) #print(df) tech = df.loc\[:, "Technology"\] df = df.T\[2:\] df.columns = tech # 将索引设置为年份 df.index = df.index.astype(int) #删除不需要的数据 df = df.drop(columns=\['Total renewable energy','Hydropower', 'Pumped storage', 'Onshore wind energy','Offshore wind energy', 'Solar photovoltaic', 'Concentrated solar power', 'Solid biofuels', 'Bagasse', 'Renewable municipal waste', 'Other solid biofuels', 'Liquid biofuels', 'Biogas'\]) # 创建一个空的画布 fig, ax = plt.subplots(figsize=(12, 6)) # 分别绘制每条折线 for col in df.columns: if col == 'Wind': df\[col\].plot(ax=ax, linewidth=3,linestyle='--', marker='o', markersize=4, label=col) # 为 Wind energy 折线设置较粗的线宽 else: df\[col\].plot(ax=ax, label=col) # 设置横坐标刻度 xticks = range(2000, 2023) ax.set\_xticks(xticks) # 设置横坐标标签并顺时针旋转30度 ax.set\_xticklabels(xticks, rotation=-30) # 添加网格线 ax.grid(color='grey', linestyle='--') # 显示图例 ax.legend() plt.show()
 > 
 > 1 / 1
 
