@@ -6,7 +6,7 @@ tags: ['js', '前端']
 
 
 **_这篇文章可能较长，因为想要讲清楚JS原型和原型链，不得不讲讲原型和原型链产生的历史因素，他们到底是为什么而设计出来的？如果你希望对原型和原型链有比较深刻理解而不是每一次看完一篇文章下次遇到又忘了的话，请耐心一些听我细细道来。_** *文章中历史因素部分大多来源阮大神的博客*
-### 历史因素
+# 历史因素
 JS诞生之初，是因为网景公司需要一种脚本语言，使得用户可以与网页互动。1994年当时最新发布的浏览器Navigator0.9只能用来浏览，不能用来交互，那么到底采用什么语言呢，当时网景公司有两个选择，一个是采用现有的语言，比如Perl、Python、Tcl、Scheme等等，允许它们直接嵌入网页；另一个是发明一种全新的语言。就在这时，1995年，Sun公司将Oak语言改名为Java，正式向市场推出。Sun公司大肆宣传，许诺这种语言可以"一次编写，到处运行"（Write Once, Run Anywhere），它看上去很可能成为未来的主宰。
 
 网景公司决定与SUN公司结盟，它不仅允许Java程序以applet（小程序）的形式，直接在浏览器中运行；甚至还考虑直接将Java作为脚本语言嵌入网页，只是因为这样会使HTML网页过于复杂，后来才不得不放弃。
@@ -29,9 +29,9 @@ Brendan Eich被指定为这种"简化版Java语言"的设计师。
 
 所以，**Javascript语言实际上是两种语言风格的混合产物----（简化的）函数式编程+（简化的）面向对象编程**。这是由Brendan Eich（函数式编程）与网景公司（面向对象编程）共同决定的。
 
-### Javascript继承机制的设计思想
+# Javascript继承机制的设计思想
 
-##### 一、面向对象思想
+### 一、面向对象思想
 
 当时C++是最流行的语言，而Java刚刚诞生，他们都是面向对象编程(OOP)语言，熟知面向对象的人都知道，面向对象的三个基本特征：`封装、继承、多态`。Brendan Eich无疑受到了影响，Javascript里面所有的所有数据类型都是对象，或者说能当作对象使用更为准确（除了null和undefinded），这一点与Java非常相似。但是，他随即就遇到了一个难题，到底要不要设计"继承"机制呢？
 
@@ -78,7 +78,7 @@ var g1 = new Girl('小丽');
 var g2 = new Girl('Alice');
 ```
 这两个对象的gender属性是独立的，修改其中一个，不会影响到另一个，这样不仅不能实现数据的共享，每个实例都会创建自己的属性和方法副本，会造成内存空间的浪费。
-##### 二、prototype属性的引入
+### 二、prototype属性的引入
 考虑到这一点，Brendan Eich决定为构造函数设置一个prototype属性。这个属性是一个对象，所有的共享属性和方法，都放在这个对象里面，不需要共享的属性和方法，就放在构造函数里，类似于C++和Java类中的三种访问修饰符`public private protected`只不过JS的prototype设计很简单。
 实例对象一旦创建，将自动引用prototype对象的属性和方法。也就是说，实例对象的属性和方法，分成两种，一种是私有(private)的，另一种是共有(public)的。
 还是以Girl构造函数为例，现在用prototype属性进行改写：
@@ -92,7 +92,7 @@ Girl.prototype = {
 }
 ```
 现在，gender属性放在prototype对象里，是两个实例对象共享的。只要修改了prototype对象，就会同时影响到两个实例对象。
-##### 三、\_\_proto\_\_(前后各双下划线)是啥
+### 三、\_\_proto\_\_(前后各双下划线)是啥
 我们先看一个例子：
 
 
@@ -122,7 +122,7 @@ person2.sayHello(); // 输出：Hello, my name is Bob
 需要注意的是，`__proto__`是非标准的属性，尽管大多数浏览器都支持这个属性，但它不属于Javascript规范的一部分。该属性没有写入 ES6 的正文，而是写入了附录，`__proto__`前后的双下划线，说明它本质上是一个内部属性，而不是一个正式的对外的 API，只是由于浏览器广泛支持，才被加入了 ES6。标准明确规定，只有浏览器必须部署这个属性，其他运行环境不一定需要部署，而且新的代码最好认为这个属性是不存在的。因此，无论从语义的角度，还是从兼容性的角度，都不要使用这个属性，而是使用`Object.setPrototypeOf()`（写操作）、`Object.getPrototypeOf()`（读操作）、`Object.create()`（生成操作）代替。
 > 所以说用一句话来概括__proto__：**__proto__指向了生成该对象的构造函数的原型对象(prototype)**
 
-##### 四、 原型链
+### 四、 原型链
 那么\_\_proto__和我们以上例子中person1和person2能访问到sayHello有什么关系呢
 > **When accessing the properties of an object, JavaScript will traverse the prototype chain upwards until it finds a property with the requested name.** *- JavaScript Garden*
 > **当查找一个对象的属性时，JavaScript 会向上遍历原型链，直到找到给定名称的属性为止。** *- JavaScript 秘密花园*
@@ -159,7 +159,7 @@ JavaScript 遵循原型继承的设计原则，即通过原型链来实现对象
 为了防止原型链的无限循环，JavaScript 在原型链的终点 Object.prototype 上设置了 `__proto__` 属性为 null。
 
 
-##### 五、new操作符到底干了啥
+### 五、new操作符到底干了啥
 结合着本文的第三、四点，new操作干了什么事就大概清楚了，
 总的来说，通过new创建对象可以细分为以下5步：
 - 1.创建一个空的对象。 {}
@@ -197,7 +197,7 @@ p2.print(); // 10 20
 console.log(p2 instanceof Point); // true
 ```
 
-#####  六、Object.create(obj)
+###  六、Object.create(obj)
 Javascript 规范只为我们提供了`new`操作符。然而，Douglas Crockford（JSON创建者、Javascript宗师）找到了利用`new`操作符实现真正的原型继承的方法(无需使用构造函数和new运算符)！他编写了 `Object.create` 函数。
 ```javascript
 Object.create = function (parent) {
