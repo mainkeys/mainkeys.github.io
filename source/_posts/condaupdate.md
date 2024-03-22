@@ -6,13 +6,13 @@ categories: 深度学习
 ---
 
 遇到Anaconda报错
-![=](https://img-blog.csdnimg.cn/db7ffaf3c1c94f1c8a70d0f57a2b51db.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./1.png)
 迟迟没想到是清华镜像源的问题，输入
 ```cmd
 conda config --show 
 ```
 查看channels，看到之前加入的清华镜像源
-![=](https://img-blog.csdnimg.cn/6729b3cdab564e548d5217d7eef5a03c.png?=-=process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![=](./2.png)
 ```cmd
 conda config --remove channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
 
@@ -25,16 +25,16 @@ conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/free/
 conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/main/
 ```
 
-![](https://img-blog.csdnimg.cn/df117d7408c94aeba22cffc0f9f9ec02.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./3.png)
 
 之后再进行conda更新
 ```cmd
 conda update conda
 ```
-![](https://img-blog.csdnimg.cn/f3e0d71d122e4bbcb5370d9369d21398.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
-![](https://img-blog.csdnimg.cn/f303228888594b3a9bbb2a9575d5c215.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./4.png)
+![](./5.png)
 之前所有遇到的问题包括pip命令全部解决了。
-![](https://img-blog.csdnimg.cn/a5dbab03e8404a37866a2d92207bc576.png)
+![](./6.png)
 
 
 

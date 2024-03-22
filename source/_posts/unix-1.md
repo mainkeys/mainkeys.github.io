@@ -19,7 +19,7 @@ categories: 笔记
 
 --- 
 
-![](https://img-blog.csdnimg.cn/8b30500059c249a4843d11edf7393a39.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./1.png)
 ### vi编辑器
 vi三种模式
 - 命令行方式：用户进入vi后的初始方式。
@@ -38,28 +38,28 @@ vi三种模式
 - a	在当前光标所在位置之后插入随后输入的文本
 - A	相当于光标移动到行尾再执行a命令
 - x 删除当前光标所在处的字符。
-![](https://img-blog.csdnimg.cn/594bed31d67c4b0db4a7d75921f2de71.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
-![](https://img-blog.csdnimg.cn/d9cd5d19d32a428cb4e575efd0ade5b4.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./2.png)
+![](./3.png)
 
-![](https://img-blog.csdnimg.cn/ee4907a554f44c50b101320bbecb2142.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./4.png)
 
 
-![](https://img-blog.csdnimg.cn/18a05b612e5c4ffb80fabdaab06ea48f.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
-![](https://img-blog.csdnimg.cn/599d6f1afb134ee39f9b44bc74168313.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./5.png)
+![](./6.png)
 #### 编辑模式下的常用命令
-![](https://img-blog.csdnimg.cn/daec1088c62145ae84bddebbd70dafdd.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./7.png)
 
 #### 一般模式切换到指令行模式的可用的按钮说明
-![](https://img-blog.csdnimg.cn/e3600e11d8fc4d24b1964b8fd02e6445.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./8.png)
 `ZZ`是修改过才保存，`:wq`是一定保存一次
-![](https://img-blog.csdnimg.cn/3df89d2473dc4d39975590561e143101.png)
-出处：https://www.runoob.com/linux/linux-vim.html![](https://img-blog.csdnimg.cn/c4159697aa484927a8db2398a664f10a.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./9.png)
+出处：https://www.runoob.com/linux/linux-vim.html![](./10.png)
 
-![](https://img-blog.csdnimg.cn/cce7aed28fd045e6ad53d8094a052e91.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/f6fb971fc2444585bb72205638e534ab.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
-![](https://img-blog.csdnimg.cn/a263841b9fdf4eb49c31dfeebbb7eed8.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./11.png)
+![在这里插入图片描述](./12.png)
+![](./13.png)
 
-![](https://img-blog.csdnimg.cn/94a8024913b34d16bafe07fca4852446.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./14.png)
 ### Shell的基本功能
 - 命令的解释执行，接受用户的命令输入、解释分析执行用户命令
 - 环境变量的设置
@@ -67,7 +67,7 @@ vi三种模式
 - Shell程序的设计
 
 ### B、C、K Shell的区别
-![](https://img-blog.csdnimg.cn/4166ed3902434d158372e900e0e07d12.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./15.png)
 ### Unix系统定义的标准流及重定向方法
 `< > >>，>>为追加，`等符号改变标准流的方向
 
@@ -75,7 +75,7 @@ vi三种模式
 # Shell程序设计
 
 ### Shell程序执行
-![](https://img-blog.csdnimg.cn/4679b124a005463094a0ce81fd584f56.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./16.png)
 
 - & `sh test.sh`
 - & `sh <test.sh` (重定向方式输入)
@@ -87,12 +87,12 @@ vi三种模式
 shell 变量定义由字母开始，可以包含数字，字母和下划线。
 ##### Shell中引号说明
 - `''`全部当作字符串信息处理  ：
-   ![](https://img-blog.csdnimg.cn/461b1ecf56a4424a9289fe812916e6f2.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+   ![](./17.png)
 
 ### Shell中命令的位置变量
-![](https://img-blog.csdnimg.cn/156d57b497d74ff9a72e68f743e951e8.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./18.png)
 ### shell中变量的替换
-![](https://img-blog.csdnimg.cn/12b185ba540745038da9772c2de16161.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./19.png)
 ### test命令的使用
 在shell中经常要对某些变量的值进行判断来决定分支程序的走向，如同C中使用 if( a == 0) 一样。Shell中通过test命令来完成这个功能。
 `test expre`或者`test [expre]`
@@ -103,20 +103,20 @@ shell 变量定义由字母开始，可以包含数字，字母和下划线。
      -w  file: 文件file存在并且为可写文件
      -x  file: 文件file存在并且为可执行文件
      -s  file: 文件file存在并且文件长度为非0
-     ![](https://img-blog.csdnimg.cn/1fc264055fcc43e58c4b2056f7d6d94e.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+     ![](./20.png)
 ### 条件控制语句
 (1)if语句
 分为无分支、二分支和多分支条件语句。
 
 - 无分支条件语句
-![](https://img-blog.csdnimg.cn/cc682da617914928afab9b442bbf3961.png)
+![](./21.png)
 
 - 二分支条件语句
-![](https://img-blog.csdnimg.cn/60a67d9f42f34319a7fd39ee56db360c.png)
+![](./22.png)
 - 多分支语句
-- ![](https://img-blog.csdnimg.cn/5b6d9b43f31241e189e4d9251cdd7ee1.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_17,color_FFFFFF,t_70,g_se,x_16)
+- ![](./23.png)
 # Shell编程示例
-![](https://img-blog.csdnimg.cn/8e57f6b33d914d0c9191249c59924c06.png)
+![](./24.png)
 ```bash
    # showCfile.sh
   if test -d $HOME/a_sub
@@ -146,7 +146,7 @@ if test -d $HOME/b_sub
      echo "$HOME/b_sub does not exist!!"
    fi
 ```
-![](https://img-blog.csdnimg.cn/84667a096402429a9325ebe344236bbf.png)
+![](./25.png)
 ```bash
 while [test -r abc.txt]
    do
@@ -156,7 +156,7 @@ while [test -r abc.txt]
    echo "file abc.txt has beed deleted !"
 
 ```
-![](https://img-blog.csdnimg.cn/707176254f974ae9b875abe982221fe3.png)
+![](./26.png)
 ```bash
 count=0
    while read LINE
@@ -168,7 +168,7 @@ count=0
    或者 cat file | wc -l
 ```
 
-![](https://img-blog.csdnimg.cn/7d61f5071fbb4425a3d6b658161ce39c.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./27.png)
 ```bash
 
 case $# in
@@ -193,8 +193,8 @@ if [test $# -eq 1 ]
 
 ```
 
-![](https://img-blog.csdnimg.cn/e7db13f0d6d446599a7ed8e855fdf949.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
-![](https://img-blog.csdnimg.cn/988d7bbabba94c838963b1242fe65434.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./28.png)
+![](./29.png)
 ```bash
 echo
   echo "--- Disk Usage Condition ---"
@@ -225,7 +225,7 @@ echo
   fi
   echo
 ```
-![](https://img-blog.csdnimg.cn/ab943cf600354601b07079f9e1af9533.png)
+![](./30.png)
 ```bash
 echo  -e "Please enter the score:"
   while read SCORE
@@ -245,7 +245,7 @@ echo  -e "Please enter the score:"
     esac  
   done
 ```
-![](https://img-blog.csdnimg.cn/79b45f262d504f11bdaaa5fd0b2e9c70.png)
+![](./31.png)
 ```bash
 #!/bin/sh
    #Averaterscore.sh
@@ -285,7 +285,7 @@ while read NAME CLASS SCORE   #循环读入各行
    echo "    3           $NUMBER3             $SCORE3"
    IFS=$SAVED_IFS
 ```
-![](https://img-blog.csdnimg.cn/79fc6f5ecc764e669de3066ef1116f44.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./33.png)
 
 ```bash
 ans=y
@@ -310,4 +310,3 @@ echo "Enter y(yes) or n(no)"
 read ans
 done
 ```
-欢迎大家放我我的个人博客[mainkeys.github.io](https://mainkeys.github.io)

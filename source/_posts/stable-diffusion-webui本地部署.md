@@ -39,34 +39,34 @@ CPU：AMD Ryzen 7 5800X3D 8-Core Processor  3.40 GHz
 3、下载 Stable-Diffusion-webui [【链接地址】](https://github.com/AUTOMATIC1111/stable-diffusion-webui)  Github开源项目并解压
 
 * （可选）[中文语言包](https://github.com/VinsonLaro/stable-diffusion-webui-chinese)
-  ![](.\1.png)
+  ![](./1.png)
 
 4、 进入目录找到`webui-user.bat`右键打开编辑，设置python路径，将刚安好的python路径写上去
-![](.\2.png)
-![](.\3.png)
+![](./2.png)
+![](./3.png)
 5、首先，如果实在国内是无法正常安装程序的，需要通过一些手段（可以魔法＋全局，但我这里尝试失败了）才能进行下载，这里提供一些方法以供参考
 我们可以看到`webui-user.bat`里面调用的是`webui.bat` 我们打开`webui.bat`可以看到其实最后用python打开了`launch.py`这个程序，然后通过`pip`和`git`指令安装了一堆所需文件
 ，所以解决方法就是针对其进行一些设置比如说采用国内镜像手段可以解决大部分问题
 
 6、我们打开`launch.py`进行修改，可以通过记事本也可以通过各类IDE，ctrl+f查找出所有`github.com`并替换为国内镜像`kgithub.com`如果此镜像挂了，可以替换为其他镜像，同样也可以供github代理进行加速，具体参考[githubproxy官网](https://ghproxy.com/)（实际上在地址前面加上一个`https://ghproxy.com/`）就可以了
 
-![](.\4/png)
+![](./4.png)
 7、设置完双击运行`webui-user.bat`等待下载，一般会在gfpgan、Clip、open_clip的下载卡一会，在下载官方自带的模型包卡一会（文件很大，要下很久），最后是这个样子的，此时命令行窗口在运行的时候不能关闭。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/bc8d1a7a53384151aa522acf71eb6f00.png)
+![](./5.png)
 8、这时候打开浏览器照着提示输入网址`http://127.0.0.1:7860`就可以进入stable-diffusion-webui界面了
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/5ab62cf92e6041ac85dfec517931d4d9.png)
+![](./6.png)
 
 9 、AUTOMATIC1111官方是提供了一个基础模型包（现在是v1-5版本）的，可以直接用训练好的模型进行绘画，我们先输入几个正负面提示词尝试一下，这里说明一下，默认设置是每次画完图都会自动保存在stable-diffusion-webui根目录里的outputs里面，可以把它设置为不保存，如果之前装了中文语音包也可以再设置里拉到最下面的locallization改成中文包。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/079d1fc419174fdc807d707b912859dd.png)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/6a835a7da6234bb4b5b7ef08e49c5b3b.png)
+![](./7.png)
+![](./8.png)
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/ceedf59def6c4942a22fdffac618f4c8.png)
+![](./9.png)
 
 ## 到此，你已经可以顺利打开stable-diffusion-webui并运行了，更多详细使用方式和进阶玩法（ 如何下载替换选择其他模型包，如何采用loRA模型训练，如何vea进行面部修复，泽阳通过设置权重混用多个模型进行训练，参数该如何设置，如何获取插件以及配置插件）下次再写。
 
-### 每一次进行GPU的渲染生成的绘图都是独一无二的，版权全归自己所有，终于实现素材自由（~~铯土自由~~ ）了。
+### 每一次进行GPU的渲染生成的绘图都是独一无二的，版权全归自己所有，终于实现素材自由（~~图片自由~~ ）了。
 
 欢迎大家讨论配置过程中遇到的问题。
 

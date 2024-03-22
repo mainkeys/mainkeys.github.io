@@ -131,26 +131,26 @@ g 表示与文件属主同一个组的别的用户group user
 
 - `chgrp` 组名 文件名   用于改变用户组
 `chgrp root file2.c`
-![](https://img-blog.csdnimg.cn/50a4ebf31db642a8b8f081f1f870c7a2.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./1.png)
 
 - `chown` 用户名 文件名    改变指定文件的所属用户
-![](https://img-blog.csdnimg.cn/a33d5e40d1df4ea59ca8d1ecbba4d36f.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./2.png)
 
 
 - `ln -f-s  file target`创建快捷方式
 `-f` 若存在则覆盖 否则创建
 `-s` 只包含一个指向源文件的指针
-![在这里插入图片描述](https://img-blog.csdnimg.cn/471de335e91b4a58aa0c5d1cd932ef74.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/656f455e657a4d2bb94cd6b7f65c62e3.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./3.png)
+![](./4.png)
 
 - `cut` 按列或按域截取输入行中所指的内容
 `cut [- c -f -d] list  [flie ]`
 `-c` 按字符截取
-![在这里插入图片描述](https://img-blog.csdnimg.cn/0ecd77fd61b841f382f7f0defc0b6c14.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./5.png)
 `-f` 按域截取  默认为单词 间隔符号为tab
 `-d` 按域截取 同时指定间隔符  间隔符跟在-d后面
-![在这里插入图片描述](https://img-blog.csdnimg.cn/e014a3078b73463ea967c461528a1518.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/01688f21c028416e816487cb76b7a901.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./6.png)
+![](./8.png)
 
 
 
@@ -163,7 +163,7 @@ g 表示与文件属主同一个组的别的用户group user
 对找到的文件还可以执行一些操作
 `-print` 显示找到的文件的路径名称
 `-exec Command{}` 执行一个命令，命令必须用 \\;结束
-![在这里插入图片描述](https://img-blog.csdnimg.cn/4c99213f050a4d3aaa8ac934fe986050.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./8.png)
 查找3天前被访问过的名称为core或者dump的文件并删除
 ()括号需要转义，最后的\\为多命令行换行符
 
@@ -173,38 +173,38 @@ g 表示与文件属主同一个组的别的用户group user
 `-l` 只显示包含指定模式的文件名
 `-L` 只显示不包含指定模式的文件名
 `-n` 同时显示行号
-![](https://img-blog.csdnimg.cn/415785b74d0044ccad20ac6ef731f778.png)
+![](./9.png)
 
 
 
 - `tar` 储存或展开tar存档文件
-![在这里插入图片描述](https://img-blog.csdnimg.cn/3c711feac76444be90039ea003971115.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./10.png)
 
 ---
-- ![](https://img-blog.csdnimg.cn/a8518bc1210b4e1fa0bacb53eeec1bb3.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+- ![](./11.png)
 ---
 
 - `ps`
- ![](https://img-blog.csdnimg.cn/71e2ee0758a24ac09c25c9452f9747ba.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/30f3a6ab86ba4e55bbe936b788888661.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+ ![](./12.png)
+![](./13.png)
 
 - `df`
-![在这里插入图片描述](https://img-blog.csdnimg.cn/c2a3b55ab2ac446c9ee75725dee05ae3.png?xprocess=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/c49d5a3ff1534e138c41a88842904c52.png?xprocess=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./14.png)
+![](./15.png)
 
 - `ftp`
-  ![在这里插入图片描述](https://img-blog.csdnimg.cn/f0400c76810347a48a28da9b6f614d7c.png)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/aba5ca8d700944a88cee046fc8ea25f0.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+  ![](./16.png)
+![](./17.png)
 - `telnet & ping`
-![在这里插入图片描述](https://img-blog.csdnimg.cn/16cc70fd31e5416687cc6c7fa27f8751.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./18.png)
 
 
 - 访问其他文件系统
-![](https://img-blog.csdnimg.cn/633e57cc9b434976b0b0f45423ef2ac3.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
-![](https://img-blog.csdnimg.cn/fb7c15a4f4d944d092adb01545359d07.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./19.png)
+![](./20.png)
 
 - 访问USB文件系统
-![](https://img-blog.csdnimg.cn/8ecdc167068142a898d7cdc3cb31771e.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./21.png)
 
 - 访问光驱文件系统
-![](https://img-blog.csdnimg.cn/ebe1073118bb412d8a9cb825a81f64c7.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./22.png)

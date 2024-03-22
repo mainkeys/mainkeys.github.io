@@ -18,5 +18,5 @@ top: false
 	<typeAlias type="com.test.domain.Student" alias="student"/> 
 </typeAliases>
 ```
-![](https://img-blog.csdnimg.cn/c6cee04e3404473d920807ddd58f3c5b.png?process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAajogKQ==,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./1.png)
 可以看到代码生效了。

@@ -1551,10 +1551,10 @@ plt.show()
 
 看看最终画出来的图
 
-![](.\energy_comparison%20(1).png)
+![](./energy_comparison%20(1).png)
 
-![](.\Africa_energy_pie_chart.png)![](.\Asia_energy_pie_chart.png)![](.\Australia_energy_pie_chart.png)![](.\China_energy_pie_chart.png)![](.\Europe_energy_pie_chart.png)
+![](./Africa_energy_pie_chart.png)![](./Asia_energy_pie_chart.png)![](./Australia_energy_pie_chart.png)![](./China_energy_pie_chart.png)![](./Europe_energy_pie_chart.png)
 
-![](.\N_America_energy_pie_chart.png)
+![](./N_America_energy_pie_chart.png)
 
-![](.\World_energy_pie_chart.png)
+![](./World_energy_pie_chart.png)

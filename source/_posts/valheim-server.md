@@ -4,13 +4,13 @@ date: 2023-02-03 06:09:01
 tags: [Linux]
 ---
 ### 云服务器搭建游戏私服
-一开始是朋友想自己建个服务器一起玩游戏，无奈如果使用某人主机当服务器的话，只要他关机了其他人都不能玩，而且作为服务器的主机需要一定的配置要求，并且这种方式会有很大的延迟波动，所以考虑到使用云服务器来搭建游戏服务器，最终选择了腾讯云的轻量级服务，这么便宜的价格感觉是赚到了。![ ](https://img-blog.csdnimg.cn/9bf2b8e1d4504813b714e4eb152415b3.png)
+一开始是朋友想自己建个服务器一起玩游戏，无奈如果使用某人主机当服务器的话，只要他关机了其他人都不能玩，而且作为服务器的主机需要一定的配置要求，并且这种方式会有很大的延迟波动，所以考虑到使用云服务器来搭建游戏服务器，最终选择了腾讯云的轻量级服务，这么便宜的价格感觉是赚到了。![](./1.png)
 
 ##### 服务器配置
 我首选的2核4G带宽6M，玩英灵神殿足够了
 
 
-![ ](https://img-blog.csdnimg.cn/1a757839479842b78c9e08197106328b.png)
+![](./2.png)
 服务器开好，直接开搞
 这里我选择了使用linux系统搭建，使用linuxGSM管理
 系统选的Ubuntu20.04LTS
@@ -28,8 +28,8 @@ tags: [Linux]
 #安装steamcmd等相关支持（这里是一句完整代码）
 
 `sudo apt -y install curl wget file tar bzip2 gzip unzip bsdmainutils python util-linux ca-certificates binutils bc jq tmux netcat lib32gcc1 lib32stdc++6 steamcmd`
-![ ](https://img-blog.csdnimg.cn/f4289544ff5c44cf9da380461f76d826.png)
-![ ](https://img-blog.csdnimg.cn/e7e5424788034a2b8b4afc6c97073c7d.png)
+![](./3.png)
+![](./4.png)
 #创建一个新用户vhserver，用来专门运行英灵神殿服务器
 `sudo adduser vhserver`
 `su - vhserver`
@@ -58,27 +58,27 @@ sudo apt-get install vim
 `git clone https://github.com/ssrbackup/shadowsocksr`
 报错了，说是2021年8月13号之后不再支持密码认证登录，无奈只好另找方法
 
-![ ](https://img-blog.csdnimg.cn/f6ecac79a6754beaaaead4734ab52da5.png)
+![](./5.png)
 #配置完ssh密钥后试着采用ssh密钥登陆结果成功
-![ ](https://img-blog.csdnimg.cn/38b862fcc2fd47e5b10e90a1491393d9.png)
+![](./6.png)
 #再git clone试一下，还是失败，再换个方式使用令牌下载
 打开github，找到Setting，最后Developer setting
-![ ](https://img-blog.csdnimg.cn/f4103bc1e11044a1b229f13d4f2f27ee.png)
+![](./7.png)
 添加一个令牌就可以通过git clone `https://<TOKEN>@github.com/<user_name>/<repo_name>.git`
 
 下载了。
-#没弄好，发现python可以直接pip一个shadowsocksr，不得不说python真铜模强大。![ ](https://img-blog.csdnimg.cn/3583e8cb5d4d4c1e9199d7a4bb672366.png)
+#没弄好，发现python可以直接pip一个shadowsocksr，不得不说python真铜模强大。![ ](./9.png)
 #在科学上网工具配置的过程中，又测试了一下服务器的安装补全
 直接输入`./vhserver install`，又报错了‘’‘’‘
 显示版本Ubuntu20.04不支持vhserver服务器。。
 重装系统Ubuntu18.04LTS，重复上述步骤
 勾⑧腾讯云轻量服务器国内机器无法使用Github，改了hosts，再试一次
-![ ](https://img-blog.csdnimg.cn/6dcc74eafca94d8d907454bab5cb8eb0.png)
+![](./10.png)
 
 终于成功了，燃起来了！
-![ ](https://img-blog.csdnimg.cn/e9049ff861384d0ea361e34c1bd0db00.png)
+![](./11.png)
 虽说一堆ERROR，但是不要紧，我持最大信任态度相信它能跑起来
-![ ](https://img-blog.csdnimg.cn/b42518e840b94bd9812b9432f3175723.png)
+![](./12.png)
 功夫不负有心人，搞好了，设置配置文件，开服关服，生成存档文件，然后替换存档, 调整mods兼容性
 #设置虚拟内存
 #查看内存
@@ -116,6 +116,6 @@ reboot
 
 #重启完成过后使用free -m 命令来查看现在的内存是否挂在上了
 `free -m `
-![](https://img-blog.csdnimg.cn/de4f58b842eb4b219b36dd665dace9ce.png)
+![](./13.png)
 #开玩!
-[](https://img-blog.csdnimg.cn/a0281a8c3a79413bbe4fac974ca49d83.png)
+[](./14.png)
