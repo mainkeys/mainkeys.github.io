@@ -45,38 +45,38 @@ favicon: https://cdn2.iconfinder.com/data/icons/emoji-line/32/emoji_21-1024.png
 
 # Avatar (頭像)
 avatar:
-  img: https://i.loli.net/2021/09/06/ZHL2mdtG9U1jCE5.jpg
+  img: https://mks-1306588458.cos.ap-nanjing.myqcloud.com/newImage.png
   effect: true
 
 # Disable all banner image
 disable_top_img: false
 
 # The banner image of home page
-index_img: https://images.unsplash.com/photo-1701119664220-2dbada3f941e?q=80&w=2889&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+index_img: https://mks-1306588458.cos.ap-nanjing.myqcloud.com/00062-2061880975.png
 
 # If the banner of page not setting, it will show the top_img
-default_top_img: https://images.unsplash.com/photo-1703593191806-962b4f2802e4?q=80&w=2890&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+default_top_img: https://mks-1306588458.cos.ap-nanjing.myqcloud.com/00062-2061880975.png
 
 # The banner image of archive page
-archive_img: https://images.unsplash.com/photo-1703593191806-962b4f2802e4?q=80&w=2890&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+archive_img: https://mks-1306588458.cos.ap-nanjing.myqcloud.com/archive.png
 
 # If the banner of tag page not setting, it will show the top_img
 # note: tag page, not tags page (子標籤頁面的 top_img)
-tag_img: https://images.unsplash.com/photo-1703593191806-962b4f2802e4?q=80&w=2890&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+tag_img: https://mks-1306588458.cos.ap-nanjing.myqcloud.com/archive.png
 
 # The banner image of tag page
 # format:
 #  - tag name: xxxxx
-tag_per_img: https://images.unsplash.com/photo-1703593191806-962b4f2802e4?q=80&w=2890&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+tag_per_img: https://mks-1306588458.cos.ap-nanjing.myqcloud.com/tag.png
 
 # If the banner of category page not setting, it will show the top_img
 # note: category page, not categories page (子分類頁面的 top_img)
-category_img: https://images.unsplash.com/photo-1703593191806-962b4f2802e4?q=80&w=2890&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+category_img: https://mks-1306588458.cos.ap-nanjing.myqcloud.com/avatar3.png
 
 # The banner image of category page
 # format:
 #  - category name: xxxxx
-category_per_img: https://images.unsplash.com/photo-1703593191806-962b4f2802e4?q=80&w=2890&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+category_per_img: https://mks-1306588458.cos.ap-nanjing.myqcloud.com/avatar3.png
 
 cover:
   # display the cover or not (是否顯示文章封面)
