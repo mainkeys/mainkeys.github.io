@@ -3,6 +3,7 @@ title: Anaconda报错，需更换镜像源
 date: 2021-09-19 14:34:52
 tags: [Anaconda,深度学习]
 categories: 深度学习
+cover: http://sunowc60i.hd-bkt.clouddn.com/cover8.png
 ---
 
 遇到Anaconda报错

@@ -2,6 +2,7 @@
 title: 开源操作系统-2025春季训练营
 date: 2025-04-02 20:43:04
 tags: ['OS', 'opencamp']
+cover: http://sunowc60i.hd-bkt.clouddn.com/cover8.png
 ---
 
 # Why Rust?

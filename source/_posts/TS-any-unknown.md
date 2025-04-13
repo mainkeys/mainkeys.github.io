@@ -2,6 +2,7 @@
 title: TS_any_unknown
 date: 2024-05-21 16:20:34
 tags: ['TypeScript']
+cover: http://sunowc60i.hd-bkt.clouddn.com/cover5.png
 ---
 
 # TS中的unknown、any和never类型

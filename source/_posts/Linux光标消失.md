@@ -2,6 +2,7 @@
 title: Linux光标消失
 date: 2023-04-13 16:32:02
 tags: [Linux]
+cover: http://sunowc60i.hd-bkt.clouddn.com/cover4.png
 ---
 
 ### 在Linux中隐藏光标

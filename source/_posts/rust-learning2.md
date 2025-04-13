@@ -2,6 +2,7 @@
 title: Rust 学习2
 date: 2025-04-05 15:56:20
 tags: "Rust"
+cover: http://sunowc60i.hd-bkt.clouddn.com/rust.png
 ---
 # Rust 基础知识
 ## Rust 变量

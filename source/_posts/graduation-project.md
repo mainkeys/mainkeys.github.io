@@ -2,6 +2,7 @@
 title: chatGPT——python数据处理对话实例
 date: 2023-05-03 18:52:56
 tags: ['chatGPT']
+cover: http://sunowc60i.hd-bkt.clouddn.com/cover13.png
 ---
 
 Model: GPT-4

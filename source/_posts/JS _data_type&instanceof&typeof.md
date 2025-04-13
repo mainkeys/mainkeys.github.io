@@ -3,6 +3,7 @@ title: JS数据类型及判断&typeof和instanceof的区别
 date: 2024-03-07 22:10:34
 tags: ['js', '前端']
 categories: 技术
+cover: http://sunowc60i.hd-bkt.clouddn.com/cover12.png
 ---
 # 数据类型
 JS 数据类型分为两大类：

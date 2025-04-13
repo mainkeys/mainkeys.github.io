@@ -3,6 +3,7 @@ title: unix学习
 date: 2021-09-11 19:32:43
 tags: unix
 categories: 笔记
+cover: http://sunowc60i.hd-bkt.clouddn.com/cover7.png
 ---
 
 登录：

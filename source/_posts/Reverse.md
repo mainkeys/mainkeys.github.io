@@ -2,6 +2,7 @@
 title: Reverse
 date: 2024-12-31 14:06:55
 tags: [Reverse, ‘逆向’]
+cover: http://sunowc60i.hd-bkt.clouddn.com/cover10.png
 ---
 工具
 IDA Pro：学习如何使用IDA进行静态分析，了解其基本功能，如反汇编、函数识别、交叉引用等。

@@ -2,6 +2,7 @@
 title: 数据库无法使用SSL加密与SQL_server建立连接
 date: 2023-05-02 23:01:04
 tags: ["chatGPT", "SQL server","SSL"]
+cover: http://sunowc60i.hd-bkt.clouddn.com/cover12.png
 ---
 
 Model: Default (GPT-3.5)

@@ -3,6 +3,7 @@ title: CMD命令行查询电脑硬件信息
 date: 2021-09-19 16:48:09
 tags: CMD
 categories: CMD
+cover: http://sunowc60i.hd-bkt.clouddn.com/cover7.png
 ---
 
 - 查看电脑系统属性：`dxdiag`

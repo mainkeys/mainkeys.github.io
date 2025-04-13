@@ -2,6 +2,7 @@
 title: 使用ChatGPT编写Spark
 date: 2023-05-14 16:49:33
 tags: ['chatGPT']
+cover: http://sunowc60i.hd-bkt.clouddn.com/cover1.png
 ---
 from pyspark import SparkConf, SparkContext
 import os

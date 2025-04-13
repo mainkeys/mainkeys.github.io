@@ -4,6 +4,7 @@ date: 2021-09-13 23:25:28
 tags: MyBatis
 categories: 踩坑
 top: false
+cover: http://sunowc60i.hd-bkt.clouddn.com/cover6.png
 ---
 
 看到这个问题，很可能以为是实体类未在mybatis-config.xml中配置别名（alias）导致的，所以加上这段代码

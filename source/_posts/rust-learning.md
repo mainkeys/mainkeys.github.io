@@ -2,6 +2,7 @@
 title: Rust 学习1
 date: 2025-04-02 22:49:51
 tags: "Rust"
+cover: http://sunowc60i.hd-bkt.clouddn.com/rust.png
 ---
 
 

@@ -2,6 +2,7 @@
 title: Linux grep命令
 date: 2023-05-26 11:13:54
 tags: ['Linux']
+cover: http://sunowc60i.hd-bkt.clouddn.com/cover1.png
 ---
 
 举例来说，我只想找到 'VBird'（前面两个大写字符） 或 'Vbird'（仅有一个大写字符） 这个字样，但是不要其他的字符串 （例如 'VBIRD'， 'vbird' 等不需要），该如何办理？ 如果在没有正规表示法的环境中（例如 MS word），你或许就得要使用忽略大小写的办法， 或者是分别以 'VBird' 及 'Vbird' 搜寻两遍。 但是，忽略大小写可能会搜寻到 'VBIRD'/'vbird'/'VbIrD' 等等的不需要的字符串而造成困扰。
