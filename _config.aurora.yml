@@ -16,8 +16,8 @@ site:
   link: "/"
   language: en
   multi_language: true
-  logo: https://wx2.sinaimg.cn/orj360/006GJIzbgy1i02htb1dw2j310s0sgq4x.jpg
-  avatar: https://wx3.sinaimg.cn/mw690/006GJIzbgy1i02hnngrcwj30tu0m0dhs.jpg
+  logo: http://sunowc60i.hd-bkt.clouddn.com/white_blclogo1.png?e=1744552788&token=vUPLHYGlYGKb3yibk6CAiyXGYEsS6BBLHn2g2Etw:H-CM-zBC_bSlVAXZxc9lBogdr_c=
+  avatar: http://sunowc60i.hd-bkt.clouddn.com/logo2.png?e=1744552819&token=vUPLHYGlYGKb3yibk6CAiyXGYEsS6BBLHn2g2Etw:3sNnJ0pE3GYoWgnemyyYrfOMOuQ=
   beian:
     number: ""
     link: ""
@@ -169,10 +169,10 @@ busuanzi:
   enable: true
   totalPV: true
   totalUV: true
-  sitePV: true
-  siteUV: true
-  postPV: true
-  postUV: true
+  sitePV: false
+  siteUV: false
+  postPV: false
+  postUV: false
 
 copy_protection:
   enable: true
