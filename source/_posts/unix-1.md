@@ -3,7 +3,7 @@ title: unix学习2
 date: 2021-09-18 12:02:22
 tags: unix
 categories: 笔记
-cover: http://sunowc60i.hd-bkt.clouddn.com/cover7.png
+cover: https://mks-1306588458.cos.ap-nanjing.myqcloud.com/cover7.png
 ---
 
 # Unix中的编辑器

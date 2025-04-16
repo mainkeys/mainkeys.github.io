@@ -3,7 +3,7 @@ title: numpy三维数组维度变换/提取
 date: 2022-03-29 22:31:43
 tags: [python,numpy]
 categories: python
-cover: http://sunowc60i.hd-bkt.clouddn.com/cover6.png
+cover: https://mks-1306588458.cos.ap-nanjing.myqcloud.com/cover6.png
 ---
 
 ### 有时对多维numpy数组需要进行维度的转换/提取，遇到需要从（A,B,C）三维数组中提取（A,B）、（A,C）或者（B,C）或者（A,）这几个维度数据时，总是忘记该如何切片，记录一下

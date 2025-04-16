@@ -2,7 +2,7 @@
 title: JS原型、原型链、继承、new运算符、Object.create
 date: 2024-03-21 21:54:39
 tags: ['js', '前端']
-cover: http://sunowc60i.hd-bkt.clouddn.com/cover3.png
+cover: https://mks-1306588458.cos.ap-nanjing.myqcloud.com/cover3.png
 ---
 
 

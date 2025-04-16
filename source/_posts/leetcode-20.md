@@ -2,7 +2,7 @@
 title: leetcode20. 有效的括号
 date: 2025-03-23 16:16:23
 tags: ['leetcode']
-cover: http://sunowc60i.hd-bkt.clouddn.com/cover12.png
+cover: https://mks-1306588458.cos.ap-nanjing.myqcloud.com/cover12.png
 ---
 ![](./image.png)
 括号匹配问题即括号消消乐

@@ -3,7 +3,7 @@ title: leetcode1305二叉搜索树
 date: 2022-05-16 21:20:50
 tags: [算法,Leetcode,每日手撕]
 categories: [算法,每日手撕] 
-cover: http://sunowc60i.hd-bkt.clouddn.com/cover11.png
+cover: https://mks-1306588458.cos.ap-nanjing.myqcloud.com/cover11.png
 ---
 ### 题目描述
 

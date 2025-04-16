@@ -3,7 +3,7 @@ title: 'C++string::length、size和strlen的区别'
 date: 2022-01-16 12:31:24
 tags: C++
 categories: C++
-cover: http://sunowc60i.hd-bkt.clouddn.com/cover5.png
+cover: https://mks-1306588458.cos.ap-nanjing.myqcloud.com/cover5.png
 ---
 # 函数声明
 C++ string 成员函数 length() 等同于 size()，但是和 C 库函数 [strlen](https://so.csdn.net/so/search?q=strlen&spm=1001.2101.3001.7020)() 有着本质区别，使用时切勿混淆。首先看一下三个函数的申明：

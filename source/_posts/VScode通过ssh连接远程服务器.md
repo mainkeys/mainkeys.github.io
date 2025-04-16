@@ -2,7 +2,7 @@
 title: VScode通过ssh连接远程服务器
 date: 2023-04-10 17:40:49
 tags: ['VScode', 'ssh']
-cover: http://sunowc60i.hd-bkt.clouddn.com/cover9.png
+cover: https://mks-1306588458.cos.ap-nanjing.myqcloud.com/cover9.png
 ---
 
 

@@ -2,7 +2,7 @@
 title: stable-diffusion-webui
 date: 2023-02-28 17:51:17
 tags: [AI, stable-diffusion-webui]
-cover: http://sunowc60i.hd-bkt.clouddn.com/cover4.png
+cover: https://mks-1306588458.cos.ap-nanjing.myqcloud.com/cover4.png
 ---
 
 **本文章适用于:**

@@ -16,8 +16,8 @@ site:
   link: "/"
   language: en
   multi_language: true
-  logo: http://sunowc60i.hd-bkt.clouddn.com/white_blclogo1.png
-  avatar: http://sunowc60i.hd-bkt.clouddn.com/logo2.png
+  logo: https://mks-1306588458.cos.ap-nanjing.myqcloud.com/%E7%99%BD%E9%BB%91logo2.png
+  avatar: https://mks-1306588458.cos.ap-nanjing.myqcloud.com/logo2.png
   beian:
     number: ""
     link: ""

@@ -3,7 +3,7 @@ layout: posts
 title: edge浏览器快捷键
 date: 2023-01-20 16:32:16
 tags: [edge]
-cover: http://sunowc60i.hd-bkt.clouddn.com/cover11.png
+cover: https://mks-1306588458.cos.ap-nanjing.myqcloud.com/cover11.png
 ---
 | 快捷键 |  执行此操作 |
 | ---- | ---- |
