@@ -35,3 +35,12 @@ public:
     }
 };
 ```
+实际上，一般地，如果 n 是 2 的幂，把 n 减一会使 n 的最高位变成 0，其余低位变成 1，所以 `n&(n−1)=0` 一定成立，即代码也可以写为
+```cpp
+class Solution {
+public:
+    bool isPowerOfTwo(int n) {
+         return n > 0 && !(n & (n - 1));
+    }
+};
+```
