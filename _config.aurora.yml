@@ -9,10 +9,10 @@
 #！ @docs https://aurora.tridiamond.tech/guide/configuration.html
 #! ---------------------------------------------------------------
 site:
-  subtitle: Mainkeys's Blog
-  author: Mainkeys
-  nick: MKS' Blog
-  description: Struggling in the nonexistent Utopia
+  subtitle: RootPKhash's Blog
+  author: RootPKhash
+  nick: RootPK's Blog
+  description: Trust chains, secure systems, and hands-on security notes
   link: "/"
   language: en
   multi_language: true
@@ -99,9 +99,9 @@ socials:
 site_meta:
   cdn: cn
   favicon:
-  description: ""
-  keywords: ""
-  author: ""
+  description: "SoC Security, Secure Boot, TrustZone, TEE, Kernel and Android Security notes."
+  keywords: "SoC Security, Root of Trust, TrustZone, Secure Boot, TEE, TF-A, Android Security"
+  author: "RootPKhash"
 
 #! ---------------------------------------------------------------
 #! Plugins
@@ -177,8 +177,8 @@ busuanzi:
 copy_protection:
   enable: true
   author:
-    cn: Miankeys
-    en: Miankeys
+    cn: RootPKhash
+    en: RootPKhash
   link:
     cn: 本文来自于
     en: Article is from

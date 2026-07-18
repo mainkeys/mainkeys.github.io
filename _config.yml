@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 羿の漫游指南
-subtitle: Love && Share
-description: love && share 分享记录
+title: RootPKhash's Blog
+subtitle: Root of Trust, Notes of Security
+description: SoC Security、Secure Boot、TEE、Kernel 与 Android Security 的学习记录
 keywords:
-author: mainkeys
+author: RootPKhash
 language: zh-Hans
 timezone: ""
 

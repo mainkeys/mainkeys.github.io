@@ -1,6 +1,6 @@
 ---
 title: 从前端到 SoC Security：我准备如何构建一套系统安全知识体系
-date: 2026-07-17 00:00:00
+date: 2026-04-12 00:00:00
 tags: [SoC Security, ARM, TrustZone, TEE, Secure Boot]
 categories: [系统安全]
 top: true
