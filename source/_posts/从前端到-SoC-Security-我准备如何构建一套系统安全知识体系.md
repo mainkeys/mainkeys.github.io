@@ -4,6 +4,8 @@ date: 2026-04-12 00:00:00
 tags: [SoC Security, ARM, TrustZone, TEE, Secure Boot]
 categories: [系统安全]
 top: true
+feature: true
+pinned: true
 ---
 
 最近在整理自己的技术笔记，顺便也准备把这个账号重新捡起来。
