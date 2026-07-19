@@ -3,7 +3,7 @@ title: CMD命令行查询电脑硬件信息
 date: 2021-09-19 16:48:09
 tags: CMD
 categories: CMD
-cover: https://mks-1306588458.cos.ap-nanjing.myqcloud.com/cover7.png
+cover: /assets/covers/cover7.webp
 ---
 
 - 查看电脑系统属性：`dxdiag`

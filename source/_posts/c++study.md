@@ -3,7 +3,7 @@ title: C Plus Plus study
 date: 2021-09-19 16:48:09
 tags: C++
 categories: C++
-cover: https://mks-1306588458.cos.ap-nanjing.myqcloud.com/cover.png
+cover: /assets/covers/cover11.webp
 ---
 
 C++代码变成可执行的代码主要做的工作： 编译 & 链接

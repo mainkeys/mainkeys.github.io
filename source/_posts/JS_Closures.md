@@ -3,7 +3,7 @@ title: JS闭包一定要返回函数吗
 date: 2024-02-23 01:10:55
 tags: ['前端', 'js']
 categories: 技术
-cover: https://mks-1306588458.cos.ap-nanjing.myqcloud.com/cover2.png
+cover: /assets/covers/cover2.webp
 ---
 # 先说结论
 `不一定`

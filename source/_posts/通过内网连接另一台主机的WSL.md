@@ -2,7 +2,7 @@
 title: 通过内网连接另一台主机的WSL
 date: 2025-04-018 14:28:51
 tags: "Rust"
-cover: https://mks-1306588458.cos.ap-nanjing.myqcloud.com/cover1.png
+cover: /assets/covers/cover1.webp
 ---
 
 

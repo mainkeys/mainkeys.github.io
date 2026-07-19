@@ -3,7 +3,7 @@ title: Anaconda报错，需更换镜像源
 date: 2021-09-19 14:34:52
 tags: [Anaconda,深度学习]
 categories: 深度学习
-cover: https://mks-1306588458.cos.ap-nanjing.myqcloud.com/cover8.png
+cover: /assets/covers/cover8.webp
 ---
 
 遇到Anaconda报错

@@ -2,7 +2,7 @@
 title: Rust 学习3
 date: 2025-04-05 17:12:57
 tags: "Rust"
-cover: https://mks-1306588458.cos.ap-nanjing.myqcloud.com/rust.png
+cover: /assets/covers/rust.webp
 ---
 # 所有权和借用
 ## 所有权

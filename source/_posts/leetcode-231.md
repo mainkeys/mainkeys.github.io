@@ -3,7 +3,7 @@ title: leetcode231 - 2 的幂
 date: 2025-04-28 21:20:50
 tags: [算法,Leetcode,每日手撕]
 categories: [算法,每日手撕] 
-cover: https://mks-1306588458.cos.ap-nanjing.myqcloud.com/cover11.png
+cover: /assets/covers/cover11.webp
 ---
 ### 题目描述
 > 给你一个整数 n，请你判断该整数是否是 2 的幂次方。如果是，返回 true ；否则，返回 false 。

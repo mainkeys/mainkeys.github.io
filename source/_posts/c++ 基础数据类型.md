@@ -2,7 +2,7 @@
 title: C++基础数据类型完全指南：从基础类型到跨平台实践
 date: 2025-04-30 11:06:55
 tags: ['C++', '数据类型']
-cover: https://mks-1306588458.cos.ap-nanjing.myqcloud.com/cover11.png
+cover: /assets/covers/cover11.webp
 ---
 
 # C++数据类型完全指南

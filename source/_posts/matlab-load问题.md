@@ -3,7 +3,7 @@ title: matlab—load命令读的数据问题
 date: 2021-11-01 23:10:15
 tags: matlab
 categories: matlab
-cover: https://mks-1306588458.cos.ap-nanjing.myqcloud.com/cover5.png
+cover: /assets/covers/cover5.webp
 ---
 # load读取时遇到的问题
 

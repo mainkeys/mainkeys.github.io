@@ -3,7 +3,7 @@ title: 清除npm缓存重新安装npm依赖
 date: 2024-02-28 23:10:55
 tags: ['前端', 'npm']
 categories: 技术
-cover: https://mks-1306588458.cos.ap-nanjing.myqcloud.com/cover6.png
+cover: /assets/covers/cover6.webp
 ---
 
 ### 最近在运行前端项目时遇到如下报错

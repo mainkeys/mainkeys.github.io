@@ -2,7 +2,7 @@
 title: C++ 库对应的api
 date: 2023-05-26 11:13:54
 tags: ['C++']
-cover: https://mks-1306588458.cos.ap-nanjing.myqcloud.com/cover11.png
+cover: /assets/covers/cover11.webp
 ---
 
 

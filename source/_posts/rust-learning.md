@@ -2,7 +2,7 @@
 title: Rust 学习1
 date: 2025-04-02 22:49:51
 tags: "Rust"
-cover: https://mks-1306588458.cos.ap-nanjing.myqcloud.com/rust.png
+cover: /assets/covers/rust.webp
 ---
 
 

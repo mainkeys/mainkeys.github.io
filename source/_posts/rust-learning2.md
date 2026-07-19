@@ -2,7 +2,7 @@
 title: Rust 学习2
 date: 2025-04-05 15:56:20
 tags: "Rust"
-cover: https://mks-1306588458.cos.ap-nanjing.myqcloud.com/rust.png
+cover: /assets/covers/rust.webp
 ---
 # Rust 基础知识
 ## Rust 变量
