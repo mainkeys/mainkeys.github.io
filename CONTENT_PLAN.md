@@ -64,3 +64,12 @@
 - 统一采用 2026-09-18 的实际发布时间与 +08:00 时区，移除编辑占位。生产构建、Actions 和线上核验按上述发布流程执行。
 - 最终 `npm run build` 通过；`doc` 中六篇 HTML、Aurora 原始/别名数据及 SVG 完整。带时区的 front matter 日期使用引号，避免 YAML Date 被再次补时区；六篇在 UTC 与 Asia/Shanghai 两种环境下均得到正确时间。
 - 预览工具保留仓库内的正常 source，只将 public_dir 放到仓库外，并强制生成；避免 Hexo 在仓库外 source 的资源 ID 错误及跨输出目录的缓存误判。
+
+## 发布记录
+
+- 发布日期：2026-09-18（Asia/Shanghai）。发布提交：[472cf654b427a8a2680e06169204e74cfbd80241](https://github.com/mainkeys/mainkeys.github.io/commit/472cf654b427a8a2680e06169204e74cfbd80241)。
+- [Pages 工作流 35265689231](https://github.com/mainkeys/mainkeys.github.io/actions/runs/35265689231) 的构建、上传与部署均成功，部署于 2026-09-17 19:35:34 UTC 完成。
+- 线上六篇 HTML、Aurora JSON 与 `.html.json` 别名、六张 SVG、文章互链及锚点检查通过；别名与原始数据一致。原置顶路线图保留置顶标记，新增六篇入口；旧文 `code` 的正文与 12 张图片返回正常。
+- 浏览器逐篇核对了线上六篇的标题、图示与 390px 手机布局，无页面横向溢出；桌面结果表与代码显示正常。实际导航复测通过（桌面 06→05、手机 05→04）。
+- 两次实验共 28 份原始文件的 Git 索引字节数与 SHA-256 全部匹配；用户原有 package.json 版本改动、未跟踪封面和 doc 目录均未混入发布提交。
+- 六篇线上入口：[01 调用链](https://mainkeys.github.io/post/tee-01-ca-to-ta.html) · [02 异常级](https://mainkeys.github.io/post/tee-02-armv8-exception-levels.html) · [03 Linux 驱动](https://mainkeys.github.io/post/tee-03-linux-tee-driver.html) · [04 共享内存](https://mainkeys.github.io/post/tee-04-shared-memory.html) · [05 RPC](https://mainkeys.github.io/post/tee-05-rpc-and-supplicant.html) · [06 启动过程](https://mainkeys.github.io/post/tee-06-before-the-first-call.html)。
