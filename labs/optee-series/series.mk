@@ -4,7 +4,16 @@
 # this file only adds evidence/run helper targets. Use series-make.sh.
 .PHONY: series-config series-console
 series-config:
-	@printf '%s\n' 'SPMC_AT_EL=$(SPMC_AT_EL)' 'TF_A_TRUSTED_BOARD_BOOT=$(TF_A_TRUSTED_BOARD_BOOT)' 'COMPILE_NS_USER=$(COMPILE_NS_USER)' 'COMPILE_NS_KERNEL=$(COMPILE_NS_KERNEL)' 'COMPILE_S_USER=$(COMPILE_S_USER)' 'COMPILE_S_KERNEL=$(COMPILE_S_KERNEL)' 'TF_A_FLAGS=$(TF_A_FLAGS)' 'OPTEE_OS_COMMON_FLAGS=$(OPTEE_OS_COMMON_FLAGS)' 'QEMU_BASE_ARGS=$(QEMU_BASE_ARGS)'
+	$(info SPMC_AT_EL=$(SPMC_AT_EL))
+	$(info TF_A_TRUSTED_BOARD_BOOT=$(TF_A_TRUSTED_BOARD_BOOT))
+	$(info COMPILE_NS_USER=$(COMPILE_NS_USER))
+	$(info COMPILE_NS_KERNEL=$(COMPILE_NS_KERNEL))
+	$(info COMPILE_S_USER=$(COMPILE_S_USER))
+	$(info COMPILE_S_KERNEL=$(COMPILE_S_KERNEL))
+	$(info TF_A_FLAGS=$(TF_A_FLAGS))
+	$(info OPTEE_OS_COMMON_FLAGS=$(OPTEE_OS_COMMON_FLAGS))
+	$(info QEMU_BASE_ARGS=$(QEMU_BASE_ARGS))
+	@true
 
 # Same QEMU_BASE_ARGS as upstream; two UARTs are explicitly captured. No
 # host share is exposed. `script` in README captures UART0/terminal output.

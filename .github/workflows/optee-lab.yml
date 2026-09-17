@@ -22,6 +22,8 @@ jobs:
       JOBS: '4'
     steps:
       - uses: actions/checkout@v4
+      - name: Verify serial protocol regression
+        run: python3 -m unittest discover -s labs/optee-series -p test_console_protocol.py
       - name: Install Linux build dependencies
         run: |
           sudo apt-get update -qq
@@ -43,9 +45,10 @@ jobs:
       - name: Install pinned AArch64 toolchain
         run: |
           bash labs/optee-series/series-make.sh "$OPTEE_LAB_ROOT" aarch64-toolchain > "$RUNNER_TEMP/toolchain.log" 2>&1 || { tail -n 160 "$RUNNER_TEMP/toolchain.log"; exit 1; }
+          { "$OPTEE_LAB_ROOT/toolchains/aarch64/bin/aarch64-linux-gnu-gcc" --version; sha256sum "$(readlink -f "$OPTEE_LAB_ROOT/toolchains/aarch64/bin/aarch64-linux-gnu-gcc")"; } > "$OPTEE_LAB_ROOT/evidence/toolchain.txt"
       - name: Build public platform and examples
         run: |
-          bash labs/optee-series/build-linux.sh "$OPTEE_LAB_ROOT" > "$RUNNER_TEMP/build.log" 2>&1 || { tail -n 220 "$RUNNER_TEMP/build.log"; exit 1; }
+          bash labs/optee-series/build-linux.sh "$OPTEE_LAB_ROOT"
           cd "$OPTEE_LAB_ROOT"
           sha256sum out-br/images/rootfs.cpio.gz out-br/target/usr/bin/optee_series_echo out-br/target/lib/optee_armtz/4d5acb20-46c2-4bc7-9c0d-58f50a1179d2.ta > evidence/binary-sha256.txt
           { grep -E 'CONFIG_OPTEE|CONFIG_TEE|CONFIG_ARM64|CONFIG_COMPAT' linux/.config || true; grep -E 'BR2_PACKAGE_STRACE|BR2_aarch64' out-br/.config || true; } > evidence/actual-config.txt

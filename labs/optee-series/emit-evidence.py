@@ -8,7 +8,7 @@ import sys
 import zlib
 
 root = pathlib.Path(sys.argv[1])
-names = ["repo-manifest.resolved.xml", "submodules.txt", "build-config.txt", "installed-examples.txt", "guest-environment.txt", "hello-world.txt", "echo-tests.txt", "hello-world.strace.txt", "supplicant.strace.txt", "supplicant-attach.txt", "results.json", "uart-normal.txt", "uart-secure.txt", "host-environment.txt", "binary-sha256.txt", "actual-config.txt"]
+names = ["repo-manifest.resolved.xml", "submodules.txt", "build-config.txt", "installed-examples.txt", "guest-environment.txt", "hello-world.txt", "echo-tests.txt", "hello-world.strace.txt", "supplicant.strace.txt", "supplicant-attach.txt", "supplicant-stop.txt", "results.json", "uart-normal.txt", "uart-secure.txt", "host-environment.txt", "toolchain.txt", "binary-sha256.txt", "actual-config.txt"]
 for name in names:
     path = root / "evidence" / name
     if not path.is_file():
