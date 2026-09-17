@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 1,
+  "release": "4.10.0",
+  "manifest": {
+    "url": "https://github.com/OP-TEE/manifest.git",
+    "file": "qemu_v8.xml",
+    "includedFiles": [
+      "common.xml"
+    ],
+    "tag": "4.10.0",
+    "tagObject": "5dc349cf004db361afc70e76af1a947c88ea7cf8",
+    "commit": "6d5849d5c1e4054980bf430ce1e96ebd0f532590"
+  },
+  "resolvedAtUtc": "2026-09-17T16:59:15.495885+00:00",
+  "scope": "Upstream manifest top-level project refs only; not a repo manifest -r export. No repo sync, submodule resolution, download verification, compilation or QEMU execution is claimed.",
+  "projects": [
+    {
+      "path": "SCP-firmware",
+      "url": "https://github.com/linaro-swg/SCP-firmware.git",
+      "revision": "refs/tags/v2.16.0",
+      "syncSubmodules": false,
+      "commit": "190e938c2da3631b4834a90448516423099c79f7",
+      "refObject": "7466e418845a7d43cf3a2f799006da5d5fbd4c1d",
+      "resolution": "git ls-remote (peeled when annotated)"
+    },
+    {
+      "path": "build",
+      "url": "https://github.com/OP-TEE/build.git",
+      "revision": "refs/tags/4.10.0",
+      "syncSubmodules": false,
+      "commit": "53bfd321ee7fd47e450fb88c04b08ea27819f9bc",
+      "refObject": "e77041f140dceabd8099adae8108a49913151999",
+      "resolution": "git ls-remote (peeled when annotated)"
+    },
+    {
+      "path": "buildroot",
+      "url": "https://github.com/buildroot/buildroot.git",
+      "revision": "refs/tags/2025.05",
+      "syncSubmodules": false,
+      "commit": "fcde5363aa35220a1f201159a05de652ec6f811f",
+      "refObject": "ca21c93deb6de53b2ce9dd61dc7a66d953b1c232",
+      "resolution": "git ls-remote (peeled when annotated)"
+    },
+    {
+      "path": "hafnium",
+      "url": "https://github.com/TF-Hafnium/hafnium.git",
+      "revision": "refs/tags/v2.14.0",
+      "syncSubmodules": false,
+      "commit": "ce12c6e53838f1cf07d50b616b72db57a81539a4",
+      "refObject": "b2ecbec29f9b6bc7c7b665a938ecf57b7882f8ef",
+      "resolution": "git ls-remote (peeled when annotated)"
+    },
+    {
+      "path": "linux",
+      "url": "https://github.com/linaro-swg/linux.git",
+      "revision": "refs/tags/optee-4.10.0",
+      "syncSubmodules": false,
+      "refObject": "d6757369f095b4dfb749e7a0e3fafddc07bbcee5",
+      "commit": "cf6e3218c25183cbc45551e85d0dd531f00fcc3d",
+      "resolution": "GitHub Git exact-ref API, annotated tag peeled"
+    },
+    {
+      "path": "linux-arm-ffa-user",
+      "url": "https://github.com/linaro-swg/linux-trusted-services.git",
+      "revision": "refs/tags/debugfs-v5.0.2",
+      "syncSubmodules": false,
+      "commit": "885af0d1c3bf11aba12320d5484429160a9b9f26",
+      "refObject": "885af0d1c3bf11aba12320d5484429160a9b9f26",
+      "resolution": "git ls-remote (peeled when annotated)"
+    },
+    {
+      "path": "mbedtls",
+      "url": "https://github.com/Mbed-TLS/mbedtls.git",
+      "revision": "refs/tags/mbedtls-3.6.5",
+      "syncSubmodules": true,
+      "commit": "e185d7fd85499c8ce5ca2a54f5cf8fe7dbe3f8df",
+      "refObject": "c3db4124ce35e6a698019bd62a281f16ddb677a6",
+      "resolution": "git ls-remote (peeled when annotated)"
+    },
+    {
+      "path": "ms-tpm-20-ref",
+      "url": "https://github.com/microsoft/ms-tpm-20-ref",
+      "revision": "98b60a44aba79b15fcce1c0d1e46cf5918400f6a",
+      "syncSubmodules": false,
+      "commit": "98b60a44aba79b15fcce1c0d1e46cf5918400f6a",
+      "resolution": "commit pinned in upstream manifest"
+    },
+    {
+      "path": "optee_client",
+      "url": "https://github.com/OP-TEE/optee_client.git",
+      "revision": "refs/tags/4.10.0",
+      "syncSubmodules": false,
+      "commit": "9f5e90918093c1d1cd264d8149081b64ab7ba672",
+      "refObject": "074f9cbb08d80257ce90a62ad9e8a29b50c7f96b",
+      "resolution": "git ls-remote (peeled when annotated)"
+    },
+    {
+      "path": "optee_examples",
+      "url": "https://github.com/linaro-swg/optee_examples.git",
+      "revision": "refs/tags/4.10.0",
+      "syncSubmodules": false,
+      "commit": "934c7edb74a26e90f68024cf441073528444177f",
+      "refObject": "3a3fb8ba6052f67ea6e5e2b2066281c2dcf2459f",
+      "resolution": "git ls-remote (peeled when annotated)"
+    },
+    {
+      "path": "optee_ftpm",
+      "url": "https://github.com/OP-TEE/optee_ftpm.git",
+      "revision": "refs/tags/4.10.0",
+      "syncSubmodules": false,
+      "commit": "a09269b15de635e1816fe832e26adfbfb44c5455",
+      "refObject": "545eab836ddc809d6866e9f8f83fa9452e0fb4e3",
+      "resolution": "git ls-remote (peeled when annotated)"
+    },
+    {
+      "path": "optee_os",
+      "url": "https://github.com/OP-TEE/optee_os.git",
+      "revision": "refs/tags/4.10.0",
+      "syncSubmodules": false,
+      "commit": "753afbbee1682f5d16fd30e87b31058a4fd4f4b8",
+      "refObject": "f7f8df9e1c97264e6b4c1d85afc3570f298e8368",
+      "resolution": "git ls-remote (peeled when annotated)"
+    },
+    {
+      "path": "optee_rust",
+      "url": "https://github.com/apache/incubator-teaclave-trustzone-sdk.git",
+      "revision": "746ee39f286788c049ddb55f57417ba97ed575a7",
+      "syncSubmodules": false,
+      "commit": "746ee39f286788c049ddb55f57417ba97ed575a7",
+      "resolution": "commit pinned in upstream manifest"
+    },
+    {
+      "path": "optee_test",
+      "url": "https://github.com/OP-TEE/optee_test.git",
+      "revision": "refs/tags/4.10.0",
+      "syncSubmodules": false,
+      "commit": "88c93e87a5c172363ee986ded036a25cafcc9d2c",
+      "refObject": "ae5d363f3911f6c02bf08b91f4472cd73c81aa59",
+      "resolution": "git ls-remote (peeled when annotated)"
+    },
+    {
+      "path": "qemu",
+      "url": "https://github.com/qemu/qemu.git",
+      "revision": "refs/tags/v10.0.0",
+      "syncSubmodules": false,
+      "commit": "7c949c53e936aa3a658d84ab53bae5cadaa5d59c",
+      "refObject": "385b0a7d9785c8f3ac7b116d7f31d61502b55183",
+      "resolution": "git ls-remote (peeled when annotated)"
+    },
+    {
+      "path": "trusted-firmware-a",
+      "url": "https://github.com/TrustedFirmware-A/trusted-firmware-a.git",
+      "revision": "refs/tags/v2.14.0",
+      "syncSubmodules": true,
+      "commit": "1d5aa939bc8d3d892e2ed9945fa50e36a1a924cc",
+      "refObject": "4b36a44be6f40ff233d9aa00389dc382ca0ba96d",
+      "resolution": "git ls-remote (peeled when annotated)"
+    },
+    {
+      "path": "trusted-services",
+      "url": "https://git.trustedfirmware.org/TS/trusted-services.git",
+      "revision": "8881aaa3a9cb21e8b869e28c1a079f02fa46fd6c",
+      "syncSubmodules": false,
+      "commit": "8881aaa3a9cb21e8b869e28c1a079f02fa46fd6c",
+      "resolution": "commit pinned in upstream manifest"
+    },
+    {
+      "path": "u-boot",
+      "url": "https://github.com/u-boot/u-boot.git",
+      "revision": "refs/tags/v2025.07",
+      "syncSubmodules": false,
+      "commit": "e37de002fac3895e8d0b60ae2015e17bb33e2b5b",
+      "refObject": "8605218f5cbdfde80a287fb0a1a2064ae91691a0",
+      "resolution": "git ls-remote (peeled when annotated)"
+    },
+    {
+      "path": "xen",
+      "url": "https://github.com/xen-project/xen.git",
+      "revision": "refs/tags/RELEASE-4.20.0",
+      "syncSubmodules": false,
+      "commit": "3ad5d648cda5add395f49fc3704b2552aae734f7",
+      "refObject": "098a246d15fd9a165449ab738eab249811d192a8",
+      "resolution": "git ls-remote (peeled when annotated)"
+    }
+  ]
+}
