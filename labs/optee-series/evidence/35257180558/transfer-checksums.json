@@ -1,0 +1,74 @@
+{
+  "repo-manifest.resolved.xml": {
+    "sha256": "bcc2b83a3542ecc0bd42ed4a783d4d1207ae3f779eb6588fcb0435ab34b84d14",
+    "bytes": 2825
+  },
+  "submodules.txt": {
+    "sha256": "9d8dd438c87318278c314c3ced3a4d6b77584722a490ea5179ff6eed345f646f",
+    "bytes": 2132
+  },
+  "build-config.txt": {
+    "sha256": "3037a3476b7e17e9c95806799b117f0a32994e53159922f298e71a685ad95754",
+    "bytes": 1976
+  },
+  "installed-examples.txt": {
+    "sha256": "02d5791f4e18d6bf02f2dc513a86060e002929a96b336484f52214b834a71ea1",
+    "bytes": 236
+  },
+  "guest-environment.txt": {
+    "sha256": "f7937658bb398e3c36e971bdc85c1b812b2cf67e07d5a94ed52528a0f35b1311",
+    "bytes": 319
+  },
+  "hello-world.txt": {
+    "sha256": "e01ac3ac824068ea9d8036ce05418df24e9b4ff32262593feab1d6938937807b",
+    "bytes": 62
+  },
+  "echo-tests.txt": {
+    "sha256": "7aae4956b8147cfe24ab9e61202b7d2306978672da7a9ccd0db9a6a79e65bede",
+    "bytes": 285
+  },
+  "hello-world.strace.txt": {
+    "sha256": "04cb4143a78adb32c0c2f9319cbd193e16ddc5cb2bb171a95de3cd1291ce8b95",
+    "bytes": 1997
+  },
+  "supplicant.strace.txt": {
+    "sha256": "570579af539b16c5a7178e4e645cf0f854e94fca35b203c1b64a2554c06f758b",
+    "bytes": 158150
+  },
+  "supplicant-attach.txt": {
+    "sha256": "45ede707587d65dda6f50f500019f22789053b845fa932eb7418cd58f0eba13c",
+    "bytes": 174
+  },
+  "supplicant-stop.txt": {
+    "sha256": "97097443b69c2ac6085ed89d9c8c1742f4fa2a07ac4efe2a3ffde78caa6ba881",
+    "bytes": 21
+  },
+  "results.json": {
+    "sha256": "5ef96e4de50879c84d25368cd0d30e2cbfda28cdef0c6403a68e2a6fd9ba4052",
+    "bytes": 803
+  },
+  "uart-normal.txt": {
+    "sha256": "76369ce744aec9f6a383fdc952f1cf5cb7fb81003c8c90e034fda88c76bc0493",
+    "bytes": 247833
+  },
+  "uart-secure.txt": {
+    "sha256": "893166bdecb5193b5d3dd0ec7a82806045a7cc1611a540b3daf416f13dc19f29",
+    "bytes": 37328
+  },
+  "host-environment.txt": {
+    "sha256": "52f5fa1151027b835460e9fc8832c98d07aecf0876d7e1eb3c98eff48e02e815",
+    "bytes": 3319
+  },
+  "toolchain.txt": {
+    "sha256": "a1902dd6fd17f4f2cbc1cf47b6a32e49bcd0495871eb5e306232d9047fe19bb7",
+    "bytes": 431
+  },
+  "binary-sha256.txt": {
+    "sha256": "38e4fd13f0982b3c31fd68230708dc0cd104460f13de5326157b68e5805bf288",
+    "bytes": 337
+  },
+  "actual-config.txt": {
+    "sha256": "345eaf207da44fa907266057c8f01a620a2c38cd3e79677e3972e0f96b2df0ba",
+    "bytes": 2695
+  }
+}

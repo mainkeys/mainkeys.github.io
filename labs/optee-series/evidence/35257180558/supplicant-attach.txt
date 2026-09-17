@@ -1,0 +1,6 @@
+strace: Process 105 attached
+strace: Process 151 attached
+strace: Process 152 attached
+strace: Process 105 detached
+strace: Process 152 detached
+strace: Process 151 detached

@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+# Publish only reviewed runs; keep new local recordings private by default.
+evidence/*
+!evidence/README.md
+!evidence/35250383576/
+!evidence/35257180558/

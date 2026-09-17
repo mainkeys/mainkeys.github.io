@@ -1,0 +1,48 @@
+project=SCP-firmware
+-3806f7ebe34b17b002b8e2d6b9fdcd72e67c4f24 contrib/cmock/git
+-2b7495b8535bdcb306dac29b9ded4cfb679d7e5c contrib/cmsis/git
+project=build
+project=buildroot
+project=hafnium
+-8ff8ae2bee8506d256981f87b40a589e11b34409 prebuilts
+-7a6b1357edb9d6d70394881fac251bc09e014a11 project/reference
+-026795cea0b527484051ae1a3947fa8c266b666d third_party/dtc
+-efe7c70c85eb2731ccfc694c80cafe205e73d905 third_party/googletest
+-0c62b22c9c9e07edf9d63a750066451a879464eb third_party/shrinkwrap
+project=linux
+project=linux-arm-ffa-user
+project=mbedtls
+ 457996474728cb8e968ed21953b72f74d2f536b2 framework (remotes/m/6d5849d5c1e4054980bf430ce1e96ebd0f532590)
+project=mbedtls/framework
+project=ms-tpm-20-ref
+-9c87f979a7f1d3a6d786b260653d566c1d31a1c4 external/wolfssl
+project=optee_client
+project=optee_examples
+project=optee_ftpm
+project=optee_os
+project=optee_rust
+project=optee_test
+project=qemu
+-90c488d5f4a407342247b9ea869df1c2d9c8e266 roms/QemuMacDrivers
+-3a259df2449fc4a4e43ab5f33f0b2c66484b4bc3 roms/SLOF
+-4dfdca63a93497203f197ec98ba20e2327e4afe4 roms/edk2
+-4bd064de239dab2426b31c9789a1f4d78087dc63 roms/ipxe
+-c3a19c1e54977a53027d6232050e1e3e39a98a1b roms/openbios
+-43cace6c3671e5172d0df0a8963e552bb04b7b20 roms/opensbi
+-8ca302e86d685fa05b16e2b208888243da319941 roms/qboot
+-99d9b4dcf27d7fbcbadab71bdc88ef6531baf6bf roms/qemu-palcode
+-a6ed6b701f0a57db0569ab98b0661c12a6ec3ff8 roms/seabios
+-3391c580960febcb9fa8f686f9666adaa462c349 roms/seabios-hppa
+-785a5e3070a86e18521e62fe202b87209de30fa2 roms/skiboot
+-840658b093976390e9537724f802281c9c8439f5 roms/u-boot
+-60b3916f33e617a815973c5a6df77055b2e3a588 roms/u-boot-sam460ex
+-1287b6e42e839ba2ab0f06268c5b53ae60df3537 roms/vbootrom
+-18c4bfe02c467e5639bf9a687139735ccd7a3fff tests/lcitool/libvirt-ci
+project=trusted-firmware-a
+ 41f39ed014671f49a38ec9e63138fd570cfce82a contrib/libeventlog (remotes/m/6d5849d5c1e4054980bf430ce1e96ebd0f532590)
+ 67d85f181b726d2823eea43e8bb4ffb97559d348 contrib/libtl (remotes/m/6d5849d5c1e4054980bf430ce1e96ebd0f532590)
+project=trusted-firmware-a/contrib/libeventlog
+project=trusted-firmware-a/contrib/libtl
+project=trusted-services
+project=u-boot
+project=xen

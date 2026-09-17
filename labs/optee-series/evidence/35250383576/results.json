@@ -1,0 +1,8 @@
+{
+  "status": "failed",
+  "environment": "QEMU Armv8-A, traditional SMC ABI",
+  "startedUtc": "2026-09-17T18:00:05Z",
+  "checks": {},
+  "error": "Timeout exceeded.\n<pexpect.pty_spawn.spawn object at 0x7ff4db10ff40>\ncommand: /usr/bin/bash\nargs: [b'/usr/bin/bash', b'/home/runner/work/mainkeys.github.io/mainkeys.github.io/labs/optee-series/series-make.sh', b'/home/runner/optee-series', b'series-console', b'SERIES_SECURE_LOG=/home/runner/optee-series/evidence/uart-secure.txt']\nbuffer (last 100 chars): 'eepriv0\\x1b[m\\r\\r\\n/usr/bin/strace\\r\\r\\n/usr/bin/optee_series_echo\\r\\r\\n105\\r\\r\\n\\r\\r\\n__LAB_STATUS=0\\r\\r\\nSERIES_READY# '\nbefore (last 100 chars): 'eepriv0\\x1b[m\\r\\r\\n/usr/bin/strace\\r\\r\\n/usr/bin/optee_series_echo\\r\\r\\n105\\r\\r\\n\\r\\r\\n__LAB_STATUS=0\\r\\r\\nSERIES_READY# '\nafter: <class 'pexpect.exceptions.TIMEOUT'>\nmatch: None\nmatch_index: None\nexitstatus: None\nflag_eof: False\npid: 374006\nchild_fd: 6\nclosed: False\ntimeout: 180\ndelimiter: <class 'pexpect.exceptions.EOF'>\nlogfile: None\nlogfile_read: <_io.TextIOWrapper name='/home/runner/optee-series/evidence/uart-normal.txt' mode='w' encoding='utf-8'>\nlogfile_send: None\nmaxread: 2000\nignorecase: False\nsearchwindowsize: None\ndelaybeforesend: 0.05\ndelayafterclose: 0.1\ndelayafterterminate: 0.1\nsearcher: searcher_re:\n    0: re.compile('__LAB_STATUS=([0-9]+)\\\\r?\\\\n')",
+  "finishedUtc": "2026-09-17T18:02:14Z"
+}

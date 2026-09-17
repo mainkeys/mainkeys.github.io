@@ -1,0 +1,14 @@
+make: Entering directory '/home/runner/optee-series/build'
+SPMC_AT_EL=n
+TF_A_TRUSTED_BOARD_BOOT=n
+COMPILE_NS_USER=64
+COMPILE_NS_KERNEL=64
+COMPILE_S_USER=64
+COMPILE_S_KERNEL=64
+TF_A_FLAGS=PLAT=qemu DEBUG=0 LOG_LEVEL=30 ENABLE_SME_FOR_NS=2 ENABLE_SME_FOR_SWD=1 ENABLE_SVE_FOR_NS=2 ENABLE_SVE_FOR_SWD=1 ENABLE_FEAT_FGT=2 ENABLE_FEAT_HCX=2 ENABLE_FEAT_ECV=2 BL33=/home/runner/optee-series/build/../u-boot/u-boot.bin QEMU_USE_GIC_DRIVER=QEMU_GICV3 BL32_RAM_LOCATION=tdram BL32=/home/runner/optee-series/build/../optee_os/out/arm/core/tee-header_v2.bin BL32_EXTRA1=/home/runner/optee-series/build/../optee_os/out/arm/core/tee-pager_v2.bin BL32_EXTRA2=/home/runner/optee-series/build/../optee_os/out/arm/core/tee-pageable_v2.bin SPD=opteed
+OPTEE_OS_COMMON_FLAGS=O=out/arm CFG_USER_TA_TARGETS=ta_arm64 CFG_ARM64_core=y PLATFORM=vexpress-qemu_armv8a CROSS_COMPILE="/usr/bin/ccache /home/runner/optee-series/build/../toolchains/aarch64/bin/aarch64-linux-gnu-" CROSS_COMPILE_core="/usr/bin/ccache /home/runner/optee-series/build/../toolchains/aarch64/bin/aarch64-linux-gnu-" CROSS_COMPILE_ta_arm64="/usr/bin/ccache /home/runner/optee-series/build/../toolchains/aarch64/bin/aarch64-linux-gnu-" CROSS_COMPILE_ta_arm32="/usr/bin/ccache /home/runner/optee-series/build/../toolchains/aarch32/bin/arm-linux-gnueabihf-" CFG_TEE_CORE_LOG_LEVEL=4 DEBUG=0 CFG_IN_TREE_EARLY_TAS="trusted_keys/f04a0fe7-1f5d-4b9b-abf7-619b85b4ce8c" DEBUG=0 CFG_ARM_GICV3=y 
+QEMU_BASE_ARGS=-nographic -smp 2 -cpu max,sme=on,pauth-impdef=on -d unimp -semihosting-config enable=on,target=native -m 1057 -bios bl1.bin -initrd rootfs.cpio.gz -kernel Image -append console=ttyAMA0,38400
+keep_bootcon
+root=/dev/vda2
+ -machine virt,acpi=off,secure=on,mte=off,gic-version=3,virtualization=false  -object rng-random,filename=/dev/urandom,id=rng0 -device virtio-rng-pci,rng=rng0,max-bytes=1024,period=1000 -netdev user,id=vmnic -device virtio-net-device,netdev=vmnic
+make: Leaving directory '/home/runner/optee-series/build'

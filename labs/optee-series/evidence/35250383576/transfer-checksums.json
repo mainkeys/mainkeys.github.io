@@ -1,0 +1,42 @@
+{
+  "repo-manifest.resolved.xml": {
+    "sha256": "bcc2b83a3542ecc0bd42ed4a783d4d1207ae3f779eb6588fcb0435ab34b84d14",
+    "bytes": 2825
+  },
+  "submodules.txt": {
+    "sha256": "9d8dd438c87318278c314c3ced3a4d6b77584722a490ea5179ff6eed345f646f",
+    "bytes": 2132
+  },
+  "build-config.txt": {
+    "sha256": "998205ce3c56ca86fe8257ab981e6b40ac115dbb11c03c60d3990a431b20271b",
+    "bytes": 1974
+  },
+  "installed-examples.txt": {
+    "sha256": "02d5791f4e18d6bf02f2dc513a86060e002929a96b336484f52214b834a71ea1",
+    "bytes": 236
+  },
+  "results.json": {
+    "sha256": "6b38b98ecfc398ae0386fb194b32f11783c860f18a57f43248fad57b3a65ccbc",
+    "bytes": 1437
+  },
+  "uart-normal.txt": {
+    "sha256": "c3ff8473ef12a65c3f263602e82a4098c1199dc719d6db8dc37256bf5bfb46c7",
+    "bytes": 24660
+  },
+  "uart-secure.txt": {
+    "sha256": "edf1604fbb28ba9583d38b2284cb6674501b1241e12e6897601643875c9e8cf8",
+    "bytes": 32813
+  },
+  "host-environment.txt": {
+    "sha256": "5ea3173acdb7753f0891eb305301c39c03a9e02ea8c3e4805c02fabda796d496",
+    "bytes": 3319
+  },
+  "binary-sha256.txt": {
+    "sha256": "1eb3169dbdb3f5160b41a93e0823b9efe4880c367ebd362fe191b4b7ff413f3d",
+    "bytes": 337
+  },
+  "actual-config.txt": {
+    "sha256": "345eaf207da44fa907266057c8f01a620a2c38cd3e79677e3972e0f96b2df0ba",
+    "bytes": 2695
+  }
+}

@@ -1,0 +1,9 @@
+normal: result=0x00000000 origin=4
+echo bytes (13): hello from CA
+zero-length: result=0x00000000 origin=4
+short-buffer: result=0xffff0010 origin=4
+short-buffer required bytes: 13
+wrong-type: result=0xffff0006 origin=4
+value: result=0x00000000 origin=4
+PASS: 5 cases
+

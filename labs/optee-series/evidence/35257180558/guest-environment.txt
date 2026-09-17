@@ -1,0 +1,7 @@
+Linux buildroot 6.18.0-gcf6e3218c251 #1 SMP PREEMPT Thu Sep 17 19:06:09 UTC 2026 aarch64 GNU/Linux
+crw-rw----    1 root     teeclnt   246,   0 Sep 17 19:09 [1;35m/dev/tee0[m
+crw-rw----    1 root     tee       246,  16 Sep 17 19:09 [1;35m/dev/teepriv0[m
+/usr/bin/strace
+/usr/bin/optee_series_echo
+105
+

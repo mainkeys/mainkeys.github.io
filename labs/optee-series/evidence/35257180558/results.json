@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "environment": "QEMU Armv8-A, traditional SMC ABI",
+  "startedUtc": "2026-09-17T19:09:49Z",
+  "checks": {
+    "hello_world": {
+      "exitCode": 0,
+      "output": "Invoking TA to increment 42\r\r\nTA incremented value to 43"
+    },
+    "echo": {
+      "exitCode": 0,
+      "output": "normal: result=0x00000000 origin=4\r\r\necho bytes (13): hello from CA\r\r\nzero-length: result=0x00000000 origin=4\r\r\nshort-buffer: result=0xffff0010 origin=4\r\r\nshort-buffer required bytes: 13\r\r\nwrong-type: result=0xffff0006 origin=4\r\r\nvalue: result=0x00000000 origin=4\r\r\nPASS: 5 cases"
+    },
+    "ioctl": "observed",
+    "ree_ta_load": "TA file open plus supplicant ioctls observed; correlate with secure UART and fixed source"
+  },
+  "finishedUtc": "2026-09-17T19:10:01Z"
+}

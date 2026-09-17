@@ -1,0 +1,59 @@
+name: OP-TEE public lab
+
+on:
+  push:
+    branches: [codex/tee-series-lab]
+    paths: ['labs/optee-series/**', '.github/workflows/optee-lab.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: optee-public-lab
+  cancel-in-progress: false
+
+jobs:
+  lab:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 180
+    env:
+      OPTEE_LAB_ROOT: /home/runner/optee-series
+      JOBS: '4'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify serial protocol regression
+        run: python3 -m unittest discover -s labs/optee-series -p test_console_protocol.py
+      - name: Install Linux build dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends \
+            repo acpica-tools autoconf automake bc bison build-essential \
+            ccache cpio curl device-tree-compiler e2tools expect flex gdisk git \
+            libattr1-dev libcap-ng-dev libfdt-dev libftdi-dev libglib2.0-dev \
+            libgmp3-dev libgnutls28-dev libhidapi-dev libmpc-dev libncurses5-dev \
+            libpixman-1-dev libslirp-dev libssl-dev libtool libusb-1.0-0-dev \
+            mtools ninja-build python3-cryptography python3-pip python3-pyelftools \
+            python3-serial python3-tomli python3-pexpect python-is-python3 \
+            rsync swig unzip uuid-dev wget xz-utils zlib1g-dev
+      - name: Resolve and verify pinned public sources
+        run: |
+          git config --global user.name 'OP-TEE lab'
+          git config --global user.email 'lab@localhost'
+          bash labs/optee-series/bootstrap-linux.sh "$OPTEE_LAB_ROOT" > "$RUNNER_TEMP/source-sync.log" 2>&1 || { tail -n 180 "$RUNNER_TEMP/source-sync.log"; exit 1; }
+          { uname -a; lscpu; df -h "$OPTEE_LAB_ROOT"; } > "$OPTEE_LAB_ROOT/evidence/host-environment.txt"
+      - name: Install pinned AArch64 toolchain
+        run: |
+          bash labs/optee-series/series-make.sh "$OPTEE_LAB_ROOT" aarch64-toolchain > "$RUNNER_TEMP/toolchain.log" 2>&1 || { tail -n 160 "$RUNNER_TEMP/toolchain.log"; exit 1; }
+          { "$OPTEE_LAB_ROOT/toolchains/aarch64/bin/aarch64-linux-gnu-gcc" --version; sha256sum "$(readlink -f "$OPTEE_LAB_ROOT/toolchains/aarch64/bin/aarch64-linux-gnu-gcc")"; } > "$OPTEE_LAB_ROOT/evidence/toolchain.txt"
+      - name: Build public platform and examples
+        run: |
+          bash labs/optee-series/build-linux.sh "$OPTEE_LAB_ROOT"
+          cd "$OPTEE_LAB_ROOT"
+          sha256sum out-br/images/rootfs.cpio.gz out-br/target/usr/bin/optee_series_echo out-br/target/lib/optee_armtz/4d5acb20-46c2-4bc7-9c0d-58f50a1179d2.ta > evidence/binary-sha256.txt
+          { grep -E 'CONFIG_OPTEE|CONFIG_TEE|CONFIG_ARM64|CONFIG_COMPAT' linux/.config || true; grep -E 'BR2_PACKAGE_STRACE|BR2_aarch64' out-br/.config || true; } > evidence/actual-config.txt
+      - name: Run QEMU, trace calls and assert examples
+        run: python3 labs/optee-series/run-qemu.py "$OPTEE_LAB_ROOT"
+      - name: Preserve small evidence in job logs
+        if: always()
+        run: python3 labs/optee-series/emit-evidence.py "$OPTEE_LAB_ROOT"

@@ -297,4 +297,19 @@ SoC Security 并不是 Kernel 启动成功之后就结束了。
 
 所以先写起来。
 
-下一篇，准备从 SoC Security 的整体架构开始。
+## 第一季：顺着一次 TEE 调用，把这些东西连起来
+
+第一轮先从一个足够小的例子开始：普通世界传一个数给 TA，让它加一，再拿回结果。业务简单，正好有精力看中间经过了谁。然后再把参数换成一段字符串，看看那些原来被一根箭头带过去的细节。
+
+这六篇共用 OP-TEE 4.10.0 的 QEMU Armv8-A 环境，按下面的顺序读：
+
+1. [一次 CA 请求，到底怎么走到 TA？](/post/tee-01-ca-to-ta.html)——先把 Context、Session、UUID 和 Command 放进同一次调用。
+2. [看 TEE 代码之前，我先把 ARMv8 的异常级理清了](/post/tee-02-armv8-exception-levels.html)——分开看异常级和安全状态，再给图里的代码找位置。
+3. [从 /dev/tee0 开始，追一次请求进入内核](/post/tee-03-linux-tee-driver.html)——对照 ioctl，弄清 TEE core 和 OP-TEE 驱动分别接哪一棒。
+4. [传给 TA 的参数，为什么不能只是一个指针？](/post/tee-04-shared-memory.html)——用带长度检查的回显例子理解共享内存和接口边界。
+5. [TA 还没执行完，为什么又回到了 Linux？](/post/tee-05-rpc-and-supplicant.html)——把 RPC、用户 TA 加载和 tee-supplicant 连起来。
+6. [能调用 TA 之前，系统是怎样启动起来的？](/post/tee-06-before-the-first-call.html)——分别画启动执行顺序和认证关系，追到认证失败的出口。
+
+[公开实验包](https://github.com/mainkeys/mainkeys.github.io/tree/main/labs/optee-series)保存版本锁定、构建与运行脚本、回显示例和验证记录。文章里会区分实际观察、固定源码核对和架构资料；第六篇的认证失败分析属于源码核对，这套日常调用实验没有开启 TBB。
+
+接下来想继续补的是驱动并发与内存管理、设备树与设备模型、RPMB 与可信存储，以及防回滚和安全升级的状态管理。先把这一条调用路线走明白，再往这些分支展开。
