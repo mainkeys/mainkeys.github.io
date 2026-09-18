@@ -62,7 +62,7 @@ SMC 返回 Linux 也可能只是请求普通世界提供服务，之后还要恢
 
 ## QEMU 中的运行记录
 
-下面是 2026 年 9 月 18 日的实验记录，来自 [GitHub Actions 任务 35257180558](https://github.com/mainkeys/mainkeys.github.io/actions/runs/35257180558)。宿主机是 Ubuntu 22.04，QEMU 运行 AArch64 的来宾系统。依赖、固定源码与复现方法放在仓库的[公开实验包](https://github.com/mainkeys/mainkeys.github.io/blob/main/labs/optee-series/README.md)。
+下面的记录来自 2026 年 9 月 18 日的 [GitHub Actions 运行 35257180558](https://github.com/mainkeys/mainkeys.github.io/actions/runs/35257180558)。宿主机是 Ubuntu 22.04，QEMU 运行 AArch64 的来宾系统。依赖、固定源码与复现方法放在仓库的[公开实验包](https://github.com/mainkeys/mainkeys.github.io/blob/main/labs/optee-series/README.md)。
 
 实验包沿用 [OP-TEE 官方 QEMU Armv8-A 方案](https://optee.readthedocs.io/en/4.10.0/building/devices/qemu.html#qemu-v8)，锁定 manifest、校验各项目提交，并保存实际的 [`repo manifest -r`](https://github.com/mainkeys/mainkeys.github.io/blob/main/labs/optee-series/evidence/35257180558/repo-manifest.resolved.xml)，方便之后按同一版本复查。下面是依赖准备完成后的脚本入口，`OPTEE_LAB_ROOT` 指向 `/home/runner/optee-series`：
 

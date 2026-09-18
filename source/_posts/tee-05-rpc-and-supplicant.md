@@ -90,7 +90,7 @@ kill -INT $SERIES_TRACER
 sleep 1
 ```
 
-Buildroot 镜像包含 strace，这些命令以来宾 root 执行。自动化检查各步的退出状态，先附加跟踪，再运行未修改的 hello_world 和本系列的 echo 示例，结束时向 tracer 发送 SIGINT，取回 trace、附加诊断与两侧串口记录。文件由 supplicant 读取，所以这部分要看它的 trace，CA 的 trace 里找不到。
+Buildroot 镜像包含 strace，这些命令以来宾 root 执行。运行脚本检查各步的退出状态，先附加跟踪，再运行未修改的 hello_world 和本系列的 echo 示例，结束时向 tracer 发送 SIGINT，取回 trace、附加诊断与两侧串口记录。文件由 supplicant 读取，所以这部分要看它的 trace，CA 的 trace 里找不到。
 
 我先用 hello_world 的 UUID 找到了下面两次成功的文件打开。[原始 trace](https://github.com/mainkeys/mainkeys.github.io/blob/main/labs/optee-series/evidence/35257180558/supplicant.strace.txt) 中两行之间还有 ioctl、read 等操作，这里用省略号略去：
 

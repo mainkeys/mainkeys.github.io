@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # SPDX-License-Identifier: BSD-2-Clause
-# Build only with a toolchain that is already installed and reviewed.
+# Build with an already installed toolchain.
 set -euo pipefail
 [[ $# == 1 ]] || { printf 'Usage: bash %s OPTEE_ROOT\n' "$0" >&2; exit 2; }
 package_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)

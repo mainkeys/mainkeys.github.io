@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Recover our checksummed evidence blocks from a downloaded Actions log ZIP."""
+"""Extract checksummed experiment files from a downloaded Actions log ZIP."""
 import argparse
 import base64
 import hashlib

@@ -18,7 +18,7 @@ permalink: /post/tee-06-before-the-first-call.html
 
 本系列使用 OP-TEE manifest 4.10.0，提交为 `6d5849d5c1e4054980bf430ce1e96ebd0f532590`。其中 [qemu_v8.xml](https://github.com/OP-TEE/manifest/blob/6d5849d5c1e4054980bf430ce1e96ebd0f532590/qemu_v8.xml) 指定 TF-A v2.14.0，对应提交 `1d5aa939bc8d3d892e2ed9945fa50e36a1a924cc`。下文 TF-A 源码链接均固定到这一提交。
 
-本次[实验任务 35257180558](https://github.com/mainkeys/mainkeys.github.io/actions/runs/35257180558) 已通过，归档的 [build-config.txt](https://github.com/mainkeys/mainkeys.github.io/blob/main/labs/optee-series/evidence/35257180558/build-config.txt) 中有一个需要留意的选项：`TF_A_TRUSTED_BOARD_BOOT=n`。固定 OP-TEE build 的 [qemu_v8.mk](https://github.com/OP-TEE/build/blob/53bfd321ee7fd47e450fb88c04b08ea27819f9bc/qemu_v8.mk) 只有在它为 `y` 时才添加 `TRUSTED_BOARD_BOOT=1` 和 `GENERATE_COT=1`。因此，启动和 hello_world 成功是本次的实测结果，TBB 认证失败的处理则只核对了源码。
+[实验记录 35257180558](https://github.com/mainkeys/mainkeys.github.io/actions/runs/35257180558) 对应的 [build-config.txt](https://github.com/mainkeys/mainkeys.github.io/blob/main/labs/optee-series/evidence/35257180558/build-config.txt) 中有一个需要留意的选项：`TF_A_TRUSTED_BOARD_BOOT=n`。固定 OP-TEE build 的 [qemu_v8.mk](https://github.com/OP-TEE/build/blob/53bfd321ee7fd47e450fb88c04b08ea27819f9bc/qemu_v8.mk) 只有在它为 `y` 时才添加 `TRUSTED_BOARD_BOOT=1` 和 `GENERATE_COT=1`。因此，启动和 hello_world 成功是本次的实测结果，TBB 认证失败的处理则只核对了源码。
 
 ## BL1 到 Linux 的执行顺序
 

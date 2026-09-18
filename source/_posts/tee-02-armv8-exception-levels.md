@@ -30,7 +30,7 @@ Exception Level 描述异常级，影响指令、系统寄存器和特权操作�
 | OP-TEE core、pseudo TA | S-EL1 | 安全内核及其中的特权服务 |
 | 用户 TA | S-EL0 | 经安全内核管理的应用代码 |
 
-本次归档的 [build-config.txt](https://github.com/mainkeys/mainkeys.github.io/blob/main/labs/optee-series/evidence/35257180558/build-config.txt) 记录了 `SPMC_AT_EL=n`、`SPD=opteed`。普通世界和安全世界的用户、内核四侧均为 64 位：`COMPILE_NS_USER`、`COMPILE_NS_KERNEL`、`COMPILE_S_USER`、`COMPILE_S_KERNEL` 都是 `64`，对应固定版本 [qemu_v8.mk](https://github.com/OP-TEE/build/blob/53bfd321ee7fd47e450fb88c04b08ea27819f9bc/qemu_v8.mk) 的传统 SMC 分支。表里的位置由这套部署决定，Linux 在其他配置中也可能运行于不同异常级。
+[build-config.txt](https://github.com/mainkeys/mainkeys.github.io/blob/main/labs/optee-series/evidence/35257180558/build-config.txt) 记录了 `SPMC_AT_EL=n`、`SPD=opteed`。普通世界和安全世界的用户、内核四侧均为 64 位：`COMPILE_NS_USER`、`COMPILE_NS_KERNEL`、`COMPILE_S_USER`、`COMPILE_S_KERNEL` 都是 `64`，对应固定版本 [qemu_v8.mk](https://github.com/OP-TEE/build/blob/53bfd321ee7fd47e450fb88c04b08ea27819f9bc/qemu_v8.mk) 的传统 SMC 分支。表里的位置由这套部署决定，Linux 在其他配置中也可能运行于不同异常级。
 
 实际启动命令选了 QEMU `virt` 机器、`virtualization=false` 和 `-cpu max,sme=on,pauth-impdef=on`。这里的 `max` 按模拟器支持情况启用处理器特性；[固定 QEMU 源码](https://github.com/qemu/qemu/blob/7c949c53e936aa3a658d84ab53bae5cadaa5d59c/target/arm/tcg/cpu64.c) 也特意让它区别于真实 CPU 型号。实验中的特性组合不能直接当成某颗 Armv8.0 芯片的规格。
 
@@ -88,7 +88,7 @@ rg -n '__thread_enter_user_mode|eret_to_el0' \
   optee_os/core/arch/arm/kernel/thread_a64.S
 ```
 
-这次构建运行在 Ubuntu 22.04 的 GitHub Actions 宿主机上，[9 月 18 日的实验任务 35257180558](https://github.com/mainkeys/mainkeys.github.io/actions/runs/35257180558) 已通过。[导出的 manifest](https://github.com/mainkeys/mainkeys.github.io/blob/main/labs/optee-series/evidence/35257180558/repo-manifest.resolved.xml) 保存实际组件提交，[生成配置摘录](https://github.com/mainkeys/mainkeys.github.io/blob/main/labs/optee-series/evidence/35257180558/actual-config.txt) 中有 `CONFIG_ARM64=y`、`CONFIG_OPTEE=y` 和 `BR2_aarch64=y`。本次[运行脚本固定在 113865db](https://github.com/mainkeys/mainkeys.github.io/blob/113865db3eb885c15f5d079db6b5dd12325a4c94/labs/optee-series/run-qemu.py)，便于连同构建参数一起检查。
+[9 月 18 日的实验记录 35257180558](https://github.com/mainkeys/mainkeys.github.io/actions/runs/35257180558) 来自 Ubuntu 22.04 的 GitHub Actions 宿主机。[导出的 manifest](https://github.com/mainkeys/mainkeys.github.io/blob/main/labs/optee-series/evidence/35257180558/repo-manifest.resolved.xml) 保存实际组件提交，[生成配置摘录](https://github.com/mainkeys/mainkeys.github.io/blob/main/labs/optee-series/evidence/35257180558/actual-config.txt) 中有 `CONFIG_ARM64=y`、`CONFIG_OPTEE=y` 和 `BR2_aarch64=y`。[运行脚本固定在 113865db](https://github.com/mainkeys/mainkeys.github.io/blob/113865db3eb885c15f5d079db6b5dd12325a4c94/labs/optee-series/run-qemu.py)，可以连同构建参数一起复查。
 
 普通世界的 [UART 记录](https://github.com/mainkeys/mainkeys.github.io/blob/main/labs/optee-series/evidence/35257180558/uart-normal.txt) 中，Linux 报告了启动异常级：
 

@@ -111,7 +111,7 @@ optee_series_echo
 echo $?
 ```
 
-下面是 [2026 年 9 月 18 日这轮自动实验](https://github.com/mainkeys/mainkeys.github.io/actions/runs/35257180558)中的实际输出，摘自 [echo-tests.txt](https://github.com/mainkeys/mainkeys.github.io/blob/main/labs/optee-series/evidence/35257180558/echo-tests.txt)，仅统一了串口换行：
+下面是 [2026 年 9 月 18 日的实验记录](https://github.com/mainkeys/mainkeys.github.io/actions/runs/35257180558)中的实际输出，摘自 [echo-tests.txt](https://github.com/mainkeys/mainkeys.github.io/blob/main/labs/optee-series/evidence/35257180558/echo-tests.txt)，仅统一了串口换行：
 
 ```text
 normal: result=0x00000000 origin=4

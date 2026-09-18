@@ -1,28 +1,12 @@
-# TEE 系列公开实验包
+# OP-TEE QEMU 实验
 
-这个目录保存博客第一季的最小实验材料。`echo/` 是独立的 CA/TA 示例，不修改官方 `hello_world`。本目录不包含上游源码、工具链、磁盘镜像或生成的 TA。
+这个实验配合博客中的 TEE 调用系列，用官方 `hello_world` 观察 CA 到 TA 的调用，再用独立的 [echo 示例](echo/) 检查 value、memref、参数类型和输出长度。实验还记录客户端 ioctl、tee-supplicant 读取 TA 文件的过程及两路 UART。
 
-**验证结果：** [第二次 Actions 35257180558](https://github.com/mainkeys/mainkeys.github.io/actions/runs/35257180558) 已完成固定源码构建和真实 QEMU 实验：hello_world 42→43、回显五项断言、客户端 ioctl 与 supplicant 的 TA 文件加载观察均通过核对。`sources.lock.json` 的 19 个顶层提交与导出的 manifest 一致。原始结果见 [evidence/35257180558](evidence/35257180558/)，第一次串口换行解析失败的记录也保留在 [evidence/README.md](evidence/README.md)。本轮 `TF_A_TRUSTED_BOARD_BOOT=n`，不包含 TBB 篡改认证实验。
+## 版本与配置
 
-## 本次无人值守运行
+基于 OP-TEE **4.10.0** 的 [qemu_v8.xml](https://github.com/OP-TEE/manifest/blob/6d5849d5c1e4054980bf430ce1e96ebd0f532590/qemu_v8.xml)，manifest commit 为 `6d5849d5c1e4054980bf430ce1e96ebd0f532590`。19 个顶层项目的固定提交见 [sources.lock.json](sources.lock.json)，以下是主要组件：
 
-本次使用公开仓库的标准 `ubuntu-22.04` GitHub Actions runner，Linux 工作区为 `/home/runner/optee-series`。它是实验的宿主机；QEMU 模拟的是 Armv8-A 来宾，不依赖本机 Windows 的 WSL 是否可启动。
-
-工作流见 [optee-lab.yml](../../.github/workflows/optee-lab.yml)，只自动响应独立 `codex/tee-series-lab` 分支的实验文件变更。它不会发布博客，也没有定时执行设置。发布仍由 main 分支原有 Pages 工作流负责。
-
-`run-qemu.py` 自动登录新启动的来宾，先附加 strace 到现有 tee-supplicant，再运行官方 hello_world 和本系列五项检查，取回 CA、supplicant 与两侧 UART。脚本检查程序退出状态和基本输出；发布前还人工核对目标 UUID 的成功文件读取、ioctl 参数及安全侧日志，不单凭包含某个字符串认定加载成功。
-
-为避免额外 artifact/cache 存储，本次把必要文本记录压缩、带 SHA-256 摘要写入 Actions job 日志，由 `tools/blog/collect-lab-evidence.py` 解码并验证。该摘要校验用于确认取回的字节未变，不代替上游源码或编译器的来源认证。
-
-实际成功运行使用提交 [`113865db`](https://github.com/mainkeys/mainkeys.github.io/blob/113865db3eb885c15f5d079db6b5dd12325a4c94/labs/optee-series/run-qemu.py)，QEMU 测试时间为 2026-09-17 19:09:49～19:10:01 UTC（北京时间 9 月 18 日）。当前脚本随后另有一行修正：文件采集的 `printf`、`base64`、结束标记改用 `&&` 连接，使中途失败正确上报。该差异通过成功读取、部分 Base64 输出后失败、缺文件三种 Git Bash 回归，未冒充完整 QEMU 重跑；CA、TA 与构建配置没有随之变化。
-
-以下保留普通 Linux 机器上的手动复现方法，和自动化脚本使用相同源码与编译选项。
-
-## 固定版本与配置
-
-以 OP-TEE **4.10.0** 的 `qemu_v8.xml` 为基线。manifest tag object 是 `5dc349cf004db361afc70e76af1a947c88ea7cf8`，对应 commit 是 `6d5849d5c1e4054980bf430ce1e96ebd0f532590`。完整列表见 [sources.lock.json](sources.lock.json)。常用阅读入口：
-
-| 组件 | 本系列源码提交 |
+| 组件 | 提交 |
 | --- | --- |
 | build | `53bfd321ee7fd47e450fb88c04b08ea27819f9bc` |
 | optee_os | `753afbbee1682f5d16fd30e87b31058a4fd4f4b8` |
@@ -31,85 +15,41 @@
 | Linux | `cf6e3218c25183cbc45551e85d0dd531f00fcc3d` |
 | Trusted Firmware-A | `1d5aa939bc8d3d892e2ed9945fa50e36a1a924cc` |
 
-`series-make.sh` 将条件编译选项作为 make 命令行变量传入，避免在上游已解析条件分支以后再覆盖变量：
+[series-make.sh](series-make.sh) 使用 QEMU `virt` Armv8 平台，普通世界与安全世界的用户态、内核态均为 AArch64。`SPMC_AT_EL=n` 对应传统 SMC 路径及 `SPD=opteed`；`TF_A_TRUSTED_BOARD_BOOT=n`，关闭 TBB。另设 `RUST_ENABLE=n`、`MEASURED_BOOT_FTPM=n`、`BR2_PACKAGE_STRACE=y`、`CFG_TEE_CORE_LOG_LEVEL=4`。
 
-- `COMPILE_NS_USER=64`、`COMPILE_S_USER=64`、`COMPILE_S_KERNEL=64`；上游 `COMPILE_NS_KERNEL` 固定为 64。
-- `SPMC_AT_EL=n`，因此 TF-A 使用 `SPD=opteed`，讨论传统 SMC 调用路径。
-- `TF_A_TRUSTED_BOARD_BOOT=n`。运行成功只能说明这一配置能够启动，不能用来证明镜像认证、吊销或防回滚工作正常。
-- `RUST_ENABLE=n`、`MEASURED_BOOT_FTPM=n`，关闭这次实验不需要的 Rust 示例与 fTPM；这两项并非 4.10.0 的原始默认值。
-- `BR2_PACKAGE_STRACE=y`、`CFG_TEE_CORE_LOG_LEVEL=4`，保留 CA 系统调用与安全世界调试线索。
+## 在 Linux 上构建
 
-这套配置运行于 QEMU 的 `virt` Armv8 平台；宿主机是 x86_64 Linux，四侧执行代码均为 AArch64。它不能代替任何实际 SoC 的启动链、外设隔离或产线配置验证。
+宿主机使用 x86_64 Linux，实验目录放在 ext4、btrfs 或 xfs 文件系统中，路径避免空格。需要 Bash、Git、`repo`、Python 3.9 以上、make、C/C++ 本机编译器、CMake、Ninja、rsync、cpio、bison、flex、dtc、pkg-config、util-linux，以及 [OP-TEE 构建依赖](https://optee.readthedocs.io/en/4.10.0/building/prerequisites.html)列出的开发库。运行采集脚本还需要 Python `pexpect`；Ubuntu 可安装 `python3-pexpect`。Ubuntu 22.04 的完整依赖安装命令见 [实验工作流](../../.github/workflows/optee-lab.yml)。
 
-## 准备源码与工具
-
-先按 [OP-TEE prerequisites](https://optee.readthedocs.io/en/4.10.0/building/prerequisites.html) 为 Linux 安装构建依赖，准备可用的 `repo`、Git、Python 3、make、C/C++ 本机编译器、CMake、Ninja、rsync、cpio、bison、flex、dtc、pkg-config，以及该页面列出的开发库。包安装属于宿主机准备工作，脚本不调用 `sudo`、更改系统组件或自行重启。
-
-在 WSL 中把整个实验工作区放进发行版自己的 Linux 文件系统，例如 `$HOME/tee-labs`；不要在 `/mnt/c`、`/mnt/f` 上构建。先人工建立父目录，再指定一个**尚不存在**的实验目录：
+在本仓库根目录执行，`optee_root` 必须是尚不存在的目录：
 
 ```bash
-# 在本仓库根目录执行；脚本路径转为绝对路径。
 lab_package="$(realpath labs/optee-series)"
-mkdir -p "$HOME/tee-labs"
-bash "$lab_package/bootstrap-linux.sh" "$HOME/tee-labs/optee-4.10.0"
 optee_root="$HOME/tee-labs/optee-4.10.0"
-```
+mkdir -p "$(dirname "$optee_root")"
+bash "$lab_package/bootstrap-linux.sh" "$optee_root"
 
-bootstrap 只在这个新目录中执行：固定 manifest 初始化、生成锁定顶层 SHA 的 local manifest、`repo sync`、校验每个 `HEAD`、导出 `repo manifest -r` 与递归 submodule 状态，再复制 `echo/` 为 `optee_examples/series_echo/`。失败时保留现场，不删除原有工作区；不要以相同路径重复初始化来掩盖失败。
-
-仓库中的 `resolve_sources.py` 只在需要重新核对 release 引用时手动运行。Linux 仓库使用 GitHub exact-ref API 解析大仓库 tag，其余 tag 用 `git ls-remote`，原来就是 commit 的引用保留上游值。一次解析不能证明 tag 签名可信、源码编译成功或所有依赖均已下载。
-
-准备 AArch64 工具链时，先阅读已固定的 `build/toolchain.mk`。这次只需要其中的 `aarch64-toolchain` 目标：
-
-```bash
-# 第一步只显示将执行的下载、解压与链接操作。
+# 查看工具链下载目标，再下载和解压 AArch64 工具链。
 bash "$lab_package/series-make.sh" "$optee_root" -n aarch64-toolchain
-# 审阅后单独下载和解压；这一步不构建系统。
 bash "$lab_package/series-make.sh" "$optee_root" aarch64-toolchain
-```
-
-该固定版本的 x86_64 目标使用 Arm GNU Toolchain 14.3.rel1。下载器本身不做摘要校验；使用前应与 Arm 发布页提供的校验信息核对归档，并记录实际 `sha256sum`。不要用通用 `make toolchains` 替代这里的目标：固定版本还会执行 Rust 工具链安装流程。构建脚本要求 `toolchains/aarch64/bin/aarch64-linux-gnu-gcc` 已存在，不会为了绕过缺失检查而临时下载并执行工具。
-
-## 构建与 Buildroot 接入
-
-```bash
 JOBS=2 bash "$lab_package/build-linux.sh" "$optee_root"
 ```
 
-选择 `JOBS=2` 是保守的内存默认值，可以根据宿主机容量提高。脚本记录 make 配置、完整构建日志与安装位置，保存在 Linux 实验目录的 `evidence/` 中。
+bootstrap 会同步并校验固定提交，导出 manifest 与 submodule 状态，再把本例复制到 `optee_examples/series_echo/`。失败时会保留目录。工具链为 Arm GNU Toolchain 14.3.Rel1；上游下载目标不校验归档摘要，来源核验需对照 Arm 发布的校验信息。这里只需 `aarch64-toolchain`，通用 `toolchains` 目标还会安装 Rust 工具链。
 
-接入方式依据固定的官方构建规则：`optee_examples/CMakeLists.txt` 会扫描带有 `CMakeLists.txt` 的直接子目录；`build/br-ext/package/optee_examples_ext/optee_examples_ext.mk` 以 CMake 构建 CA，并遍历 `*/ta/Makefile` 构建 TA。TA 通过上游 SDK 的 make 规则生成，并由同一包的安装钩子放入 `/lib/optee_armtz`。因此新增 `series_echo` 目录即可接入，无须手工更改 Buildroot 生成的 `.config`，也不需要向 rootfs 临时塞文件。
+构建日志与配置保存在 `$optee_root/evidence/`。官方 Buildroot 示例包规则会构建并安装 `optee_example_hello_world`、`optee_series_echo` 和本例 TA；不需要手动改 rootfs。修改示例后，先同步到实验目录中的 `optee_examples/series_echo/`，再运行构建。
 
-构建后检查下列文件；CA 是 AArch64 可执行文件，TA 是由开发密钥签名的教学产物：
+## 运行并收集结果
 
-```text
-out-br/target/usr/bin/optee_example_hello_world
-out-br/target/usr/bin/optee_series_echo
-out-br/target/lib/optee_armtz/4d5acb20-46c2-4bc7-9c0d-58f50a1179d2.ta
+以下命令启动 QEMU，运行原版 hello_world 和 echo 检查，并将结果、客户端与 supplicant trace、两路 UART 保存到 `$optee_root/evidence/`：
+
+```bash
+python3 "$lab_package/run-qemu.py" "$optee_root"
 ```
 
-更改本目录的示例后，需要把修改同步到 Linux 的 `optee_examples/series_echo/`，再运行构建。上游 `buildroot` 目标会刷新 OP-TEE 包的 stamp；这里不提供清空既有目录的重置命令。首次构建可能还会下载 Buildroot 包与 QEMU 构建依赖，应保留失败日志并解决具体错误。
+脚本会拒绝覆盖已有的 `evidence/uart-secure.txt`。重复实验前先另行保存旧记录。RPC 判断需要交叉查看目标 UUID 的成功文件读取、`TEE_IOC_SUPPL_RECV/SEND`、安全侧 ELF 装载及 CA 结果，不能只靠脚本的字符串检查。
 
-## 回显示例的接口与检查
-
-UUID 为 `4d5acb20-46c2-4bc7-9c0d-58f50a1179d2`。`TA_FLAGS=0`，普通用户 TA，不是伪 TA。共享定义在 `echo/ta/include/series_echo_ta.h`。
-
-| 命令 | TA 接收的四个参数类型 | 行为 |
-| --- | --- | --- |
-| `SERIES_CMD_ECHO=0` | `MEMREF_INPUT, MEMREF_OUTPUT, NONE, NONE` | 回显指定数量的原始字节；长度不包含额外 NUL。 |
-| `SERIES_CMD_VALUE=1` | `VALUE_INOUT, NONE, NONE, NONE` | `a` 加 1，按 uint32_t 回绕；保留 `b`。 |
-
-CA 使用 temporary memref，TA 看见的是普通 input/output memref。TA 先检查整个 `paramTypes` 再访问 union。短缓冲区时先把输出 `size` 更新为所需字节数，再返回 `TEE_ERROR_SHORT_BUFFER`；不进行部分拷贝。零长输入返回成功、输出长度 0，不读取或写入缓冲区。只有长度非零才调用 `TEE_MemMove`，因此不对空指针执行零长拷贝。
-
-CA 的五项检查为：正常输入字节完全一致且不写额外 NUL、零长输入、短缓冲区返回所需长度且保持 CA 原输出、错误类型被 TA 拒绝、value 的两个字段按合同变化。只有全部通过才打印 `PASS: 5 cases` 并以 0 退出。这次五项均通过；[实际输出](evidence/35257180558/echo-tests.txt)中的短缓冲区和错误类型分别为 `0xffff0010`、`0xffff0006`，origin 都为 4；[结果记录](evidence/35257180558/results.json)保存程序退出码 0。
-
-`returnOrigin` 每次调用都会记录。仅对两个有意触发的 TA 错误断言 `TEEC_ORIGIN_TRUSTED_APP`，确认错误确实到达 TA；成功调用不靠 origin 判定。这不意味着 libteec、Linux 或 OP-TEE core 返回的其他错误也应该是同一 origin。也不能只看 ioctl 的 Linux 返回值，就当作 TA 命令执行成功。
-
-## 两路 UART 与系统调用证据
-
-上游 `make run-only` 使用两个 `soc_term.py` TCP 终端：普通世界默认端口 54320，安全世界默认 54321。它带 `-S`，要在 QEMU monitor 输入 `c` 才继续。
-
-本包的 `series-console` 使用同一组上游 `QEMU_BASE_ARGS`，将普通世界接到当前终端、安全世界写入单独文件，不暴露宿主机共享目录。为避免覆盖旧证据，每次建立新的运行目录：
+也可以手动操作来宾。下面在宿主机启动 QEMU，并分别记录普通世界和安全世界串口：
 
 ```bash
 run_dir=$(mktemp -d "$optee_root/evidence/run.XXXXXX")
@@ -119,55 +59,47 @@ script -q -e -f -c \
   "$run_dir/uart-normal.log"
 ```
 
-这个 helper 不传 `-S`，所以会直接开始启动。QEMU 的 `mon:stdio` 可用 `Ctrl-a c` 切换 monitor、`Ctrl-a x` 退出。正常关机或退出后保留两个文件。`script` 记录中可能含有终端控制字符；原始记录应保留，文章只摘取能够对应同一次运行的行。
-
-在虚拟机普通世界以 root 登录后执行：
+QEMU 会直接启动；以 `root` 登录来宾。先附加到 init 脚本启动的 supplicant，再运行应用：
 
 ```sh
-uname -a
-ls -l /dev/tee0 /dev/teepriv0
-optee_example_hello_world
-echo "hello_world_exit=$?"
-strace -f -yy -s 160 -e trace=openat,ioctl,mmap,munmap,close \
-    -o /tmp/series-ca.strace optee_series_echo
-echo "echo_exit=$?"
-cat /tmp/series-ca.strace
-```
-
-`hello_world` 应先单独跑原版；本系列的 echo 示例不能替代原版验证。`strace` 中 ioctl 的显示名称取决于 guest strace 的解码版本，要对照固定 Linux `include/uapi/linux/tee.h` 中的定义。临时共享内存是否走注册、分配或 shadow buffer 由这套实现和实际能力协商决定，应从真实记录核对，不能把每次调用固定写成同一组 ioctl。
-
-## 观察用户 TA 加载 RPC
-
-先启动干净的 QEMU 实例，避免把之前已经加载的 TA 当作首次加载。初始 `tee-supplicant` 由 `/etc/init.d/S30optee` 启动；在**实验虚拟机里**停掉它，再以前台方式由 strace 启动，收集加载文件请求：
-
-```sh
-/etc/init.d/S30optee stop
-strace -f -yy -s 160 -e trace=openat,read,close,ioctl \
-    -o /tmp/series-supplicant.strace /usr/sbin/tee-supplicant /dev/teepriv0 \
-    >/tmp/series-supplicant.log 2>&1 &
+strace -f -s 256 -e trace=openat,read,close,ioctl \
+  -o /tmp/supplicant.strace -p $(pidof tee-supplicant) \
+  2>/tmp/supplicant-attach.txt &
 tracer_pid=$!
+sleep 1
+kill -0 "$tracer_pid"
+strace -s 256 -e trace=openat,close,ioctl \
+  -o /tmp/hello.strace optee_example_hello_world
+echo "hello_world_exit=$?"
 optee_series_echo
-echo "rpc_case_exit=$?"
-cat /tmp/series-supplicant.strace
-cat /tmp/series-supplicant.log
+echo "echo_exit=$?"
+kill -INT "$tracer_pid"
+wait "$tracer_pid"; tracer_status=$?
+printf 'tracer_exit=%s (0 or 130 expected)\n' "$tracer_status"
+cat /tmp/hello.strace /tmp/supplicant.strace /tmp/supplicant-attach.txt
 ```
 
-从 supplicant trace 找到本示例 UUID 对应 `.ta` 的实际路径，再同安全 UART 的加载日志、CA OpenSession 结果交叉检查。即便观察到文件读取，也要沿固定源码的 RPC 命令分发解释其用途，不凭一次 `read()` 声称完成了完整调用链追踪。默认示例是用户 TA；内建 early TA、pseudo TA 或已经驻留的实例不一定触发同样的文件读取。
+上述命令在来宾中执行。trace 位于临时 rootfs，退出前应另行保存；终端输出已写入宿主机的 `uart-normal.log`。用 `Ctrl-a x` 退出 QEMU，`Ctrl-a c` 可切换 monitor。
 
-结束此次实验直接退出并重新启动 QEMU，可恢复原 init 脚本启动方式。不要把这段 guest 管理命令搬到宿主机执行。若 trace 没有看到加载事件，应记录当前 TA 生命周期和失败点，不补写预想日志。
+## 示例接口与已记录的结果
 
-第六篇的 TF-A 认证失败路径以固定源码核对；当前 `TF_A_TRUSTED_BOARD_BOOT=n`，没有镜像篡改认证实验。将来切换 TBB 开关要遵循上游要求先清理 `arm-tf`，并另建实验记录，不能混用这次启动日志。
+echo 的 UUID 是 `4d5acb20-46c2-4bc7-9c0d-58f50a1179d2`，属于 `TA_FLAGS=0` 的用户 TA，使用开发密钥签名。`SERIES_CMD_ECHO=0` 接收 `MEMREF_INPUT, MEMREF_OUTPUT, NONE, NONE`，按字节长度回显，不追加 NUL；输出不足时更新所需长度，返回 `SHORT_BUFFER`，不部分复制。`SERIES_CMD_VALUE=1` 接收 `VALUE_INOUT, NONE, NONE, NONE`，令 `a` 按 uint32_t 加一，保留 `b`。
 
-## 证据与来源
+[已完成的实验](https://github.com/mainkeys/mainkeys.github.io/actions/runs/35257180558)运行于 x86_64 Ubuntu 22.04 GitHub Actions 宿主机，QEMU 测试时间为 **2026-09-17 19:09:49～19:10:01 UTC（北京时间 9 月 18 日）**。实际运行脚本对应提交 [113865db](https://github.com/mainkeys/mainkeys.github.io/blob/113865db3eb885c15f5d079db6b5dd12325a4c94/labs/optee-series/run-qemu.py)，结果如下：
 
-一次可发布的实验至少保留：实际宿主环境、工具链版本与摘要、`repo-manifest.resolved.xml`、submodule 状态、make 配置、构建成功记录、两路 UART、官方 hello_world 的退出码、echo 五项结果及退出码、CA strace、supplicant trace。只对外发布必要且核对过的文本记录；私有路径、凭据和主机信息先人工检查。
+| 检查 | 结果 |
+| --- | --- |
+| 官方 hello_world | 42 → 43，退出码 0；[客户端 ioctl](evidence/35257180558/hello-world.strace.txt)与安全侧日志相符 |
+| 正常回显、零长度、value | CA 断言通过；正常输入为 13 字节，不含末尾 NUL |
+| 短缓冲区、错误参数类型 | 分别返回 `0xffff0010`、`0xffff0006`，origin 均为 4；短缓冲区报告需要 13 字节 |
+| REE TA 加载 | 两个目标 UUID 均有成功 open/read、supplicant 响应和安全侧 ELF 装载记录 |
 
-- [固定 manifest](https://github.com/OP-TEE/manifest/blob/6d5849d5c1e4054980bf430ce1e96ebd0f532590/qemu_v8.xml)
-- [固定 qemu_v8.mk](https://github.com/OP-TEE/build/blob/53bfd321ee7fd47e450fb88c04b08ea27819f9bc/qemu_v8.mk)
-- [固定 common.mk](https://github.com/OP-TEE/build/blob/53bfd321ee7fd47e450fb88c04b08ea27819f9bc/common.mk)
-- [固定 Buildroot 示例包规则](https://github.com/OP-TEE/build/blob/53bfd321ee7fd47e450fb88c04b08ea27819f9bc/br-ext/package/optee_examples_ext/optee_examples_ext.mk)
-- [固定官方 hello_world](https://github.com/linaro-swg/optee_examples/tree/934c7edb74a26e90f68024cf441073528444177f/hello_world)
-- [固定 libteec 临时 memref 处理](https://github.com/OP-TEE/optee_client/blob/9f5e90918093c1d1cd264d8149081b64ab7ba672/libteec/src/tee_client_api.c)
-- [QEMU 官方说明](https://optee.readthedocs.io/en/4.10.0/building/devices/qemu.html#qemu-v8)
+[echo 完整输出](evidence/35257180558/echo-tests.txt)为 `PASS: 5 cases`，程序退出码为 0。两个预期错误的 origin 断言为 `TEEC_ORIGIN_TRUSTED_APP`；成功结果不依赖 origin 判定。原始记录、配置和摘要见 [evidence/35257180558](evidence/35257180558/)，其他运行记录见 [实验记录](evidence/README.md)。
 
-本包示例与脚本采用 BSD-2-Clause，见 [LICENSE](LICENSE)。接口布局依据上述公开 API 与构建规则编写。上游 checkout 保留其自身许可、作者信息和签名材料；本包许可不覆盖上游项目。
+当前采集脚本相对 `113865db` 增加了文件提取时的 `&&` 失败传播修复，该差异仅经过 shell 回归，未重新执行完整 QEMU 实验。
+
+本实验未验证 TBB 镜像认证、防回滚、可信存储安全性、零拷贝性能或真实 SoC 隔离。启动日志中的 FIP 头检查、insecure configuration 和 REE FS 单调计数器警告均保留。19 个顶层提交与导出的 manifest 一致；文件摘要用于核对归档传输字节，不是从 guest 开始的端到端摘要认证，也不替代源码或编译器来源核验。
+
+## 许可证
+
+本目录示例与脚本采用 [BSD-2-Clause](LICENSE)。官方 hello_world 和其他上游组件沿用各自的许可证；本目录不包含其源码树、工具链或二进制产物。
