@@ -8,7 +8,7 @@
 - 最近技术聊天仅用于提炼问题；正文以公开资料和本次公开实验为依据。
 - 不发布内部源码、项目细节、截图或私人聊天。
 - 不把预计输出、源码推导、他人日志写成本次运行结果。
-- 文章在实验通过后移入 `source/_posts`，保留 `render_drafts: false`；发布日期使用实际发布日与明确时区，置顶路线图保留并接入六篇。
+- 文章在实验通过后移入 `source/_posts`，保留 `render_drafts: false`；日期带明确时区，置顶路线图保留并接入六篇。首发日期及部署记录保留在本文，文章展示日期按用户后续要求错开，实验日期不随之改写。
 
 ## 第一季
 
@@ -73,3 +73,10 @@
 - 浏览器逐篇核对了线上六篇的标题、图示与 390px 手机布局，无页面横向溢出；桌面结果表与代码显示正常。实际导航复测通过（桌面 06→05、手机 05→04）。
 - 两次实验共 28 份原始文件的 Git 索引字节数与 SHA-256 全部匹配；用户原有 package.json 版本改动、未跟踪封面和 doc 目录均未混入发布提交。
 - 六篇线上入口：[01 调用链](https://mainkeys.github.io/post/tee-01-ca-to-ta.html) · [02 异常级](https://mainkeys.github.io/post/tee-02-armv8-exception-levels.html) · [03 Linux 驱动](https://mainkeys.github.io/post/tee-03-linux-tee-driver.html) · [04 共享内存](https://mainkeys.github.io/post/tee-04-shared-memory.html) · [05 RPC](https://mainkeys.github.io/post/tee-05-rpc-and-supplicant.html) · [06 启动过程](https://mainkeys.github.io/post/tee-06-before-the-first-call.html)。
+
+## 2026-09-18 文字修订
+
+- 根据用户反馈，六篇减少模板化转场、刻意比喻和重复总结，改为更平实的技术笔记口吻；不增加个人经历，不改实验输出、代码及技术结论。
+- 01～06 的展示日期依次调整为 2026-09-03、09-06、09-09、09-12、09-15、09-18，每篇相隔三天。`updated` 记录本次实际修订时间，首发和实验的真实日期仍为 9 月 18 日。
+- 固定提交引用、公开证据、稳定链接和系列顺序沿用已发布版本；本轮只调整文字和文章日期，不重跑无关实验，不开启第二批或恢复自动续办。
+- 修订预检：六篇代码/日志块、引用链接及其他 front matter 与首发版一致；`npm run build -- --force` 通过，Aurora 原始/别名数据和六个展示日期正确，图片与互链正常。桌面第一篇、390px 手机第四篇的文字及日期显示已核对。
