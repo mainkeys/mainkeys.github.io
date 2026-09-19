@@ -1,7 +1,7 @@
 ---
 title: 传给 TA 的参数，为什么不能只是一个指针？
-date: "2026-09-12T08:00:00+08:00"
-updated: "2026-09-18T08:54:38+08:00"
+date: "2026-09-09T08:00:00+08:00"
+updated: "2026-09-19T08:30:00+08:00"
 tags: [TEE, OP-TEE, Linux, 共享内存]
 categories: [系统安全]
 description: 从一个字符串回显命令出发，理解 value、memref、共享内存和 TA 的参数边界。

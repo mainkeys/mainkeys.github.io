@@ -1,6 +1,7 @@
 ---
 title: 从前端到 SoC Security：我准备如何构建一套系统安全知识体系
 date: 2026-04-12 00:00:00
+updated: "2026-09-19T08:30:00+08:00"
 tags: [SoC Security, ARM, TrustZone, TEE, Secure Boot]
 categories: [系统安全]
 top: true
@@ -312,4 +313,10 @@ SoC Security 并不是 Kernel 启动成功之后就结束了。
 
 [公开实验包](https://github.com/mainkeys/mainkeys.github.io/tree/main/labs/optee-series)保存版本锁定、构建与运行脚本、回显示例和验证记录。文章里会区分实际观察、固定源码核对和架构资料；第六篇的认证失败分析属于源码核对，这套日常调用实验没有开启 TBB。
 
-接下来想继续补的是驱动并发与内存管理、设备树与设备模型、RPMB 与可信存储，以及防回滚和安全升级的状态管理。先把这一条调用路线走明白，再往这些分支展开。
+## 沿着调用和启动，再往下追
+
+第五篇里，TA 发起 RPC 后还没拿到结果，Linux 这边也有线程在等。这个“等”值得单独拆开看：[TA 没返回，Linux 线程在等什么？](/post/linux-tee-wait-and-wakeup.html)。从请求队列和 completion 开始，顺着源码看锁什么时候释放、谁来唤醒，以及结果先回来会怎样。
+
+启动这条线则接到另一个问题：[镜像签名没问题，为什么还要一车一授权？](/post/vehicle-authorization-nonce-avb.html)。先把设备、软件和授权状态绑在一起，再拿 nonce 与 AVB 的 rollback index 对照，看看升级成功、失败回退和状态提交怎么配合。
+
+接下来想继续补内存管理、设备树与设备模型，再展开 RPMB 与可信存储。前面的文章也会随着源码阅读和实验继续补充。

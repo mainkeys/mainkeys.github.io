@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="1230" viewBox="0 0 760 1230" role="img" aria-labelledby="title desc">
+  <title id="title">一次 supplicant 请求如何等待和返回</title>
+  <desc id="desc">正常完成路径。CA 的调用线程在内核持锁入队后解锁，通知新请求，然后等待此请求的完成事件。supplicant 通过接收 ioctl 持锁取请求并解锁，在用户态处理，通过发送 ioctl 回填结果，再通知调用线程。队列锁不跨越读文件和等待结果的过程。图中先等待后完成只是一种可能顺序。</desc>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L10 5 L0 10Z" fill="#087f8c"/></marker></defs>
+  <style>
+    text{font-family:system-ui,'Microsoft YaHei',sans-serif;fill:#15354f}
+    .title{font-size:32px;font-weight:700}.label{font-size:25px;font-weight:650}
+    .body{font-size:23px}.small{font-size:22px;fill:#49657d}.code{font-family:Consolas,monospace;font-size:22px}
+    .card{fill:#fff;stroke:#87a8bc;stroke-width:2}.locked{fill:#fff2dc;stroke:#be8433;stroke-width:2}
+    .wait{fill:#edf3f8;stroke:#a5bacb;stroke-width:2;stroke-dasharray:7 5}
+    .arrow{fill:none;stroke:#087f8c;stroke-width:3;marker-end:url(#arrow);stroke-linejoin:round}
+  </style>
+  <rect width="760" height="1230" rx="14" fill="#f8fbfd"/>
+  <text x="36" y="56" class="title">请求入队以后，谁在等谁？</text>
+  <text x="36" y="94" class="small">supp.c 正常完成路径 · 时间向下</text>
+  <text x="200" y="155" class="label" text-anchor="middle">CA 调用线程</text>
+  <text x="565" y="155" class="label" text-anchor="middle">supplicant 线程</text>
+  <text x="200" y="190" class="small" text-anchor="middle">正在内核处理 RPC</text>
+  <text x="565" y="190" class="small" text-anchor="middle">通过 RECV / SEND 进出内核</text>
+  <rect x="42" y="220" width="314" height="100" rx="12" class="locked"/>
+  <text x="199" y="261" class="label" text-anchor="middle">持锁 → 入队 → 解锁</text>
+  <text x="199" y="298" class="code" text-anchor="middle">supp-&gt;mutex</text>
+  <path d="M199 320 V360 H565 V408" class="arrow"/>
+  <text x="382" y="349" class="small" text-anchor="middle">通知有新请求：reqs_c</text>
+  <rect x="408" y="410" width="314" height="100" rx="12" class="locked"/>
+  <text x="565" y="451" class="label" text-anchor="middle">持锁 → 取走 → 解锁</text>
+  <text x="565" y="488" class="small" text-anchor="middle">登记请求 ID，RECV 返回</text>
+  <rect x="42" y="428" width="314" height="250" rx="12" class="wait"/>
+  <text x="199" y="485" class="label" text-anchor="middle">等待这笔请求的结果</text>
+  <text x="199" y="532" class="code" text-anchor="middle">req-&gt;c</text>
+  <text x="199" y="584" class="body" text-anchor="middle">未持有队列 mutex</text>
+  <text x="199" y="630" class="small" text-anchor="middle">未完成时可以休眠</text>
+  <path d="M199 320 V428" class="arrow"/>
+  <path d="M565 510 V555" class="arrow"/>
+  <rect x="408" y="558" width="314" height="98" rx="12" class="card"/>
+  <text x="565" y="599" class="label" text-anchor="middle">用户态处理</text>
+  <text x="565" y="634" class="small" text-anchor="middle">例如读取 TA 文件</text>
+  <path d="M565 656 V704" class="arrow"/>
+  <rect x="408" y="707" width="314" height="102" rx="12" class="locked"/>
+  <text x="565" y="748" class="label" text-anchor="middle">SEND：查找、移除登记</text>
+  <text x="565" y="786" class="small" text-anchor="middle">持锁操作后解锁</text>
+  <path d="M565 809 V851" class="arrow"/>
+  <rect x="408" y="854" width="314" height="101" rx="12" class="card"/>
+  <text x="565" y="895" class="label" text-anchor="middle">回填参数和返回值</text>
+  <text x="565" y="933" class="code" text-anchor="middle">complete(&amp;req-&gt;c)</text>
+  <path d="M408 905 H199 V1000" class="arrow"/>
+  <path d="M199 678 V857" class="arrow"/>
+  <text x="199" y="888" class="small" text-anchor="middle">完成后继续</text>
+  <rect x="42" y="1003" width="680" height="101" rx="12" class="card"/>
+  <text x="382" y="1045" class="label" text-anchor="middle">调用线程取得 RPC 结果，重新进入 OP-TEE</text>
+  <text x="382" y="1082" class="small" text-anchor="middle">安全侧继续处理，原来的 OpenSession 可能仍未结束</text>
+  <text x="36" y="1158" class="small">图中先等待、后完成；结果先到时，completion 也会保留通知。</text>
+  <text x="36" y="1196" class="small">黄色框表示队列 / 请求登记的临界区，不表示整个 RPC 都持锁。</text>
+</svg>

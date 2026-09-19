@@ -1,7 +1,7 @@
 ---
 title: 看 TEE 代码之前，我先把 ARMv8 的异常级理清了
-date: "2026-09-06T08:00:00+08:00"
-updated: "2026-09-18T08:54:38+08:00"
+date: "2026-09-05T08:00:00+08:00"
+updated: "2026-09-19T08:30:00+08:00"
 tags: [ARMv8, TrustZone, TEE, OP-TEE]
 categories: [系统安全]
 description: 把异常级、安全状态和执行状态拆开，再沿着一次 OP-TEE 请求看 SMC、ERET 和上下文切换各自负责什么。

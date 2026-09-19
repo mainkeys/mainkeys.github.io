@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="1120" viewBox="0 0 760 1120" role="img" aria-labelledby="title desc">
+  <title id="title">A/B 升级中的确认与提交</title>
+  <desc id="desc">A 槽镜像的 rollback index 为 7，B 槽镜像为 8，设备下限为 7。新槽试启动失败且下限未提高时可按策略返回 A。确认 B 成功后，授权状态提交和版本门槛更新需要可恢复的协调；当下限已经提高到 8 时，旧 A 不再通过防回滚比较。</desc>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L10 5 L0 10Z" fill="#087f8c"/></marker></defs>
+  <style>
+    text{font-family:system-ui,'Microsoft YaHei',sans-serif;fill:#15354f}.title{font-size:32px;font-weight:700}.label{font-size:28px;font-weight:650}.body{font-size:25px}.small{font-size:23px;fill:#49657d}
+    .card{fill:#fff;stroke:#87a8bc;stroke-width:2}.accent{fill:#e5f5f5;stroke:#087f8c;stroke-width:2}.warn{fill:#fff1e1;stroke:#bd8c50;stroke-width:2}.arrow{fill:none;stroke:#087f8c;stroke-width:3;marker-end:url(#arrow);stroke-linejoin:round}
+  </style>
+  <rect width="760" height="1120" rx="14" fill="#f8fbfd"/>
+  <text x="35" y="56" class="title">旧槽什么时候还能作为退路？</text>
+  <text x="35" y="95" class="small">示例只画 index 的一项位置；其余校验条件假定满足</text>
+  <rect x="55" y="139" width="650" height="102" rx="14" class="card"/>
+  <text x="380" y="181" class="label" text-anchor="middle">A：index 7　　B：index 8</text>
+  <text x="380" y="218" class="body" text-anchor="middle">设备保存的下限仍是 7</text>
+  <path d="M380 241 V285" class="arrow"/>
+  <rect x="196" y="288" width="368" height="101" rx="14" class="card"/>
+  <text x="380" y="332" class="label" text-anchor="middle">B 试启动：8 ≥ 7</text>
+  <text x="380" y="369" class="small" text-anchor="middle">验证通过还不等于系统可用</text>
+  <path d="M270 389 V445 H190 V496" class="arrow"/>
+  <path d="M490 389 V445 H562 V496" class="arrow"/>
+  <text x="190" y="477" class="body" text-anchor="middle">未确认成功</text>
+  <text x="560" y="477" class="body" text-anchor="middle">确认槽成功</text>
+  <rect x="35" y="500" width="314" height="138" rx="14" class="accent"/>
+  <text x="192" y="543" class="label" text-anchor="middle">下限保留为 7</text>
+  <text x="192" y="584" class="body" text-anchor="middle">A 仍满足版本门槛</text>
+  <text x="192" y="617" class="small" text-anchor="middle">可按恢复策略选择 A</text>
+  <rect x="404" y="500" width="321" height="138" rx="14" class="card"/>
+  <text x="564" y="543" class="label" text-anchor="middle">进入提交阶段</text>
+  <text x="564" y="584" class="body" text-anchor="middle">授权状态与版本下限</text>
+  <text x="564" y="617" class="small" text-anchor="middle">分别确认、持久化与恢复</text>
+  <path d="M564 638 V691" class="arrow"/>
+  <rect x="404" y="695" width="321" height="137" rx="14" class="warn"/>
+  <text x="564" y="738" class="label" text-anchor="middle">下限已提高到 8</text>
+  <text x="564" y="779" class="body" text-anchor="middle">A 的 7 &lt; 8：拒绝</text>
+  <text x="564" y="812" class="small" text-anchor="middle">备用槽也受门槛约束</text>
+  <rect x="35" y="883" width="690" height="157" rx="14" class="card"/>
+  <text x="61" y="926" class="label">每个提交点都要能回答：</text>
+  <text x="61" y="969" class="body">断电后读到什么状态，哪个槽还能启动，如何继续提交？</text>
+  <text x="61" y="1010" class="small">图示不规定 nonce 与 index 的统一写入顺序，也不假设原子更新。</text>
+  <text x="35" y="1085" class="small">A/B 成功标记、授权激活、持久化防回滚门槛需要分别核对。</text>
+</svg>

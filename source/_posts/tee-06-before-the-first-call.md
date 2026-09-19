@@ -1,7 +1,7 @@
 ---
 title: 能调用 TA 之前，系统是怎样启动起来的？
-date: "2026-09-18T08:00:00+08:00"
-updated: "2026-09-18T08:54:38+08:00"
+date: "2026-09-13T08:00:00+08:00"
+updated: "2026-09-19T08:30:00+08:00"
 tags: [Secure Boot, TF-A, ARMv8, OP-TEE, TEE]
 categories: [系统安全]
 description: 回到第一次 TEE 调用之前，分别梳理 TF-A 的执行交接和镜像认证关系，并沿固定版本源码追到认证失败的出口。
@@ -114,4 +114,6 @@ BL2 遍历待加载镜像
 
 系列目录：[01 CA 到 TA](/post/tee-01-ca-to-ta.html) · [02 异常级](/post/tee-02-armv8-exception-levels.html) · [03 Linux 驱动](/post/tee-03-linux-tee-driver.html) · [04 共享内存](/post/tee-04-shared-memory.html) · [05 RPC](/post/tee-05-rpc-and-supplicant.html) · **06 启动**
 
-上一篇：[TA 还没执行完，为什么又回到了 Linux？](/post/tee-05-rpc-and-supplicant.html)　后续选题：驱动并发与内存管理、设备树、RPMB 与可信存储、安全升级和防回滚。
+上一篇：[TA 还没执行完，为什么又回到了 Linux？](/post/tee-05-rpc-and-supplicant.html)
+
+继续阅读：[TA 没返回，Linux 线程在等什么？](/post/linux-tee-wait-and-wakeup.html) · [镜像签名没问题，为什么还要一车一授权？](/post/vehicle-authorization-nonce-avb.html)

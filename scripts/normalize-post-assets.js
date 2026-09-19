@@ -24,6 +24,10 @@ hexo.extend.filter.register('before_generate', () => {
       const owner = postDirectories.find(({ directory }) => assetSource.startsWith(directory));
       if (!owner) return undefined;
 
+      // Asset discovery can assign a draft file to a published post on Windows.
+      // Filter using its actual owner before Hexo's asset generator runs.
+      if (!hexo._showDrafts() && owner.post.published === false) return asset.remove();
+
       const slug = assetSource.slice(owner.directory.length);
       const post = owner.post._id;
 

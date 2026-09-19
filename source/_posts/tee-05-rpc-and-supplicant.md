@@ -1,7 +1,7 @@
 ---
 title: TA 还没执行完，为什么又回到了 Linux？
-date: "2026-09-15T08:00:00+08:00"
-updated: "2026-09-18T08:54:38+08:00"
+date: "2026-09-11T08:00:00+08:00"
+updated: "2026-09-19T08:30:00+08:00"
 tags: [TEE, OP-TEE, Linux, RPC, TrustZone]
 categories: [系统安全]
 description: 从一次 REE 文件系统用户 TA 的加载请求，理解 OP-TEE trusted thread、RPC、tee-supplicant 与尚未结束的客户端调用。
@@ -122,3 +122,5 @@ echo 的 UUID `4d5acb20-46c2-4bc7-9c0d-58f50a1179d2` 也出现在 `/lib/optee_ar
 系列目录：[01 调用链](/post/tee-01-ca-to-ta.html) · [02 ARMv8 异常级](/post/tee-02-armv8-exception-levels.html) · [03 Linux 驱动](/post/tee-03-linux-tee-driver.html) · [04 共享内存](/post/tee-04-shared-memory.html) · [05 RPC](/post/tee-05-rpc-and-supplicant.html) · [06 启动过程](/post/tee-06-before-the-first-call.html)
 
 上一篇：[传给 TA 的参数，为什么不能只是一个指针？](/post/tee-04-shared-memory.html)。下一篇：[能调用 TA 之前，系统是怎样启动起来的？](/post/tee-06-before-the-first-call.html)。
+
+RPC 这条线继续往下看：[TA 没返回，Linux 线程在等什么？](/post/linux-tee-wait-and-wakeup.html)

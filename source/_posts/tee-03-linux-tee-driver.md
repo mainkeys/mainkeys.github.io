@@ -1,7 +1,7 @@
 ---
 title: 从 /dev/tee0 开始，追一次请求进入内核
-date: "2026-09-09T08:00:00+08:00"
-updated: "2026-09-18T08:54:38+08:00"
+date: "2026-09-07T08:00:00+08:00"
+updated: "2026-09-19T08:30:00+08:00"
 tags: [Linux, Kernel, Driver, TEE, OP-TEE]
 categories: [系统安全]
 description: 沿着 libteec 的 ioctl 请求，分清 TEE core 与 OP-TEE 驱动的职责，也把 probe 和运行期调用放回各自的位置。

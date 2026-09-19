@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="1030" viewBox="0 0 760 1030" role="img" aria-labelledby="title desc">
+  <title id="title">授权状态值与安全版本门槛</title>
+  <desc id="desc">左侧是一个教学授权模型，pending N1 在成功提交后成为 accepted N1，下一轮 pending 变为 N2，同一授权可继续启动。右侧是 AVB 的有序比较，设备门槛为 7 时镜像 7 和 8 均满足比较，提交为 8 后镜像 7 被拒绝。两者还需要各自的签名、身份及其他验证。</desc>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L10 5 L0 10Z" fill="#087f8c"/></marker></defs>
+  <style>
+    text{font-family:system-ui,'Microsoft YaHei',sans-serif;fill:#15354f}
+    .title{font-size:32px;font-weight:700}.label{font-size:28px;font-weight:650}.body{font-size:26px}.small{font-size:23px;fill:#49657d}.code{font-family:Consolas,monospace;font-size:25px}
+    .card{fill:#fff;stroke:#87a8bc;stroke-width:2}.accent{fill:#e5f5f5;stroke:#087f8c;stroke-width:2}.warn{fill:#fff1e1;stroke:#bd8c50;stroke-width:2}
+    .arrow{fill:none;stroke:#087f8c;stroke-width:3;marker-end:url(#arrow)}
+  </style>
+  <rect width="760" height="1030" rx="14" fill="#f8fbfd"/>
+  <text x="35" y="56" class="title">匹配当前授权，还是比较版本下限？</text>
+  <text x="35" y="95" class="small">示意：左侧为教学模型，右侧为 AVB 的版本比较</text>
+  <text x="199" y="157" class="label" text-anchor="middle">授权状态值</text>
+  <text x="562" y="157" class="label" text-anchor="middle">AVB rollback index</text>
+  <rect x="38" y="190" width="324" height="166" rx="14" class="card"/>
+  <text x="200" y="235" class="body" text-anchor="middle">目标槽的提交前状态</text>
+  <text x="200" y="283" class="code" text-anchor="middle">accepted = N0</text>
+  <text x="200" y="324" class="code" text-anchor="middle">pending = N1</text>
+  <rect x="398" y="190" width="324" height="166" rx="14" class="card"/>
+  <text x="560" y="235" class="body" text-anchor="middle">设备下限 = 7</text>
+  <text x="560" y="283" class="body" text-anchor="middle">镜像 7：满足下限</text>
+  <text x="560" y="324" class="body" text-anchor="middle">镜像 8：满足下限</text>
+  <path d="M200 356 V453" class="arrow"/>
+  <text x="219" y="397" class="small">新授权携带 N1</text>
+  <text x="219" y="430" class="small">匹配待确认状态</text>
+  <path d="M560 356 V453" class="arrow"/>
+  <text x="577" y="397" class="small">新槽试启动</text>
+  <text x="577" y="430" class="small">暂不提高下限</text>
+  <rect x="38" y="456" width="324" height="110" rx="14" class="accent"/>
+  <text x="200" y="501" class="label" text-anchor="middle">授权事务成功提交</text>
+  <text x="200" y="541" class="small" text-anchor="middle">N1 保留为启动状态值</text>
+  <rect x="398" y="456" width="324" height="110" rx="14" class="accent"/>
+  <text x="560" y="501" class="label" text-anchor="middle">确认槽成功</text>
+  <text x="560" y="541" class="small" text-anchor="middle">再按策略提交下限</text>
+  <path d="M200 566 V622" class="arrow"/>
+  <path d="M560 566 V622" class="arrow"/>
+  <rect x="38" y="625" width="324" height="165" rx="14" class="card"/>
+  <text x="200" y="672" class="code" text-anchor="middle">accepted = N1</text>
+  <text x="200" y="716" class="code" text-anchor="middle">pending = N2</text>
+  <text x="200" y="759" class="small" text-anchor="middle">N1 的授权仍可启动</text>
+  <rect x="398" y="625" width="324" height="165" rx="14" class="warn"/>
+  <text x="560" y="672" class="body" text-anchor="middle">设备下限 = 8</text>
+  <text x="560" y="716" class="body" text-anchor="middle">镜像 7：拒绝</text>
+  <text x="560" y="759" class="body" text-anchor="middle">镜像 8：满足下限</text>
+  <rect x="38" y="835" width="684" height="113" rx="14" class="card"/>
+  <text x="380" y="882" class="body" text-anchor="middle">随机状态值没有版本顺序；index 相等也可重复启动。</text>
+  <text x="380" y="924" class="small" text-anchor="middle">图中均只比较一项条件，仍须通过其余认证和策略检查。</text>
+  <text x="38" y="992" class="small">两个状态的提交时机要协调，但它们各自表达的含义不相同。</text>
+</svg>
