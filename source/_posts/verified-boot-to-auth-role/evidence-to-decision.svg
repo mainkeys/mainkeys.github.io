@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="1136" viewBox="0 0 720 1136" role="img" aria-labelledby="title desc">
+  <title id="title">从可信启动证据到按操作执行权限</title>
+  <desc id="desc">策略综合可信侧的本次启动证据、本机授权以及当前调用者和操作，按操作作出判断，由可信资源拥有者落实允许或拒绝。auth_role 仅为本文业务结果的示意名称，不是标准 AVB 字段。普通世界可以持有用于显示的启动证据副本，但该副本没有回填或覆盖可信证据的路径。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L10 5 L0 10Z" fill="#087f8c"/></marker>
+  </defs>
+  <style>
+    text{font-family:system-ui,'Microsoft YaHei',sans-serif;fill:#15354f}
+    .title{font-size:32px;font-weight:700}.label{font-size:28px;font-weight:650}.body{font-size:26px}.small{font-size:24px;fill:#49657d}
+    .card{fill:#fff;stroke:#87a8bc;stroke-width:2}.accent{fill:#e5f5f5;stroke:#087f8c;stroke-width:2}.warn{fill:#fff1e1;stroke:#bd8c50;stroke-width:2}
+    .line{fill:none;stroke:#087f8c;stroke-width:3;stroke-linejoin:round}.arrow{marker-end:url(#arrow)}.copy{stroke-dasharray:7 6;stroke-width:2}
+  </style>
+  <rect width="720" height="1136" rx="14" fill="#f8fbfd"/>
+  <text x="32" y="54" class="title">启动证据怎样变成业务权限</text>
+  <text x="32" y="94" class="small">按操作判断；由可信资源拥有者执行</text>
+
+  <rect x="32" y="130" width="208" height="200" rx="14" class="accent"/>
+  <text x="136" y="175" class="label" text-anchor="middle">可信侧本次</text>
+  <text x="136" y="214" class="label" text-anchor="middle">启动证据</text>
+  <text x="136" y="265" class="body" text-anchor="middle">验证状态</text>
+  <text x="136" y="304" class="body" text-anchor="middle">锁定状态</text>
+
+  <rect x="256" y="130" width="208" height="200" rx="14" class="card"/>
+  <text x="360" y="196" class="label" text-anchor="middle">本机授权</text>
+  <text x="360" y="265" class="body" text-anchor="middle">设备与软件</text>
+  <text x="360" y="304" class="body" text-anchor="middle">的授权信息</text>
+
+  <rect x="480" y="130" width="208" height="200" rx="14" class="card"/>
+  <text x="584" y="175" class="label" text-anchor="middle">当前调用者</text>
+  <text x="584" y="214" class="label" text-anchor="middle">与操作</text>
+  <text x="584" y="265" class="body" text-anchor="middle">谁在请求</text>
+  <text x="584" y="304" class="body" text-anchor="middle">要做什么</text>
+
+  <path d="M136 330 V365 H584 V330" class="line"/>
+  <path d="M360 330 V407" class="line arrow"/>
+  <circle cx="360" cy="365" r="4" fill="#087f8c"/>
+  <rect x="104" y="410" width="512" height="124" rx="14" class="accent"/>
+  <text x="360" y="458" class="label" text-anchor="middle">按当前操作判断策略</text>
+  <text x="360" y="501" class="small" text-anchor="middle">综合证据、授权与调用上下文</text>
+  <path d="M360 534 V573" class="line arrow"/>
+
+  <rect x="104" y="576" width="512" height="120" rx="14" class="card"/>
+  <text x="360" y="624" class="label" text-anchor="middle">可信资源拥有者执行</text>
+  <text x="360" y="665" class="small" text-anchor="middle">在使用资源的位置落实决定</text>
+  <path d="M360 696 V722 H220 V749" class="line arrow"/>
+  <path d="M360 722 H500 V749" class="line arrow"/>
+
+  <rect x="100" y="752" width="240" height="88" rx="14" class="accent"/>
+  <text x="220" y="807" class="label" text-anchor="middle">允许</text>
+  <rect x="380" y="752" width="240" height="88" rx="14" class="warn"/>
+  <text x="500" y="807" class="label" text-anchor="middle">拒绝</text>
+
+  <rect x="32" y="867" width="656" height="94" rx="14" class="card"/>
+  <text x="360" y="906" class="body" text-anchor="middle">auth_role：本文的业务结果示意</text>
+  <text x="360" y="941" class="small" text-anchor="middle">非标准 AVB 字段</text>
+
+  <path d="M32 230 H14 V992 H360 V1002" class="line copy arrow"/>
+  <rect x="32" y="1005" width="656" height="107" rx="14" class="warn"/>
+  <text x="360" y="1048" class="label" text-anchor="middle">普通世界展示副本</text>
+  <text x="360" y="1088" class="small" text-anchor="middle">单向展示；不能回填覆盖可信证据</text>
+</svg>

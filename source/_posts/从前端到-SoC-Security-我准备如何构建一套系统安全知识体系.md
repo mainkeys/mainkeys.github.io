@@ -1,7 +1,7 @@
 ---
 title: 从前端到 SoC Security：我准备如何构建一套系统安全知识体系
 date: 2026-04-12 00:00:00
-updated: "2026-09-19T08:30:00+08:00"
+updated: "2026-09-21T15:55:00+08:00"
 tags: [SoC Security, ARM, TrustZone, TEE, Secure Boot]
 categories: [系统安全]
 top: true
@@ -318,5 +318,7 @@ SoC Security 并不是 Kernel 启动成功之后就结束了。
 第五篇里，TA 发起 RPC 后还没拿到结果，Linux 这边也有线程在等。这个“等”值得单独拆开看：[TA 没返回，Linux 线程在等什么？](/post/linux-tee-wait-and-wakeup.html)。从请求队列和 completion 开始，顺着源码看锁什么时候释放、谁来唤醒，以及结果先回来会怎样。
 
 启动这条线则接到另一个问题：[镜像签名没问题，为什么还要一车一授权？](/post/vehicle-authorization-nonce-avb.html)。先把设备、软件和授权状态绑在一起，再拿 nonce 与 AVB 的 rollback index 对照，看看升级成功、失败回退和状态提交怎么配合。
+
+检查结果出来以后，还要看谁使用它：[Verified Boot 验完了，权限又是谁给的？](/post/verified-boot-to-auth-role.html)。从可信公钥和镜像摘要出发，接着追启动状态怎样进入安全侧、`auth_role` 怎样参与权限判断，以及最终接口在哪里拒绝请求。
 
 接下来想继续补内存管理、设备树与设备模型，再展开 RPMB 与可信存储。前面的文章也会随着源码阅读和实验继续补充。

@@ -1,7 +1,7 @@
 ---
 title: 镜像签名没问题，为什么还要一车一授权？
 date: "2026-09-19T08:35:00+08:00"
-updated: "2026-09-19T08:35:00+08:00"
+updated: "2026-09-21T15:55:00+08:00"
 tags: [Nonce, AVB, 设备授权]
 categories: [系统安全]
 description: 从设备与软件的授权绑定讲起，推演 nonce 在升级前后的状态变化，再对照 AVB 的 rollback index、A/B 成功标记与可信状态提交。
@@ -206,4 +206,6 @@ AVB 路径依据前面的固定源码；本地运行的只有 Python 模型，�
 
 相关前文：[能调用 TA 之前，系统是怎样启动起来的？](/post/tee-06-before-the-first-call.html) · [传给 TA 的参数，为什么不能只是一个指针？](/post/tee-04-shared-memory.html)
 
-上一篇：[TA 没返回，Linux 线程在等什么？](/post/linux-tee-wait-and-wakeup.html) · [回到系统安全目录](/post/从前端到-SoC-Security-我准备如何构建一套系统安全知识体系.html)
+上一篇：[TA 没返回，Linux 线程在等什么？](/post/linux-tee-wait-and-wakeup.html) · 下一篇：[Verified Boot 验完了，权限又是谁给的？](/post/verified-boot-to-auth-role.html)
+
+[回到系统安全目录](/post/从前端到-SoC-Security-我准备如何构建一套系统安全知识体系.html)

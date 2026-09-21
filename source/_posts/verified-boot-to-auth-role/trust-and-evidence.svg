@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="976" viewBox="0 0 720 976" role="img" aria-labelledby="title desc">
+  <title id="title">从逻辑信任关系到启动证据</title>
+  <desc id="desc">硬件信任根支撑对验证代码的认证。验证代码使用受信任密钥和已认证元数据，依据签名覆盖的摘要或哈希树根校验实际镜像或读取的数据块。防回滚是独立的版本门槛检查。图中箭头表示逻辑信任关系，不是 TF-A 的固定物理启动顺序。得到启动证据后，仍由业务策略决定权限。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L10 5 L0 10Z" fill="#087f8c"/></marker>
+  </defs>
+  <style>
+    text{font-family:system-ui,'Microsoft YaHei',sans-serif;fill:#15354f}
+    .title{font-size:32px;font-weight:700}.label{font-size:28px;font-weight:650}.body{font-size:26px}.small{font-size:24px;fill:#49657d}
+    .card{fill:#fff;stroke:#87a8bc;stroke-width:2}.accent{fill:#e5f5f5;stroke:#087f8c;stroke-width:2}.warn{fill:#fff1e1;stroke:#bd8c50;stroke-width:2}
+    .line{fill:none;stroke:#087f8c;stroke-width:3;stroke-linejoin:round}.arrow{marker-end:url(#arrow)}.separate{stroke-dasharray:7 6}
+  </style>
+  <rect width="720" height="976" rx="14" fill="#f8fbfd"/>
+  <text x="32" y="54" class="title">启动证据从哪里来</text>
+  <text x="32" y="94" class="small">逻辑信任关系 · 非 TF-A 物理启动顺序</text>
+
+  <rect x="32" y="130" width="456" height="86" rx="14" class="accent"/>
+  <text x="260" y="168" class="label" text-anchor="middle">硬件信任根</text>
+  <text x="260" y="201" class="small" text-anchor="middle">平台预置信任依据</text>
+  <path d="M260 216 V245" class="line arrow"/>
+
+  <rect x="32" y="248" width="456" height="92" rx="14" class="card"/>
+  <text x="260" y="287" class="label" text-anchor="middle">已认证的验证代码</text>
+  <text x="260" y="322" class="small" text-anchor="middle">检查后续对象，执行验证策略</text>
+  <path d="M260 340 V369" class="line arrow"/>
+
+  <rect x="32" y="372" width="456" height="112" rx="14" class="card"/>
+  <text x="260" y="414" class="label" text-anchor="middle">受信任密钥／</text>
+  <text x="260" y="453" class="label" text-anchor="middle">已认证元数据</text>
+  <path d="M260 484 V513" class="line arrow"/>
+
+  <rect x="32" y="516" width="456" height="110" rx="14" class="card"/>
+  <text x="260" y="558" class="label" text-anchor="middle">签名覆盖的摘要</text>
+  <text x="260" y="598" class="label" text-anchor="middle">或哈希树根</text>
+  <path d="M260 626 V655" class="line arrow"/>
+
+  <rect x="32" y="658" width="456" height="116" rx="14" class="card"/>
+  <text x="260" y="702" class="label" text-anchor="middle">实际镜像／读取块</text>
+  <text x="260" y="741" class="small" text-anchor="middle">按摘要或哈希树核验内容</text>
+
+  <rect x="510" y="372" width="178" height="360" rx="14" class="warn"/>
+  <text x="599" y="412" class="small" text-anchor="middle">独立版本门槛</text>
+  <text x="599" y="449" class="small" text-anchor="middle">rollback</text>
+  <path d="M530 469 H668" stroke="#bd8c50" stroke-width="1.5"/>
+  <text x="599" y="508" class="small" text-anchor="middle">认证版本值</text>
+  <text x="599" y="553" class="title" text-anchor="middle">≥</text>
+  <text x="599" y="595" class="small" text-anchor="middle">可信下限</text>
+  <text x="599" y="644" class="small" text-anchor="middle">按位置比较</text>
+  <text x="599" y="695" class="small" text-anchor="middle">与验签分别查</text>
+
+  <path d="M260 774 V809 H360 V829" class="line arrow"/>
+  <path d="M599 732 V809 H360" class="line separate"/>
+  <circle cx="360" cy="809" r="4" fill="#087f8c"/>
+  <rect x="32" y="832" width="656" height="120" rx="14" class="accent"/>
+  <text x="360" y="878" class="label" text-anchor="middle">得到启动证据</text>
+  <text x="360" y="920" class="label" text-anchor="middle">还需业务策略决定权限</text>
+</svg>
